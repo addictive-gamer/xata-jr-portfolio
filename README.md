@@ -4,9 +4,9 @@
 
 ## 🚀 Características
 - **Galería Interactiva:** Con sistema de zoom real (lupa) para apreciar los detalles.
-- **Bilingüe:** Sistema de selección de idioma dinámico.
-- **Sección FAQ:** Respuestas personalizadas sobre comisiones y proyectos.
-- **Diseño Glassmorphism:** Estética moderna con efectos de neón.
+- **Bilingüe:** Sistema de selección de idioma dinámico (Español/Inglés).
+- **Sección FAQ:** Respuestas personalizadas sobre mis servicios y proyectos.
+- **Diseño Moderno:** Estética Glassmorphism con efectos de neón.
 
 ## 🔗 Redes y Conexiones
 - **Instagram Principal:** [@addictiive.gamer](https://www.instagram.com/addictiive.gamer/)
@@ -19,7 +19,7 @@
 - **Ko-fi:** [xatajr](https://ko-fi.com/xatajr)
 
 ## 🤝 Colegas y Colaboraciones
-- **[Rab Games Studio](https://gamejolt.com/@RabGamesStudio):** Trabajo como ilustrador y sprite artist en *Talk to the Hand*.
+- **[Rab Games Studio](https://gamejolt.com/@RabGamesStudio):** Ilustrador y sprite artist en *Talk to the Hand*.
 - **[Nightmare Labs](https://gamejolt.com/@NightmareLabs):** Traductor oficial a Español Latino.
 
 ## 🛠️ Tecnologías
