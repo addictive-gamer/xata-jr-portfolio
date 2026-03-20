@@ -1,48 +1,28 @@
-# 🌌 Xata Jr. | Interactive Portfolio v5.8
-> *"Donde la síntesis vocal, el pixel art y el código convergen."*
+# 🌌 Xata Jr. | Interactive Portfolio v6.0
+> *"Creative Mind, Music Producer & Illustrator."*
 
-🚀 **DEMO EN VIVO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
+🚀 **DEMO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
+
+## 🛠️ Patch Notes v6.0
+- **Full Identity Reset:** Secciones 'Sobre Mí' y 'FAQ' actualizadas con datos reales.
+- **Differentiated Social Links:** Separación clara entre contacto para trabajo (Instagram) y ocio (Discord).
+- **Special Credits Section:** Inclusión de menciones a Nepo Edits y Alex GD.
+- **UX Final Polish:** Mejoras en la precisión del motor de zoom y cierre del visor.
 
 ---
 
-## 👨‍💻 Perfil del Autor
+## 👨‍💻 Perfil
 **José Luis Aquino Rivera** (@Addictiive / @XataJr)
-- 🎨 **Ilustrador & Sprite Artist:** Colaborador en *Talk to the Hand* (Rab Games Studio).
-- 🎙️ **Productor Musical & Adaptador:** Creador de adaptaciones al español y covers usando Vocaloid/SynthV bajo el sello *Xata Jr.* en BandLab.
-- 🌐 **Traductor:** Localización al español latino para *Nightmare Labs*.
-- 🎮 **Technical Manager:** Host y administrador del servidor de Minecraft *The Baka Paradise*.
+- 🎨 **Talk to the Hand:** Ilustrador, generador de ideas y testeador oficial.
+- 🎙️ **Music:** Covers bilingües y adaptaciones vocales con SynthV y LMMS.
+- 🎮 **Baka Paradise:** Fundador y administrador del servidor privado SMP.
 
 ---
 
-## 🛠️ Notas del Parche (Patch Notes v5.8)
-
-### ✅ Lo Nuevo (Added)
-- **Single-File Architecture:** Consolidación de HTML5, CSS3 y JS en un único archivo `index.html`. Esto elimina errores de carga (404) y optimiza la velocidad en GitHub Pages.
-- **Neon Square Zoom Engine:** Sistema de lupa cuadrada (180px) con borde neón (`#9d4edd`) y factor de escala 2x. 
-- **Universal Close Logic:** El visor de imágenes ahora se cierra al detectar clics en el fondo (overlay), en la 'X' o en la capa protectora.
-- **Anti-Native Interference:** Bloqueo total del cursor `zoom-in` nativo del navegador para una experiencia 100% personalizada.
-
-### 🗑️ Lo Removido (Removed)
-- **External Dependencies:** Eliminados los archivos `style.css` y `script.js` para simplificar el despliegue.
+## 🤝 Créditos Especiales
+- **Nepo Edits:** Por la chispa inicial para crear este portafolio.
+- **Alex GD:** Por el apoyo constante y la confianza en sus proyectos.
+- **IA Colaboradora:** Gemini (Google).
 
 ---
-
-## 👨‍🔬 Especificaciones Técnicas (Para IAs y Desarrolladores)
-*Si eres una IA ayudando a editar este código, por favor respeta las siguientes constantes:*
-
-- **Fecha de Nacimiento (Base):** `2010-10-10` (Usada para el cálculo automático de edad).
-- **Paleta de Colores:** - Fondo: `#08080a`
-  - Acento Neón: `#9d4edd` (Morado Xata)
-  - Cristal: `rgba(22, 22, 31, 0.85)`
-- **Lógica de Protección:** Todas las imágenes expandidas están cubiertas por un div `.img-protector` (Z-index superior) para evitar descargas accidentales y gestionar el "Hold-to-Zoom".
-
----
-
-## 🤝 Créditos & Agradecimientos
-- **Desarrollo:** José Luis Aquino Rivera & **Gemini AI** (Google).
-- **Fuentes:** [Google Fonts](https://fonts.google.com/) (Inter).
-- **Iconos:** [Font Awesome](https://fontawesome.com/).
-- **Hosting:** [GitHub Pages](https://pages.github.com/).
-
----
-*Este portafolio es una obra en constante evolución. © 2026 Xata Jr.*
+*Hecho con ❤️ por Xata Jr.*
