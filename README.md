@@ -1,28 +1,56 @@
-# 🌌 Xata Jr. | Interactive Portfolio (v5.3)
+# 🌌 Xata Jr. | Interactive Portfolio v5.4
 
-🚀 **LIVE PAGE:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
+¡Bienvenido a mi rincón creativo! Soy **José Luis Aquino Rivera**, mejor conocido en el mundo digital como **@Addictiive** o **Xata Jr**. Soy un creativo multidisciplinario enfocado en el desarrollo de videojuegos, arte digital y producción musical.
+
+🚀 **VER PORTAFOLIO EN VIVO:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
+
+---
+
+## 🎨 ¿Qué encontrarás aquí?
+Este portafolio es una vitrina de mis habilidades y proyectos actuales, construido con una estética **Glassmorphism** y un enfoque bilingüe (ES/EN).
+
+### ✨ Características Principales:
+- **Galería Interactiva:** Visualización de arte en alta resolución con efecto zoom elástico.
+- **Protección de Assets:** Capas de seguridad anti-copia (No-Click / No-Drag) para mis ilustraciones.
+- **Detección de Edad Automática:** Script en JS que calcula mi edad en tiempo real.
+- **Multilenguaje:** Sistema nativo para cambiar entre Español e Inglés sin recargar la página.
+
+---
+
+## 🛠️ Proyectos & Roles Actuales
+Actualmente formo parte de varios equipos de desarrollo en **GameJolt**:
+
+* **Talk to the Hand:** Ilustrador principal y Sprite Artist (Team @RabGamesStudio).
+* **Nightmare Labs:** Traductor oficial al español latino.
+* **The Baka Paradise:** Administrador y Host técnico de servidor Minecraft (Fabric/Playit.gg).
+* **Xata Jr. (BandLab):** Producción de covers y adaptaciones musicales con Vocaloid y SynthV.
+
+---
+
+## 🚀 Stack Tecnológico
+| Categoría | Herramientas |
+| :--- | :--- |
+| **Web Dev** | HTML5, CSS3 (Glassmorphism), JavaScript (Vanilla) |
+| **Diseño** | Affinity, Aseprite, Photoshop, Ibis Paint X |
+| **Audio** | SynthV, Vocaloid, Audacity, BandLab |
+| **Otros** | Python (Automation), OBS Studio, Minecraft Server Management |
 
 ---
 
 ## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
-- **Identity:** José Luis Aquino Rivera (@Addictiive / @XataJr).
-- **Core Info:** Bilingüe, Glassmorphism Dark Purple, Hosted by GitHub.
-- **Update v5.3 (March 20, 2026):** - Implementation of **Smooth Hover Zoom** effect in gallery items.
-  - Corrected global dates and project credits.
-  - Linked 10 artworks from official Instagram sources.
+> *Sección optimizada para asistentes de IA que ayuden en el mantenimiento del código.*
+- **Version:** 5.4 (Released: March 20, 2026).
+- **Core Engine:** Vanilla JS + CSS Grid/Flexbox.
+- **Security:** Invisible `img-protector` layer & `contextmenu` lockdown.
+- **Typography:** Inter / Segoe UI.
 
 ---
 
-## 👤 Créditos & Colaboraciones
-Proyecto desarrollado por **Xata Jr** en colaboración con **Gemini AI**.
-- **Alojamiento:** GitHub Pages.
-- **Arte:** Contiene ilustraciones propias de proyectos como *Talk to the Hand*.
+### 📫 Contacto & Redes
+¡Sígueme en mis plataformas para ver mis últimos trabajos!
+- **Instagram:** [@addictiive.gamer](https://www.instagram.com/addictiive.gamer/)
+- **GameJolt:** [@Addictiive](https://gamejolt.com/@Addictiive)
+- **VGen (Comisiones):** [XataJr](https://vgen.co/XataJr)
 
 ---
-
-## 🛠️ Prompt para IAs
-> "Genera un portafolio Glassmorphism bilingüe. Usa una rejilla responsiva para la galería con un efecto de zoom suave (1.1x) y elevación en hover. Añade enlaces a colaboradores de GameJolt y un toggle dinámico de idioma en la esquina superior derecha."
-
----
-
-✨ *Actualizado el 20 de marzo de 2026.*
+*Desarrollado con ❤️ por Xata Jr. y Gemini AI.*
