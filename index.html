@@ -1,155 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Xata Jr. | Portfolio</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body data-lang="es">
-
-    <div id="lang-popup">
-        <div class="popup-content">
-            <h3 style="margin-top:0">Choose your language / Elige tu idioma</h3>
-            <div class="popup-btns">
-                <button class="popup-btn" onclick="selectLang('es')">ESPAÑOL</button>
-                <button class="popup-btn" onclick="selectLang('en')">ENGLISH</button>
-            </div>
+<div id="image-viewer">
+        <span class="close-viewer">&times;</span>
+        <div class="viewer-content">
+            <div class="img-protector" oncontextmenu="return false;"></div>
+            <img id="full-image" src="" alt="Full Resolution" oncontextmenu="return false;">
         </div>
-    </div>
-
-    <button id="lang-toggle" onclick="toggleLanguage()"></button>
-
-    <header>
-        <h1><span>Xata</span> Jr.</h1>
-        <p class="tagline">
-            <span class="es">"Friki con potencial"</span><span class="en">"Geek with potential"</span>
-        </p>
-        <p>
-            <span id="age-num"></span> 
-            <span class="es">años</span><span class="en">years old</span> 
-            • <span class="es">Creativo Multidisciplinario</span><span class="en">Multidisciplinary Creative</span>
-        </p>
-    </header>
-
-    <div class="container">
-        <div class="social-grid">
-            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.bandlab.com/xatajr" class="social-link"><i class="fa-solid fa-music"></i> BandLab</a>
-            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i> GameJolt</a>
-            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i> VGen</a>
-            <a href="https://www.twitch.tv/xatajr" class="social-link"><i class="fab fa-twitch"></i> Twitch</a>
-            <a href="https://kick.com/addictivegamer" class="social-link"><i class="fa-solid fa-k"></i> Kick</a>
-            <a href="https://ko-fi.com/xatajr" class="social-link"><i class="fa-solid fa-coffee"></i> Ko-fi</a>
-        </div>
-
-        <section>
-            <h2 class="es">Galería Visual</h2><h2 class="en">Visual Gallery</h2>
-            <div class="examples-grid">
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142" alt="Pixel Art Fanart">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbf-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1" alt="Poster Practice">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B" alt="First Paid Commission">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7" alt="Rose Drawing">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265" alt="Vector Art">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/590419127_17954300289042073_8479797926541367907_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzc4MzY5MzQ2MTMxMzQ4MDYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=7ghJXFnIOX0Q7kNvwFy6Deq&_nc_oc=AdospSYfmkMdGihQiIS3I6kNjhQ31W3MOVrmWkwK1sbFXETvQ9WRQrd2Zbmxs9cCG4Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=raSWWJgdLpYn1q2VORRL8A&_nc_ss=7a30f&oh=00_AfzUgqw5XbYGf9aUTaK7Kg2-7yRbr5ZDywSLGDeAAuc9-g&oe=69C2CB76" alt="Ado Poster">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654264653_17965461990042073_1764427884178748196_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTkzNzE5MzI5NDg4MzY5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMjV4MTEyNS5zZHIuQzMifQ%3D%3D&_nc_ohc=1Si7-L2IAikQ7kNvwHhIVqg&_nc_oc=Adqoi-Y7aQfazt_UgB6O0vzEjH8heC9NmPwcj-5i_3WeuvONzLxHU3jC1goW6f3CFGw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=uGtTcbQuaAd3xcetvhRERw&_nc_ss=7a30f&oh=00_AfyF4-HgJyX7rPFv5Qrm3Eoyc1GGJnDLvcM_Mxeph5VTKw&oe=69C2AF0C" alt="TTTH Art">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653963152_17965461930042073_9186050970296493852_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1NTkzNjU4NTAyMDEwMzY1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=quiZXHiDzQIQ7kNvwHg2RBE&_nc_oc=AdqIOUHNG27YRZc_DuxwT7LgqyEBC2L8ZsIFMtX9kX2EwKOwvXywxDFfSvtJ8egOgnw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_Afwal-DLA38yo1w6GSYZbEw1plIegnukqOXU8rBcUYbmSQ&oe=69C2BC38" alt="OST Cover">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653822324_17965463079042073_7237902828753501827_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTk0MDMyOTY1Mjc3NDU4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=fOMZoWGdm-AQ7kNvwF9fbwj&_nc_oc=AdpNKQ7NyjaGsB4ToMAKquiwY3FEpLZaFEH0k8OgqUhmjYIYX3bjklMZgmU7sZUOkXs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_AfyaiVv1tlzfkM5fpBVzA5h9kt3ePMVFI_Cvxo4v2lDfvg&oe=69C2C984" alt="Xata Jr Vector">
-                    </div>
-                </div>
-                <div class="example-item">
-                    <div class="example-img">
-                        <img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/641279343_17878782819494454_6115844570974014657_n.webp?_nc_cat=109&ig_cache_key=Mzg0NDkyMTQ0ODkxNzQ5OTA2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4NTg1LnNkci5DMyJ9&_nc_ohc=uVBagHWp9gsQ7kNvwHGH5vt&_nc_oc=AdrzNkM3d-i7cGZFlcS405Ed6Xb6WSwE1V5wzEKDMDZ7M7UFsfvPpyQHRqD1pFcF-Rw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=ZATB1dMlaarpn-NfmuX5yQ&_nc_ss=7a30f&oh=00_AfwEdxEPdn-xJaq0Z__OuaELlfxO4JgrQrslNEB8-qUtKQ&oe=69C2C30A" alt="Collab Art">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="es">Habilidades</h2><h2 class="en">Skills</h2>
-            <div class="info-list">
-                <div class="info-item">
-                    <strong class="es">Arte & Diseño</strong><strong class="en">Art & Design</strong>
-                    Photoshop, Aseprite, Ibis Paint X, Affinity.
-                </div>
-                <div class="info-item">
-                    <strong class="es">Audio</strong><strong class="en">Audio</strong>
-                    Audacity, SynthV, Vocaloid, BandLab.
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="es">Colegas GameJolt</h2><h2 class="en">GameJolt Colleagues</h2>
-            <div class="info-list">
-                <a href="https://gamejolt.com/@RabGamesStudio" style="text-decoration: none; color: inherit;">
-                    <div class="info-item colleague-item">
-                        <strong>Rab Games Studio</strong>
-                        <span class="es">Trabajo como ilustrador y sprite artist</span>
-                        <span class="en">Work as illustrator and sprite artist</span>
-                    </div>
-                </a>
-                <a href="https://gamejolt.com/@NightmareLabs" style="text-decoration: none; color: inherit;">
-                    <div class="info-item colleague-item">
-                        <strong>Nightmare Labs</strong>
-                        <span class="es">Trabajo como Traductor (Latino)</span>
-                        <span class="en">Work as Translator (Latin)</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <footer>
-            <p>Xata Jr. Portfolio • 2026</p>
-            <p style="font-size: 0.75rem; margin-top: 10px; opacity: 0.8;">
-                <span class="es">Desarrollado con Gemini AI & Hosted by GitHub</span>
-                <span class="en">Developed with Gemini AI & Hosted by GitHub</span>
-            </p>
-            <p style="margin-top: 15px;">
-                <a href="https://github.com/addictive-gamer/xata-jr-portfolio" style="color: var(--accent); text-decoration: none; font-size: 0.7rem;">
-                    <i class="fab fa-github"></i> GitHub Repository
-                </a>
-            </p>
-        </footer>
     </div>
 
     <script>
+        // Lógica del Visor de Imágenes
+        const viewer = document.getElementById('image-viewer');
+        const fullImg = document.getElementById('full-image');
+        const closeBtn = document.querySelector('.close-viewer');
+
+        // Abrir al hacer clic en cualquier item de la galería
+        document.querySelectorAll('.example-item img').forEach(img => {
+            img.onclick = () => {
+                viewer.style.display = 'flex';
+                fullImg.src = img.src;
+                document.body.style.overflow = 'hidden'; // Bloquea scroll
+            };
+        });
+
+        // Cerrar visor
+        closeBtn.onclick = () => {
+            viewer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        // Cerrar si haces clic fuera de la imagen
+        viewer.onclick = (e) => {
+            if(e.target === viewer) {
+                viewer.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Bloquear clic derecho en todo el visor
+        viewer.oncontextmenu = (e) => e.preventDefault();
+        
+        // --- (Aquí sigue tu función setAge y demás scripts anteriores) ---
         function setAge() {
             const birth = new Date('2010-10-10');
             const now = new Date();
@@ -157,31 +46,5 @@
             if (now.getMonth() < birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() < birth.getDate())) age--;
             document.getElementById('age-num').innerText = age;
         }
-
-        function selectLang(lang) {
-            document.body.setAttribute('data-lang', lang);
-            const popup = document.getElementById('lang-popup');
-            popup.style.opacity = '0';
-            setTimeout(() => { 
-                popup.style.display = 'none';
-                document.getElementById('lang-toggle').style.display = 'block';
-                updateToggleButton();
-            }, 500);
-        }
-
-        function toggleLanguage() {
-            const current = document.body.getAttribute('data-lang');
-            const next = current === 'es' ? 'en' : 'es';
-            document.body.setAttribute('data-lang', next);
-            updateToggleButton();
-        }
-
-        function updateToggleButton() {
-            const current = document.body.getAttribute('data-lang');
-            document.getElementById('lang-toggle').innerText = current === 'es' ? 'ENGLISH' : 'ESPAÑOL';
-        }
-
-        setAge();
+        // ... (resto de tus funciones selectLang, etc.)
     </script>
-</body>
-</html>
