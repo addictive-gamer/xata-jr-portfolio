@@ -1,36 +1,30 @@
-# 🌌 Xata Jr. | Interactive Portfolio v6.1
-> *"Onde a síntese vocal, o pixel art e o código convergen."*
+# 🎨 Xata Jr. Portfolio v7.0 - Definitive Edition
 
-🚀 **VER PORTAFOLIO EN VIVO:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
+¡Bienvenido al repositorio oficial de mi portafolio! Este es un sitio web bilingüe (Español/Inglés) diseñado para mostrar mis trabajos como ilustrador, sprite artist, adaptador musical y traductor.
 
----
+## 🚀 Características
+- **Galería Interactiva:** Con sistema de zoom real (lupa) para apreciar los detalles.
+- **Bilingüe:** Sistema de selección de idioma dinámico.
+- **Sección FAQ:** Respuestas a las dudas más comunes sobre mis servicios.
+- **Responsive:** Optimizado para PC y dispositivos móviles.
+- **Diseño Glassmorphism:** Una estética moderna con efectos de cristal y luces de neón.
 
-## 👨‍💻 Perfil del Autor
-**José Luis Aquino Rivera** (@Addictiive / @XataJr)
-- 🎨 **Ilustrador & Sprite Artist:** Colaborador en *Talk to the Hand* (Rab Games Studio).
-- 🎙️ **Productor Musical & Adaptador:** covers bilingües y adaptaciones vocales con SynthV y LMMS nwn.
-- 🌐 **Traductor Latino:** Localización para *Nightmare Labs*.
-- 🎮 **Baka Paradise SMP:** Fundador y administrador del servidor.
+## 🔗 Secciones Incluidas
+- **Conexiones:** Links a mis 8 redes sociales principales (Instagram, VGen, Kick, Ko-fi, etc.).
+- **Sobre Mí:** Información sobre mi rol en *Talk to the Hand* y el proyecto *The Baka Paradise*.
+- **Colegas:** Enlaces a los estudios con los que colaboro (Rab Games y Nightmare Labs).
+- **FAQ:** Detalles sobre comisiones, herramientas de música y traducciones.
 
----
+## 🛠️ Tecnologías Usadas
+- HTML5 / CSS3 (Variables de CSS y Flexbox/Grid).
+- JavaScript Vanilla (Lógica de zoom, idiomas y renderizado de galería).
+- FontAwesome para la iconografía.
+- Google Fonts (Inter).
 
-## 🛠️ Notas del Parche (Patch Notes v6.1)
-
-### ✅ Lo Nuevo (Added)
-- **Unified Square Zoom Engine:** Sistema de lupa cuadrada neón (180px) de alto rendimiento, unificado para PC (mouse) y Móvil (touch) con factor de escala 2x.
-- **Dynamic Descriptions:** El visor ahora muestra descripciones dinámicas para cada obra de arte, leídas directamente desde atributos `data-desc` en el HTML.
-- **Full Gallery Patch:** Integración y ordenamiento manual de las 11 obras maestras de Instagram con sus metadatos exactos.
-
-### 🗑️ Removido (Removed)
-- **Navegador Native Zoom & Cursor:** Eliminada la lupa nativa de Chromium (`zoom-in` cursor) que bloqueaba la interfaz de usuario.
-
----
-
-## 👨‍🔬 Especificaciones Técnicas (Para IAs y Desarrolladores)
-- **Birth Date:** 2010-10-10.
-- **DEPLOY URL:** https://addictive-gamer.github.io/xata-jr-portfolio/
-- **Architecture:** Single-File Architecture (`index.html` holds HTML, CSS, and JS) to ensure zero latency on GitHub Pages.
-- **UX Logic:** All interactive events (Hold-to-Zoom, Close, Desc) are managed by the `.img-protector` layer to safeguard asset interaction.
+## 📄 Créditos
+- **Idea Original:** Nepo Edits.
+- **Apoyo & Testing:** Alex GD.
+- **Desarrollo:** Desarrollado con el apoyo de Gemini AI.
 
 ---
-*Hecho con ❤️ por Xata Jr. y Gemini AI.*
+*Hecho por Xata Jr. (@Addictiive) • 2026*
