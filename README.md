@@ -1,4 +1,4 @@
-# 🌌 Xata Jr. | Interactive Portfolio v5.5
+# 🌌 Xata Jr. | Interactive Portfolio v5.6
 
 ¡Bienvenido! Soy **José Luis Aquino Rivera** (@Addictiive / @XataJr), ilustrador y creativo multidisciplinario.
 
@@ -6,25 +6,18 @@
 
 ---
 
-## 🛠️ Novedades v5.5 (20 Mar 2026)
-- **Lightbox Fix:** Solucionado el error de apertura de imágenes mediante `DOMContentLoaded`.
-- **Anti-Theft System:** Implementada capa protectora invisible sobre las obras para evitar descargas accidentales.
-- **UX Smooth:** Efecto de zoom elástico en la galería y scroll-lock al abrir ilustraciones.
-
----
-
-## 🎨 Mis Roles
-- **Ilustrador:** @RabGamesStudio (Talk to the Hand).
-- **Traductor:** @NightmareLabs.
-- **Música:** Productor de covers SynthV/Vocaloid como Xata Jr.
-- **Técnico:** Host de servidor Minecraft "The Baka Paradise".
+## 🛠️ Novedades v5.6 (20 Mar 2026)
+- **Cierre Mejorado:** El visor ahora se cierra al hacer clic/tap en la 'X' o en cualquier lugar oscuro fuera de la imagen.
+- **Lupa Cuadrada Interactiva:** Implementado sistema de "Hold-to-Zoom" (mantener presionado) que activa un cuadrado con zoom 2x sobre el arte.
+- **Touch & Pinch-to-Zoom:** Habilitado el zoom nativo con los dedos en móvil (`viewport user-scalable=yes`) y ajustados los eventos touch para una UX fluida.
+- **Bug Fix:** Eliminado el zoom automático que impedía ver la 'X' de cierre.
 
 ---
 
 ## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
 - **Core:** JavaScript Vanilla + CSS Glassmorphism.
 - **Performance:** Instagram-hosted assets with protective overlays.
-- **Language Logic:** State-based bilingual toggle with zero-reload.
+- **UX Logic:** State-based bilingual toggle, holds-to-zoom logic, multi-touch event listening for seamless navigation.
 
 ---
 *Hecho con ❤️ por Xata Jr. & Gemini AI.*
