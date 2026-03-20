@@ -1,48 +1,51 @@
 # 🎨 Xata Jr Portfolio 🚀
 > **(Also Known as Addictive Gamer)**
 
-¡Bienvenido a mi rincón creativo! Soy un ilustrador digital, artista de covers y un **wannabe composer** apasionado por la estética retro y el diseño de personajes.
+¡Bienvenido a mi rincón creativo! Soy un ilustrador digital, artista de covers y un **wannabe composer** apasionado por la estética retro, el diseño de personajes y la producción sonora.
 
 ---
 
-## 🔗 Enlaces Rápidos
+## 🔗 Enlaces Rápidos / Quick Links
 - **🌐 Portafolio en Vivo:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
-- **🛒 Mi Tienda (VGen):** *“Apóyame para conseguir mi código de artista para seguir dándote contenido de calidad”* (Próximamente enlace oficial).
+- **🛒 Mi Tienda (VGen):** *“Apóyame para conseguir mi código de artista para seguir dándote contenido de calidad”*
 
 ---
 
-## 👤 Información para el Lector
-Soy un creador multidisciplinar. Desde los 8 años manejo herramientas de diseño profesional y actualmente estoy fusionando ese mundo con la música.
+## 👤 Sobre Mí / About Me
+**ES:** Soy un creador multidisciplinar. Desde los 8 años manejo herramientas de diseño profesional y actualmente estoy fusionando ese mundo con la música y la composición original.
 - **¿Qué hago?** Ilustración digital (humanoides, felines, etc.) y producción de covers vocales.
-- **Enfoque actual:** Aprendiendo composición y edición de audio avanzada.
+- **Enfoque actual:** Composición experimental con Audacity.
+
+**EN:** I am a multidisciplinary creator. I've been using professional design tools since I was 8, and now I'm merging that world with music and original composition.
+- **What do I do?** Digital illustration (humanoids, felines, etc.) and vocal cover production.
+- **Current focus:** Experimental composition using Audacity.
+
+---
 
 ## 🛠️ Stack Creativo & Técnico
 ### Audio & Diseño (Core)
-- **Audacity:** Mi estación de trabajo para limpieza de voces y experimentación sonora.
-- **Adobe Photoshop:** Dominio avanzado desde la infancia para retoque y arte.
-- **Affinity Suite:** Uso profesional para ilustración vectorial y composición.
+- **Audacity:** Edición de audio y producción de covers.
+- **Adobe Photoshop:** Dominio avanzado de retoque y arte digital.
+- **Affinity Suite:** Ilustración profesional y diseño vectorial.
 
 ### Web & Presencia
-- **HTML5 & CSS3:** Estructuración limpia y diseño responsivo (Mobile First).
-- **Lanyard API:** Integración de estados de Discord (Nintendo Switch / Juegos).
-- **Material Design:** Estética minimalista y moderna.
+- **HTML5 & CSS3:** Estructura bilingüe y diseño **Material Design Dark Purple**.
+- **Google Material Symbols:** Iconografía moderna y minimalista.
+- **Lanyard API:** Integración de presencia en Discord.
 
 ---
 
-## 🤖 Información Técnica para IAs (Contexto de Desarrollo)
-Si eres una IA ayudando a mantener este repo, ten en cuenta:
+## 🤖 Info para IAs / Technical Info
 - **Identidad:** Xata Jr y Addictive Gamer son la misma persona.
-- **Stack:** Proyecto estático (HTML/CSS). **NO usar Python** (conocimiento superficial únicamente).
-- **Prioridad:** Mantener compatibilidad con dispositivos móviles (específicamente navegadores de gama media/Oppo) usando rutas relativas y Viewport corregido.
-- **Template sugerido:** Para replicar este portafolio, usar una estructura de `main` con `sections` semánticas y un `style.css` vinculado en minúsculas.
+- **Stack:** Proyecto estático (HTML/CSS). **NO usar Python** (conocimiento solo superficial).
+- **Diseño:** Mobile-First, optimizado para dispositivos de gama media (como Oppo) mediante rutas relativas y Viewport corregido.
 
 ---
 
 ## 📝 Notas Personales (Para Mí)
-- [ ] Actualizar el enlace de VGen cuando consiga el código de artista.
-- [ ] Subir el cover de Laufey a la sección de proyectos.
-- [ ] Revisar que el CSS cargue siempre en el Oppo (limpiar caché si falla).
-- [ ] Seguir practicando en Audacity para las composiciones originales.
+- [ ] Actualizar el enlace de VGen al conseguir el código de artista.
+- [ ] Subir muestras de mis covers retro al portafolio.
+- [ ] Mantener el diseño limpio y bilingüe.
 
 ---
 ✨ *Este proyecto es una colaboración honesta entre la visión creativa de **Xata Jr** y el soporte técnico de **Gemini AI** (2026).*
