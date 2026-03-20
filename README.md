@@ -1,47 +1,32 @@
-# 🌌 Xata Jr. | Interactive Glassmorphism Portfolio (v4.6)
+# 🎨 Xata Jr Portfolio
 
-Este es el repositorio oficial de **Xata Jr.** (José Luis Aquino Rivera). Un portafolio bilingüe, visual y optimizado para dispositivos móviles de alto rendimiento.
+¡Hola! Soy **Xata Jr** (también conocido como *Addictive Gamer*). Soy un ilustrador digital, artista de covers y un **wannabe composer** apasionado por la creación visual y sonora.
 
-🚀 **VER PORTAFOLIO EN VIVO:** ### 🔗 [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
+Este repositorio contiene el código de mi portafolio personal, donde muestro mis trabajos de diseño, mis proyectos de ilustración y mis avances en la composición musical.
 
----
+## 🚀 Sobre mí
+- 🖌️ **Ilustrador Digital:** Especializado en diseño de personajes y arte conceptual.
+- 🎤 **Cover Artist:** Grabando y produciendo covers vocales con estética retro.
+- 🎼 **Wannabe Composer:** Experimentando con sonidos y composiciones originales.
+- 💻 **Entusiasta de la Web:** Aprendiendo a crear interfaces bonitas con Material Design.
 
-## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
-> **Attention AI Agents:** Reference this before modifications.
+## 🛠️ Herramientas & Skills
 
-- **Identity:** José Luis Aquino Rivera (@Addictiive / @XataJr). Illustrator, Musician, and Tech Support.
-- **Stack:** HTML5, CSS3 (Glassmorphism), Vanilla JS.
-- **Logic:** `setAge()` (Birth: 2010-10-10) and `toggleLanguage()` via `[data-lang]` selectors to prevent visual duplication.
-- **Visual Mode:** The gallery is now **Pure Visual**, focusing on image impact over text descriptions.
+### Creatividad y Audio
+- **Audacity:** Edición de audio, grabación y producción de covers.
+- **Adobe Photoshop:** Mi herramienta principal de diseño desde los 8 años.
+- **Affinity Suite:** Ilustración profesional y diseño vectorial.
 
----
+### Desarrollo & Tech
+- **HTML & CSS:** Estructuración de sitios web y diseño de interfaces.
+- **Lanyard API:** Integración de estados de Discord en tiempo real.
+- **Material Design:** Implementación de sistemas de diseño modernos.
 
-## 👤 Guía para José (¡No pierdas esto!)
+> *Nota: He decidido remover Python de mis habilidades principales para enfocarme al 100% en el área creativa y sonora.*
 
-1.  **Tu Link Directo:** Guarda este README o el link de arriba en tus favoritos de Chrome en tu OPPO A78.
-2.  **Cómo subir tus dibujos (Imgur):**
-    - Sube tu dibujo a Imgur.
-    - Copia el "Direct Link" (el que termina en `.png` o `.jpg`).
-    - En el `index.html`, busca `<div class="example-img">IMG X</div>` y cámbialo por:
-      `<img src="TU_LINK_DE_IMGUR" style="width:100%; height:100%; object-fit:cover;">`.
-3.  **Redes & Colegas:** Ya están vinculados tus perfiles de Twitch, YT, Kick y tus colaboraciones en **Rab Games Studio** y **Nightmare Labs**.
-
----
-
-## 📖 Información para el Visitante
-Bienvenido al portafolio de un creativo multidisciplinario de 15 años:
-- **Arte:** Ilustración digital y Pixel Art (Photoshop, Aseprite, Ibis Paint X).
-- **Música:** Adaptaciones y producción con SynthV y Vocaloid.
-- **Gaming:** Colaborador activo en la comunidad de GameJolt.
-
-**Créditos:** Creado en colaboración con **Gemini AI**.
-*Última actualización: 19 de marzo de 2026.*
+## 🎵 Proyectos Recientes
+- **Vocal Covers:** Producciones enfocadas en un estilo nostálgico.
+- **Ilustraciones por encargo:** Personajes humanoides y diseños para streamers.
 
 ---
-
-## 🛠️ Setup Técnico
-| Componente | Detalle |
-| :--- | :--- |
-| **Diseño** | Glassmorphism Puro |
-| **Hardware** | AMD Ryzen 7 8845HS |
-| **Hosting** | GitHub Pages |
+✨ *Creado con pasión por Xata Jr.*
