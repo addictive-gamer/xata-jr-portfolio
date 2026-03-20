@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Xata Jr. | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #08080a;
+            --glass: rgba(22, 22, 31, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --accent: #9d4edd;
+            --accent-glow: rgba(157, 78, 221, 0.4);
+            --text-main: #f0f0f0;
+            --text-secondary: #9494a5;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            background: radial-gradient(circle at top right, #1e0d36, var(--bg) 60%);
+            color: var(--text-main);
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; min-height: 100vh;
+        }
+
+        #lang-toggle {
+            position: fixed; top: 15px; right: 15px;
+            background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--accent); color: var(--accent);
+            padding: 10px 20px; border-radius: 30px; cursor: pointer;
+            font-size: 0.75rem; font-weight: bold; z-index: 1000; transition: 0.3s;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        header { width: 90%; max-width: 1000px; padding: 80px 0 40px; text-align: left; }
+        header h1 { font-size: clamp(3.2rem, 12vw, 5rem); margin: 0; font-weight: 900; letter-spacing: -4px; }
+        header h1 span { color: var(--accent); text-shadow: 0 0 35px var(--accent-glow); }
+        .tagline { color: var(--text-secondary); margin-top: 5px; font-size: 1.2rem; font-style: italic; }
+
+        .container { width: 92%; max-width: 1000px; margin-bottom: 80px; }
+
+        .glass-card {
+            background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 24px;
+            padding: 25px; margin-bottom: 30px;
+        }
+
+        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 25px 0; }
+        .social-link {
+            padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+            border-radius: 18px; color: var(--text-main); text-decoration: none;
+            font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;
+        }
+        .social-link:hover { background: var(--accent-glow); border-color: var(--accent); transform: translateY(-3px); }
+
+        h2 { 
+            font-size: 0.85rem; color: var(--accent); text-transform: uppercase; 
+            letter-spacing: 5px; margin: 60px 0 30px; display: flex; align-items: center; gap: 15px;
+        }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
+
+        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .example-item { 
+            background: var(--glass); border: 1px solid var(--glass-border); 
+            border-radius: 20px; overflow: hidden; transition: 0.4s ease;
+        }
+        .example-item:hover { transform: scale(1.03); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+        .example-img { width: 100%; height: 160px; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; }
+
+        .info-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .info-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 18px; border: 1px solid var(--glass-border); }
+        .info-item strong { display: block; color: var(--accent); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 8px; }
+
+        @media (min-width: 768px) { .social-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .en { display: none; }
+        body[data-lang="en"] .es { display: none; }
+        body[data-lang="en"] .en { display: block; }
+
+        footer { 
+            text-align: center; margin: 80px 0 40px; padding: 25px;
+            border-top: 1px solid var(--glass-border); width: 90%; max-width: 650px;
+            font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;
+        }
+    </style>
+</head>
+<body data-lang="es">
+
+    <button id="lang-toggle" onclick="toggleLanguage()">ENGLISH</button>
+
+    <header>
+        <h1><span>Xata</span> Jr.</h1>
+        <p class="tagline">
+            <span class="es">"Friki con potencial"</span><span class="en">"Geek with potential"</span>
+        </p>
+        <p>
+            <span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> 
+            • <span class="es">Ilustrador & Soporte</span><span class="en">Illustrator & Support</span>
+        </p>
+    </header>
+
+    <div class="container">
+        
+        <div class="social-grid">
+            <a href="https://dsc.gg/xatajr" class="social-link"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i> VGen</a>
+            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i> GameJolt</a>
+        </div>
+
+        <section>
+            <h2 class="es">Sobre Mí</h2><h2 class="en">About Me</h2>
+            <div class="glass-card">
+                <p class="es">Dibujar y ser de utilidad. Esas son mis bases. Desde gestionar servidores de Minecraft hasta crear adaptaciones musicales que sirven como cápsulas de mi propia felicidad.</p>
+                <p class="en">Drawing and being useful. Those are my foundations. From managing Minecraft servers to creating musical adaptations that serve as capsules of my own happiness.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="es">Habilidades</h2><h2 class="en">Skills</h2>
+            <div class="info-list">
+                <div class="info-item">
+                    <strong class="es">Arte & Diseño</strong><strong class="en">Art & Design</strong>
+                    Aseprite, Affinity, Ibis Paint X, Photoshop, Photopea.
+                </div>
+                <div class="info-item">
+                    <strong class="es">Producción Audio</strong><strong class="en">Audio Production</strong>
+                    SynthV, Vocaloid, LMMS, BandLab.
+                </div>
+                <div class="info-item">
+                    <strong class="es">Técnico & Hardware</strong><strong class="en">Technical & HW</strong>
+                    AMD Ryzen 7 8845HS, Fabric Servers, Python.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="es">Galería</h2><h2 class="en">Gallery</h2>
+            <div class="examples-grid">
+                <div class="example-item"><div class="example-img">1</div><div class="example-info"><h3>Don't Forget</h3><p class="es">Adaptación lírica.</p></div></div>
+                <div class="example-item"><div class="example-img">2</div><div class="example-info"><h3>Talk to the Hand</h3><p class="es">Sprite Art.</p></div></div>
+                <div class="example-item"><div class="example-img">3</div><div class="example-info"><h3>Baka Paradise</h3><p class="es">SMP Management.</p></div></div>
+                <div class="example-item"><div class="example-img">4</div><div class="example-info"><h3>PNGTuber Model</h3><p class="es">Visual Identity.</p></div></div>
+                <div class="example-item"><div class="example-img">5</div><div class="example-info"><h3>Nightmare Labs</h3><p class="es">Traducciones.</p></div></div>
+                <div class="example-item"><div class="example-img">6</div><div class="example-info"><h3>Python MIDI</h3><p class="es">Automatización.</p></div></div>
+                <div class="example-item"><div class="example-img">7</div><div class="example-info"><h3>Background Art</h3><p class="es">Pixel Art.</p></div></div>
+                <div class="example-item"><div class="example-img">8</div><div class="example-info"><h3>Carga...</h3><p class="es">Próximo proyecto.</p></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="es">Contacto</h2><h2 class="en">Contact</h2>
+            <div class="glass-card" style="text-align: center;">
+                <p class="es"><strong>Trabajo:</strong> Instagram | <strong>Chill:</strong> Discord</p>
+                <p class="en"><strong>Work:</strong> Instagram | <strong>Chill:</strong> Discord</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Hecho con ♥ y <strong>Gemini 3 Flash</strong> (Google AI Model)</p>
+            <p>Last Update: 19/03/2026 • Hosting: GitHub Pages</p>
+            <p style="margin-top: 10px; font-size: 0.6rem;">Optimizado para OPPO A78 & Desktop</p>
+        </footer>
+    </div>
+
+    <script>
+        function setAge() {
+            const birth = new Date('2010-10-10');
+            const now = new Date();
+            let age = now.getFullYear() - birth.getFullYear();
+            if (now.getMonth() < birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() < birth.getDate())) age--;
+            document.getElementById('age-num').innerText = age;
+        }
+
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.getElementById('lang-toggle');
+            if (body.getAttribute('data-lang') === 'es') {
+                body.setAttribute('data-lang', 'en');
+                btn.innerText = 'ESPAÑOL';
+            } else {
+                body.setAttribute('data-lang', 'es');
+                btn.innerText = 'ENGLISH';
+            }
+        }
+        setAge();
+    </script>
+</body>
+</html>
