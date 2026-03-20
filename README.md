@@ -1,28 +1,22 @@
 # 🌌 Xata Jr. | Interactive Portfolio v6.0
-> *"Creative Mind, Music Producer & Illustrator."*
+> *"Illustrator, Creative Mind & Translator."*
 
-🚀 **DEMO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
+🚀 **Live Site:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
 
-## 🛠️ Patch Notes v6.0
-- **Full Identity Reset:** Secciones 'Sobre Mí' y 'FAQ' actualizadas con datos reales.
-- **Differentiated Social Links:** Separación clara entre contacto para trabajo (Instagram) y ocio (Discord).
-- **Special Credits Section:** Inclusión de menciones a Nepo Edits y Alex GD.
-- **UX Final Polish:** Mejoras en la precisión del motor de zoom y cierre del visor.
+## 🛠️ Contenido del Portafolio
+- **Redes Sociales:** Hub completo con Twitch, Kick, YouTube, GameJolt y VGen.
+- **Galería Dinámica:** 10+ obras con descripciones detalladas y sistema de zoom interactivo.
+- **Multilingüe:** Selector de idioma (ES/EN) nativo.
+- **Proyectos:** Información sobre *Talk to the Hand*, *The Baka Paradise* y colaboraciones de traducción.
 
----
-
-## 👨‍💻 Perfil
+## 👨‍💻 Sobre el Autor
 **José Luis Aquino Rivera** (@Addictiive / @XataJr)
-- 🎨 **Talk to the Hand:** Ilustrador, generador de ideas y testeador oficial.
-- 🎙️ **Music:** Covers bilingües y adaptaciones vocales con SynthV y LMMS.
-- 🎮 **Baka Paradise:** Fundador y administrador del servidor privado SMP.
+Actualmente colaborando con **Rab Games Studio** y **Nightmare Labs**.
+
+## 🤝 Créditos
+- **Idea Original:** Nepo Edits
+- **Apoyo & Testing:** Alex GD
+- **Desarrollo:** Gemini AI
 
 ---
-
-## 🤝 Créditos Especiales
-- **Nepo Edits:** Por la chispa inicial para crear este portafolio.
-- **Alex GD:** Por el apoyo constante y la confianza en sus proyectos.
-- **IA Colaboradora:** Gemini (Google).
-
----
-*Hecho con ❤️ por Xata Jr.*
+*© 2026 Xata Jr. Todos los derechos reservados.*
