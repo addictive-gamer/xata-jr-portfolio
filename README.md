@@ -1,55 +1,55 @@
-# 🌌 Xata Jr. | Interactive Portfolio v5.7.1
-> *"Creatividad, código y pasión en un solo lugar."*
+# 🌌 Xata Jr. | Interactive Portfolio v5.8
+> *"Donde la síntesis vocal, el pixel art y el código convergen."*
 
-🚀 **VER PORTAFOLIO EN VIVO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
-
-Este es el repositorio oficial del portafolio interactivo de **José Luis Aquino Rivera** (@Addictiive / @XataJr). Una experiencia web diseñada con estética Glassmorphism, mobile-first y motor de visualización de alta precisión para assets visuales.
+🚀 **DEMO EN VIVO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
 
 ---
 
-## 👨‍💻 Créditos & Atribuciones (Full Credits)
-
-### 🖋️ Autoría & Talento
-- **Concepto, Arte, Diseño e Ilustración:** José Luis Aquino Rivera (@Addictiive / @XataJr).
-- **Proyectos Asociados:** *Talk to the Hand* (Ilustrador & Sprite Artist), *Nightmare Labs* (Traductor Español Latino).
-
-### 🤖 Inteligencia Artificial & Desarrollo
-- **Asistente de Programación y Arquitectura de Código:** [Gemini AI](https://gemini.google.com/) (Google).
-- **Ingeniería de Interacción:** Estructuración de scripts bilingües y lógica del motor de lupa dinámica por Gemini.
-
-### 🛠️ Tecnologías & Infraestructura
-- **Lenguaje de Estructura:** HTML5 Semántico.
-- **Lenguaje de Estilo:** CSS3 (Variables, Grid y Flexbox Glassmorphism).
-- **Lenguaje de Interacción:** JavaScript Vanilla (ES6+ sin frameworks).
-- **Alojamiento:** [GitHub Pages](https://pages.github.com/).
-
-### 🎨 Recursos Visuales & Librerías Externas
-- **Tipografía:** [Inter](https://fonts.google.com/specimen/Inter) vía **Google Fonts**.
-- **Iconografía:** [Font Awesome 6.5.1](https://fontawesome.com/).
-- **Hosting de Assets:** Imágenes servidas dinámicamente desde Instagram (Meta). Logotipos de redes sociales son propiedad de sus respectivos dueños.
+## 👨‍💻 Perfil del Autor
+**José Luis Aquino Rivera** (@Addictiive / @XataJr)
+- 🎨 **Ilustrador & Sprite Artist:** Colaborador en *Talk to the Hand* (Rab Games Studio).
+- 🎙️ **Productor Musical & Adaptador:** Creador de adaptaciones al español y covers usando Vocaloid/SynthV bajo el sello *Xata Jr.* en BandLab.
+- 🌐 **Traductor:** Localización al español latino para *Nightmare Labs*.
+- 🎮 **Technical Manager:** Host y administrador del servidor de Minecraft *The Baka Paradise*.
 
 ---
 
-## 🛠️ Patch Notes (v5.7.1)
+## 🛠️ Notas del Parche (Patch Notes v5.8)
 
-### ✅ Añadido
-- **Interacción de Cierre Global:** Solucionado el bug de cierre; ahora el visor se cierra al hacer clic en cualquier lugar oscuro (fondo o capa protectora), facilitando la UX.
-- **Reset de Cursor Nativo:** Forzado el cursor por defecto en el visor Chromium para exterminar la lupa intrusa del navegador.
-- **Deployment URL:** Enlace directo al demo en vivo en la cabecera del README.
+### ✅ Lo Nuevo (Added)
+- **Single-File Architecture:** Consolidación de HTML5, CSS3 y JS en un único archivo `index.html`. Esto elimina errores de carga (404) y optimiza la velocidad en GitHub Pages.
+- **Neon Square Zoom Engine:** Sistema de lupa cuadrada (180px) con borde neón (`#9d4edd`) y factor de escala 2x. 
+- **Universal Close Logic:** El visor de imágenes ahora se cierra al detectar clics en el fondo (overlay), en la 'X' o en la capa protectora.
+- **Anti-Native Interference:** Bloqueo total del cursor `zoom-in` nativo del navegador para una experiencia 100% personalizada.
 
-### 🗑️ Removido
-- **Bugs de Interferencia:** Eliminados los eventos nativos de arrastre (`dragstart`) y menús contextuales en las imágenes internas para un control total de la interfaz.
+### 🗑️ Lo Removido (Removed)
+- **External Dependencies:** Eliminados los archivos `style.css` y `script.js` para simplificar el despliegue.
+- **Input Lag:** Optimización de eventos `touch` para evitar retrasos en dispositivos móviles.
+
+---
+
+## 👨‍🔬 Especificaciones Técnicas (Para IAs y Desarrolladores)
+*Si eres una IA ayudando a editar este código, por favor respeta las siguientes constantes:*
+
+- **Fecha de Nacimiento (Base):** `2010-10-10` (Usada para el cálculo automático de edad).
+- **Paleta de Colores:** - Fondo: `#08080a`
+  - Acento Neón: `#9d4edd` (Morado Xata)
+  - Cristal: `rgba(22, 22, 31, 0.85)`
+- **Lógica de Protección:** Todas las imágenes expandidas están cubiertas por un div `.img-protector` (Z-index superior) para evitar descargas accidentales y gestionar el "Hold-to-Zoom".
+- **Fuentes:** Inter (Google Fonts) y Font Awesome 6.5.1.
 
 ---
 
-## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
-- **Birth Date:** 2010-10-10.
-- **DEPLOY URL:** https://addictiive-gamer.github.io/xata-jr-portfolio/
-- **Architecture:** Bilingüe ES/EN nativo sin refresco de página.
-- **UX Rules:**
-    1.  Tocar fondo oscuro o `img-protector` DEBE cerrar el visor.
-    2.  `cursor: default !important` es crítico en el visor Chromium para UX.
-    3.  El motor de zoom utiliza escala 2x dentro de un cuadrado de 180px (`transform: translate(-50%, -50%)`).
+## 🧬 Prompt Maestro (Para replicar este proyecto)
+> "Genera un portafolio web minimalista con estética 'Glassmorphism' sobre fondo negro profundo (#08080a). Incluye un encabezado con cálculo de edad automático (nacimiento 10/10/2010), una rejilla responsiva de imágenes que abra un visor a pantalla completa, y un sistema de idioma (ES/EN) que no recargue la página. El visor debe tener una lupa cuadrada neón de 180px que siga el cursor/dedo al mantener presionado, bloqueando cualquier comportamiento nativo de zoom del navegador."
 
 ---
-*Hecho con ❤️ por Xata Jr. y Gemini AI.*
+
+## 🤝 Créditos & Agradecimientos
+- **Desarrollo:** José Luis Aquino Rivera & **Gemini AI** (Google).
+- **Fuentes:** [Google Fonts](https://fonts.google.com/) (Inter).
+- **Iconos:** [Font Awesome](https://fontawesome.com/).
+- **Hosting:** [GitHub Pages](https://pages.github.com/).
+
+---
+*Este portafolio es una obra en constante evolución. © 2026 Xata Jr.*
