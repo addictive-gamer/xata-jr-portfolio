@@ -44,3 +44,6 @@ Este espacio muestra la versatilidad de un creativo multidisciplinario de 15 añ
 | **Diseño** | Glassmorphism / Dark Mode |
 | **Optimización** | Mobile First (OPPO A78) |
 | **Plataforma** | GitHub Pages |
+
+
+https://addictive-gamer.github.io/xata-jr-portfolio/
