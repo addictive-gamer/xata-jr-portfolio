@@ -1,182 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Xata Jr. | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --bg: #08080a;
-            --glass: rgba(22, 22, 31, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --accent: #9d4edd;
-            --accent-glow: rgba(157, 78, 221, 0.4);
-            --text-main: #f0f0f0;
-            --text-secondary: #9494a5;
-        }
+<section id="about">
+    <h2>Sobre Mí</h2>
+    <p>
+        Hola, soy <strong>Xata Jr</strong>. Soy un artista digital, ilustrador y un 
+        <strong>wannabe composer</strong> en constante aprendizaje. Me apasiona crear 
+        atmósferas tanto visuales como sonoras, explorando la música y el diseño 
+        desde una perspectiva creativa y personal.
+    </p>
+</section>
 
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            background: radial-gradient(circle at top right, #1e0d36, var(--bg) 60%);
-            color: var(--text-main);
-            display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden; min-height: 100vh;
-        }
+<hr>
 
-        /* Ocultar duplicados según idioma */
-        [data-lang="es"] .en { display: none !important; }
-        [data-lang="en"] .es { display: none !important; }
+<section id="skills">
+    <h2>Habilidades y Herramientas</h2>
+    
+    <h3>Creativo & Audio</h3>
+    <ul>
+        <li><strong>Audacity:</strong> Edición, limpieza de audio y experimentación sonora.</li>
+        <li><strong>Adobe Photoshop:</strong> Retoque y composición digital avanzada.</li>
+        <li><strong>Affinity (Canva):</strong> Diseño vectorial e ilustración profesional.</li>
+        <li><strong>Vocal Cover Artist:</strong> Grabación y producción de voces.</li>
+    </ul>
 
-        #lang-toggle {
-            position: fixed; top: 15px; right: 15px;
-            background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--accent); color: var(--accent);
-            padding: 10px 20px; border-radius: 30px; cursor: pointer;
-            font-size: 0.75rem; font-weight: bold; z-index: 1000; transition: 0.3s;
-        }
+    <h3>Técnico</h3>
+    <ul>
+        <li><strong>HTML/CSS:</strong> Estructuración y diseño básico de interfaces web.</li>
+        <li><strong>Lanyard API:</strong> Integración de estados de presencia (Discord).</li>
+        <li><strong>Material Design:</strong> Aplicación de principios estéticos modernos.</li>
+    </ul>
+</section>
 
-        header { width: 90%; max-width: 1000px; padding: 80px 0 40px; text-align: left; }
-        header h1 { font-size: clamp(2.5rem, 10vw, 4rem); margin: 0; font-weight: 900; letter-spacing: -3px; }
-        header h1 span { color: var(--accent); text-shadow: 0 0 35px var(--accent-glow); }
-        .tagline { color: var(--text-secondary); margin-top: 5px; font-size: 1.1rem; font-style: italic; }
-
-        .container { width: 92%; max-width: 1000px; margin-bottom: 80px; }
-
-        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 25px 0; }
-        .social-link {
-            padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
-            border-radius: 15px; color: var(--text-main); text-decoration: none;
-            font-size: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
-        }
-        .social-link:hover { background: var(--accent-glow); border-color: var(--accent); transform: translateY(-3px); }
-
-        h2 { 
-            font-size: 0.8rem; color: var(--accent); text-transform: uppercase; 
-            letter-spacing: 4px; margin: 50px 0 25px; display: flex; align-items: center; gap: 15px;
-        }
-        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
-
-        /* Galería Visual Pura */
-        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .example-item { 
-            background: var(--glass); border: 1px solid var(--glass-border); 
-            border-radius: 20px; overflow: hidden; transition: 0.4s ease;
-        }
-        .example-item:hover { transform: scale(1.03); border-color: var(--accent); }
-        .example-img { width: 100%; height: 200px; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #333; }
-        .example-info { padding: 15px; text-align: center; } /* Solo para padding, ya no hay texto */
-
-        .info-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .info-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 18px; border: 1px solid var(--glass-border); }
-        .info-item strong { display: block; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px; }
-
-        footer { text-align: center; margin-top: 80px; padding: 40px; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
-    </style>
-</head>
-<body data-lang="es">
-
-    <button id="lang-toggle" onclick="toggleLanguage()">ENGLISH</button>
-
-    <header>
-        <h1><span>Xata</span> Jr.</h1>
-        <p class="tagline">
-            <span class="es">"Friki con potencial"</span><span class="en">"Geek with potential"</span>
-        </p>
-        <p>
-            <span id="age-num"></span> 
-            <span class="es">años</span><span class="en">years old</span> 
-            • <span class="es">Creativo Multidisciplinario</span><span class="en">Multidisciplinary Creative</span>
-        </p>
-    </header>
-
-    <div class="container">
-        
-        <div class="social-grid">
-            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.youtube.com/@XATAJr" class="social-link"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://www.twitch.tv/xatajr" class="social-link"><i class="fab fa-twitch"></i> Twitch</a>
-            <a href="https://kick.com/addictivegamer" class="social-link"><i class="fa-solid fa-k"></i> Kick</a>
-            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i> GameJolt</a>
-            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i> VGen</a>
-            <a href="https://ko-fi.com/xatajr" class="social-link"><i class="fa-solid fa-coffee"></i> Ko-fi</a>
-        </div>
-
-        <section>
-            <h2 class="es">Habilidades</h2><h2 class="en">Skills</h2>
-            <div class="info-list">
-                <div class="info-item">
-                    <strong class="es">Arte & Diseño</strong><strong class="en">Art & Design</strong>
-                    Aseprite, Affinity, Ibis Paint X, Photoshop, Photopea.
-                </div>
-                <div class="info-item">
-                    <strong class="es">Producción Audio</strong><strong class="en">Audio Production</strong>
-                    SynthV, Vocaloid, LMMS, BandLab.
-                </div>
-                <div class="info-item">
-                    <strong class="es">Técnico</strong><strong class="en">Technical</strong>
-                    AMD Ryzen 7 8845HS, Fabric Servers, Python.
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="es">Colegas GameJolt</h2><h2 class="en">GameJolt Colleagues</h2>
-            <div class="info-list">
-                <a href="https://gamejolt.com/@RabGamesStudio" style="text-decoration: none; color: inherit;">
-                    <div class="info-item">
-                        <strong>Rab Games Studio</strong>
-                        <span class="es">Ilustrador & Sprite Artist</span><span class="en">Illustrator & Sprite Artist</span>
-                    </div>
-                </a>
-                <a href="https://gamejolt.com/@NightmareLabs" style="text-decoration: none; color: inherit;">
-                    <div class="info-item">
-                        <strong>Nightmare Labs</strong>
-                        <span class="es">Traductor (Latino)</span><span class="en">Translator (Latin)</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="es">Galería Visual</h2><h2 class="en">Visual Gallery</h2>
-            <div class="examples-grid">
-                <div class="example-item"><div class="example-img">IMG 1</div></div>
-                <div class="example-item"><div class="example-img">IMG 2</div></div>
-                <div class="example-item"><div class="example-img">IMG 3</div></div>
-                <div class="example-item"><div class="example-img">IMG 4</div></div>
-            </div>
-        </section>
-
-        <footer>
-            <p>Hecho con ♥ y Gemini AI • Optimized for OPPO A78</p>
-            <p style="font-size: 0.7rem; opacity: 0.5;">Last Update: 19/03/2026</p>
-        </footer>
-    </div>
-
-    <script>
-        function setAge() {
-            const birth = new Date('2010-10-10');
-            const now = new Date();
-            let age = now.getFullYear() - birth.getFullYear();
-            if (now.getMonth() < birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() < birth.getDate())) age--;
-            document.getElementById('age-num').innerText = age;
-        }
-
-        function toggleLanguage() {
-            const body = document.body;
-            const btn = document.getElementById('lang-toggle');
-            if (body.getAttribute('data-lang') === 'es') {
-                body.setAttribute('data-lang', 'en');
-                btn.innerText = 'ESPAÑOL';
-            } else {
-                body.setAttribute('data-lang', 'es');
-                btn.innerText = 'ENGLISH';
-            }
-        }
-        setAge();
-    </script>
-</body>
-</html>
+<section id="music">
+    <h2>Proyectos Musicales</h2>
+    <p>Actualmente trabajando en covers y composiciones originales con un enfoque retro.</p>
+</section>
