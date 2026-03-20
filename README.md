@@ -1,4 +1,4 @@
-# 🌌 Xata Jr. | Interactive Portfolio (v5.2)
+# 🌌 Xata Jr. | Interactive Portfolio (v5.3)
 
 🚀 **LIVE PAGE:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
 
@@ -6,23 +6,22 @@
 
 ## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
 - **Identity:** José Luis Aquino Rivera (@Addictiive / @XataJr).
-- **Update v5.2:** Added a **GameJolt Colleagues** section with links and dynamic descriptions.
-- **Update v5.2:** Expanded the **Visual Gallery** grid for higher content density.
-- **Features:** Entry Language Popup, Dynamic Toggle, Pure Visual Gallery, Collaboration Info.
+- **Core Info:** Bilingüe, Glassmorphism Dark Purple, Hosted by GitHub.
+- **Update v5.3 (March 20, 2026):** - Implementation of **Smooth Hover Zoom** effect in gallery items.
+  - Corrected global dates and project credits.
+  - Linked 10 artworks from official Instagram sources.
 
 ---
 
-## 👤 Créditos, Hosting & Colaboraciones
-Este proyecto es una colaboración directa entre **Xata Jr** y **Gemini AI**, utilizando la infraestructura de **GitHub Pages**.
-
-### Colaboraciones Activas:
-* **Rab Games Studio:** Ilustrador y Sprite Artist.
-* **Nightmare Labs:** Traductor (Español Latino).
+## 👤 Créditos & Colaboraciones
+Proyecto desarrollado por **Xata Jr** en colaboración con **Gemini AI**.
+- **Alojamiento:** GitHub Pages.
+- **Arte:** Contiene ilustraciones propias de proyectos como *Talk to the Hand*.
 
 ---
 
 ## 🛠️ Prompt para IAs
-> "Crea un portafolio de una página con HTML/CSS/JS modular. Glassmorphism Púrpura. Incluye popup inicial de idioma y botón toggle dynamic. Añade un footer que mencione 'Developed with Gemini AI & Hosted by GitHub'. Incluye una sección para 'Colegas GameJolt' con links externos y descripciones de roles."
+> "Genera un portafolio Glassmorphism bilingüe. Usa una rejilla responsiva para la galería con un efecto de zoom suave (1.1x) y elevación en hover. Añade enlaces a colaboradores de GameJolt y un toggle dinámico de idioma en la esquina superior derecha."
 
 ---
 
