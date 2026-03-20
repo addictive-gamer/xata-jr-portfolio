@@ -24,7 +24,6 @@
 
 ### 🗑️ Lo Removido (Removed)
 - **External Dependencies:** Eliminados los archivos `style.css` y `script.js` para simplificar el despliegue.
-- **Input Lag:** Optimización de eventos `touch` para evitar retrasos en dispositivos móviles.
 
 ---
 
@@ -36,12 +35,6 @@
   - Acento Neón: `#9d4edd` (Morado Xata)
   - Cristal: `rgba(22, 22, 31, 0.85)`
 - **Lógica de Protección:** Todas las imágenes expandidas están cubiertas por un div `.img-protector` (Z-index superior) para evitar descargas accidentales y gestionar el "Hold-to-Zoom".
-- **Fuentes:** Inter (Google Fonts) y Font Awesome 6.5.1.
-
----
-
-## 🧬 Prompt Maestro (Para replicar este proyecto)
-> "Genera un portafolio web minimalista con estética 'Glassmorphism' sobre fondo negro profundo (#08080a). Incluye un encabezado con cálculo de edad automático (nacimiento 10/10/2010), una rejilla responsiva de imágenes que abra un visor a pantalla completa, y un sistema de idioma (ES/EN) que no recargue la página. El visor debe tener una lupa cuadrada neón de 180px que siga el cursor/dedo al mantener presionado, bloqueando cualquier comportamiento nativo de zoom del navegador."
 
 ---
 
