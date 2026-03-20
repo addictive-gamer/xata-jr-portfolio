@@ -1,53 +1,55 @@
-# 🌌 Xata Jr. | Interactive Portfolio v5.7
-> *"Donde el arte digital y el código se encuentran."*
+# 🌌 Xata Jr. | Interactive Portfolio v5.7.1
+> *"Creatividad, código y pasión en un solo lugar."*
 
-Este es el repositorio oficial del portafolio interactivo de **José Luis Aquino Rivera** (@Addictiive / @XataJr). Diseñado con una estética **Glassmorphism** y un motor de visualización de alta precisión.
+🚀 **VER PORTAFOLIO EN VIVO:** [https://addictiive-gamer.github.io/xata-jr-portfolio/](https://addictiive-gamer.github.io/xata-jr-portfolio/)
+
+Este es el repositorio oficial del portafolio interactivo de **José Luis Aquino Rivera** (@Addictiive / @XataJr). Una experiencia web diseñada con estética Glassmorphism, mobile-first y motor de visualización de alta precisión para assets visuales.
 
 ---
 
-## 👨‍💻 Créditos y Atribuciones (Full Credits)
+## 👨‍💻 Créditos & Atribuciones (Full Credits)
 
 ### 🖋️ Autoría & Talento
-- **Concepto, Arte e Ilustración:** José Luis Aquino Rivera (@Addictiive / @XataJr).
-- **Dirección Creativa:** @Addictiive (GameJolt / Instagram).
-- **Proyectos Asociados:** *Talk to the Hand* (Ilustrador), *Nightmare Labs* (Traductor).
+- **Concepto, Arte, Diseño e Ilustración:** José Luis Aquino Rivera (@Addictiive / @XataJr).
+- **Proyectos Asociados:** *Talk to the Hand* (Ilustrador & Sprite Artist), *Nightmare Labs* (Traductor Español Latino).
 
 ### 🤖 Inteligencia Artificial & Desarrollo
-- **Asistente de Programación:** [Gemini AI](https://gemini.google.com/) (Google).
-- **Lógica de Ingeniería:** Estructuración de scripts bilingües y motor de zoom por Gemini.
+- **Asistente de Programación y Arquitectura de Código:** [Gemini AI](https://gemini.google.com/) (Google).
+- **Ingeniería de Interacción:** Estructuración de scripts bilingües y lógica del motor de lupa dinámica por Gemini.
 
-### 🛠️ Tecnologías & Frameworks
-- **Lenguaje Base:** HTML5 Semántico & CSS3 (Modern Standards).
-- **Motor de Interacción:** JavaScript Vanilla (ES6+).
-- **Infraestructura de Red:** [GitHub Pages](https://pages.github.com/) (Hosting gratuito y seguro).
+### 🛠️ Tecnologías & Infraestructura
+- **Lenguaje de Estructura:** HTML5 Semántico.
+- **Lenguaje de Estilo:** CSS3 (Variables, Grid y Flexbox Glassmorphism).
+- **Lenguaje de Interacción:** JavaScript Vanilla (ES6+ sin frameworks).
+- **Alojamiento:** [GitHub Pages](https://pages.github.com/).
 
-### 🎨 Recursos Visuales & Librerías
+### 🎨 Recursos Visuales & Librerías Externas
 - **Tipografía:** [Inter](https://fonts.google.com/specimen/Inter) vía **Google Fonts**.
-- **Iconografía:** [Font Awesome 6.5.1](https://fontawesome.com/) (SVG Icons).
-- **Logotipos de Plataformas:** Derechos reservados a Instagram (Meta), Twitch, Kick, BandLab, GameJolt, Ko-fi y VGen.
+- **Iconografía:** [Font Awesome 6.5.1](https://fontawesome.com/).
+- **Hosting de Assets:** Imágenes servidas dinámicamente desde Instagram (Meta). Logotipos de redes sociales son propiedad de sus respectivos dueños.
 
 ---
 
-## 🛠️ Patch Notes (v5.7)
+## 🛠️ Patch Notes (v5.7.1)
 
 ### ✅ Añadido
-- **Square Zoom Engine:** Motor de lupa cuadrada 2x con seguimiento de coordenadas `clientX/Y`.
-- **Anti-Click Layer:** Capa protectora `img-protector` para blindar el arte original.
-- **Dynamic Age Logic:** Script automatizado basado en el nacimiento (10/10/2010).
+- **Interacción de Cierre Global:** Solucionado el bug de cierre; ahora el visor se cierra al hacer clic en cualquier lugar oscuro (fondo o capa protectora), facilitando la UX.
+- **Reset de Cursor Nativo:** Forzado el cursor por defecto en el visor Chromium para exterminar la lupa intrusa del navegador.
+- **Deployment URL:** Enlace directo al demo en vivo en la cabecera del README.
 
 ### 🗑️ Removido
-- **Navegador Native Zoom:** Desactivado el cursor `zoom-in` predeterminado de Chrome/Edge para evitar conflictos de UX.
-- **Input Lag:** Optimizado el evento `DOMContentLoaded` para una carga instantánea.
+- **Bugs de Interferencia:** Eliminados los eventos nativos de arrastre (`dragstart`) y menús contextuales en las imágenes internas para un control total de la interfaz.
 
 ---
 
 ## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
 - **Birth Date:** 2010-10-10.
-- **Architecture:** Bilingüe (data-lang state), Mobile-first.
-- **UX Rule:** All images must use `img-protector` to avoid right-click downloads.
-- **Zoom Logic:** Scale 2x, absolute positioning within a 180px rounded square.
+- **DEPLOY URL:** https://addictiive-gamer.github.io/xata-jr-portfolio/
+- **Architecture:** Bilingüe ES/EN nativo sin refresco de página.
+- **UX Rules:**
+    1.  Tocar fondo oscuro o `img-protector` DEBE cerrar el visor.
+    2.  `cursor: default !important` es crítico en el visor Chromium para UX.
+    3.  El motor de zoom utiliza escala 2x dentro de un cuadrado de 180px (`transform: translate(-50%, -50%)`).
 
 ---
-
-## 🧬 Prompt para Generadores de Código (Clonar Proyecto)
-*"Genera una web de portafolio profesional tipo 'Glassmorphism' con fondo #08080a y acento morado neón #9d4edd. Requisitos: 1. Cálculo de edad automático en JS (nacimiento 10/10/2010). 2. Galería bilingüe ES/EN que cambie contenido sin refrescar. 3. Visor de imágenes con lupa cuadrada personalizada de 180px que se active solo al mantener presionado (hold). 4. Bloqueo total de lupa nativa del navegador y de descarga de imágenes usando una capa protectora invisible."*
+*Hecho con ❤️ por Xata Jr. y Gemini AI.*
