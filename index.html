@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Xata Jr. | Portfolio</title>
+    <title>Xata Jr. | Portfolio v6.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -18,7 +18,7 @@
             --text-secondary: #9494a5;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; outline: none; }
         body {
             margin: 0; padding: 0; font-family: 'Inter', sans-serif;
             background: radial-gradient(circle at top right, #1e0d36, var(--bg) 70%);
@@ -36,7 +36,7 @@
             display: flex; align-items: center; justify-content: center;
         }
         .popup-content { background: var(--glass); padding: 40px; border-radius: 25px; border: 1px solid var(--accent); text-align: center; box-shadow: 0 0 30px var(--accent-glow); }
-        .popup-btn { padding: 12px 25px; border-radius: 12px; border: 1px solid var(--accent); background: transparent; color: white; cursor: pointer; font-weight: bold; margin: 10px; }
+        .popup-btn { padding: 12px 25px; border-radius: 12px; border: 1px solid var(--accent); background: transparent; color: white; cursor: pointer; font-weight: bold; margin: 10px; transition: 0.3s; }
         .popup-btn:hover { background: var(--accent); transform: scale(1.05); }
 
         #lang-toggle {
@@ -52,51 +52,54 @@
 
         .container { width: 90%; max-width: 1000px; margin-bottom: 100px; }
 
-        /* REDES SOCIALES */
-        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 30px 0; }
-        .social-link { padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-size: 0.9rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .social-link:hover { background: var(--accent); transform: translateY(-3px); }
+        /* REDES SOCIALES ORGANIZADAS */
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 30px 0; }
+        .social-link { padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-size: 0.85rem; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .social-link i { font-size: 1.2rem; color: var(--accent); }
+        .social-link:hover { background: var(--accent); transform: translateY(-3px); border-color: white; }
+        .social-link small { opacity: 0.6; font-size: 0.7rem; }
+
+        /* SECCIONES */
+        h2 { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin: 80px 0 20px; display: flex; align-items: center; text-transform: uppercase; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); margin-left: 20px; }
+        
+        .info-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); line-height: 1.6; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .grid-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
 
         /* GALERÍA */
         .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .example-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; height: 280px; overflow: hidden; transition: 0.4s; }
-        .example-item:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .example-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; height: 280px; overflow: hidden; transition: 0.4s; position: relative; }
         .example-img { width: 100%; height: 100%; cursor: pointer; }
         .example-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .example-item:hover .example-img img { transform: scale(1.1); }
+        .example-item:hover img { transform: scale(1.05); }
 
-        /* SECCIONES DE INFO */
-        h2 { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin: 80px 0 20px; display: flex; align-items: center; text-transform: uppercase; }
-        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); margin-left: 20px; }
-        .info-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .info-item { background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); }
-        .colleague-item:hover { background: var(--accent-glow); border-color: var(--accent); }
-
-        /* VISOR v5.8 */
+        /* VISOR v6.0 */
         #image-viewer {
             display: none; position: fixed; inset: 0; z-index: 10000;
-            background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
-            justify-content: center; align-items: center; cursor: default !important;
+            background: rgba(0,0,0,0.96); backdrop-filter: blur(15px);
+            justify-content: center; align-items: center;
         }
         .viewer-content { position: relative; display: flex; justify-content: center; align-items: center; }
         #full-image { max-width: 90vw; max-height: 85vh; border-radius: 10px; pointer-events: none; }
-        .img-protector { position: absolute; inset: 0; z-index: 10002; cursor: pointer !important; }
+        .img-protector { position: absolute; inset: 0; z-index: 10002; cursor: crosshair !important; }
         #zoom-lens {
             position: fixed; width: 180px; height: 180px; border-radius: 15px; border: 2px solid var(--accent);
             overflow: hidden; pointer-events: none; display: none; transform: translate(-50%, -50%); z-index: 10003;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 25px var(--accent-glow);
         }
         #zoomed-image { position: absolute; width: 200%; }
-        .close-viewer { position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; cursor: pointer; z-index: 10004; }
+        .close-viewer { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
 
-        footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 0.85rem; border-top: 1px solid var(--glass-border); }
+        footer { padding: 60px; text-align: center; opacity: 0.6; font-size: 0.85rem; border-top: 1px solid var(--glass-border); }
+        .credits-list { font-size: 0.75rem; margin-top: 20px; color: var(--text-secondary); }
     </style>
 </head>
 <body data-lang="es">
 
     <div id="lang-popup">
         <div class="popup-content">
-            <h3>Choose your language / Elige tu idioma</h3>
+            <h3>Language / Idioma</h3>
             <div class="popup-btns">
                 <button class="popup-btn" onclick="selectLang('es')">ESPAÑOL</button>
                 <button class="popup-btn" onclick="selectLang('en')">ENGLISH</button>
@@ -109,60 +112,95 @@
     <header>
         <h1><span>Xata</span> Jr.</h1>
         <p class="tagline"><span class="es">"Friki con potencial"</span><span class="en">"Geek with potential"</span></p>
-        <p><span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> • @Addictiive</p>
+        <p><span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> • Creative Mind</p>
     </header>
 
     <div class="container">
         <div class="social-grid">
-            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.bandlab.com/xatajr" class="social-link"><i class="fa-solid fa-music"></i> BandLab</a>
-            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i> GameJolt</a>
-            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i> VGen</a>
-            <a href="https://ko-fi.com/xatajr" class="social-link"><i class="fa-solid fa-coffee"></i> Ko-fi</a>
-            <a href="https://github.com/addictive-gamer/xata-jr-portfolio" class="social-link"><i class="fab fa-github"></i> Repo</a>
+            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link">
+                <i class="fab fa-instagram"></i>
+                <strong>Instagram</strong>
+                <small class="es">Trabajo/DM</small><small class="en">Work/DM</small>
+            </a>
+            <div class="social-link">
+                <i class="fab fa-discord"></i>
+                <strong>Discord</strong>
+                <small>addictivegamer</small>
+            </div>
+            <a href="https://www.bandlab.com/xatajr" class="social-link">
+                <i class="fa-solid fa-music"></i>
+                <strong>BandLab</strong>
+                <small>Covers/Music</small>
+            </a>
+            <a href="https://gamejolt.com/@Addictiive" class="social-link">
+                <i class="fa-solid fa-gamepad"></i>
+                <strong>GameJolt</strong>
+                <small>Gaming/Dev</small>
+            </a>
         </div>
 
         <section>
             <h2 class="es">Sobre Mí</h2><h2 class="en">About Me</h2>
-            <div class="info-item">
-                <p class="es">Ilustrador, adaptador musical y traductor. Enfocado en el arte digital y la producción con sintetizadores de voz.</p>
-                <p class="en">Illustrator, musical adapter, and translator. Focused on digital art and voice synthesizer production.</p>
+            <div class="info-card">
+                <p class="es">
+                    Soy alguien que da ideas, ilustra y sobre todo, un buen amigo de los desarrolladores. 
+                    Actualmente soy ilustrador y aporto ideas creativas en el proyecto <strong>Talk to the Hand</strong>. 
+                    También gestiono <strong>The Baka Paradise</strong>, un servidor de Minecraft personal que nació por pura diversión para compartir momentos con mis amigos.
+                </p>
+                <p class="en">
+                    I'm an idea generator, illustrator, and most importantly, a reliable friend to developers. 
+                    I'm currently an illustrator and creative contributor for <strong>Talk to the Hand</strong>. 
+                    I also manage <strong>The Baka Paradise</strong>, a personal Minecraft server created for fun and hanging out with friends.
+                </p>
             </div>
         </section>
 
         <section>
-            <h2 class="es">Portafolio</h2><h2 class="en">Portfolio</h2>
+            <h2 class="es">Preguntas Frecuentes</h2><h2 class="en">FAQ</h2>
+            <div class="info-grid">
+                <div class="grid-item">
+                    <strong class="es">¿Haces comisiones?</strong><strong class="en">Do you do commissions?</strong>
+                    <p class="es">¡Sí! Casi siempre acepto trabajitos, aunque hay excepciones. Contáctame por Instagram o Discord (prefiero Instagram para temas serios).</p>
+                    <p class="en">Yes! I usually accept small jobs, with some exceptions. DM me on Instagram or Discord (Instagram preferred for business).</p>
+                </div>
+                <div class="grid-item">
+                    <strong class="es">¿Qué usas para tu música?</strong><strong class="en">What music tools do you use?</strong>
+                    <p class="es">Uso BandLab para mis covers vocales. Para temas originales uso LMMS o SynthV para insertar voces sintetizadas en pistas existentes.</p>
+                    <p class="en">I use BandLab for vocal covers. For original tracks, I use LMMS or SynthV to add synthesized vocals to existing tracks.</p>
+                </div>
+                <div class="grid-item">
+                    <strong class="es">¿Puedo entrar a tu server?</strong><strong class="en">Can I join your server?</strong>
+                    <p class="es">Es privado, pero podemos hacer excepciones. ¡Pregúntame!</p>
+                    <p class="en">It's private, but we can make exceptions. Just ask!</p>
+                </div>
+                <div class="grid-item">
+                    <strong class="es">¿Cómo traduces para Nightmare Labs?</strong><strong class="en">How do you translate for them?</strong>
+                    <p class="es">No trabajo en proyectos específicos de larga duración; ellos me envían el texto y yo les devuelvo la traducción lista.</p>
+                    <p class="en">I don't work on long-term specific projects; they send me the text and I send back the translation ready to go.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="es">Galería Visual</h2><h2 class="en">Visual Gallery</h2>
             <div class="examples-grid">
                 <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142"></div></div>
                 <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbf-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1"></div></div>
                 </div>
         </section>
 
-        <section>
-            <h2 class="es">Colegas</h2><h2 class="en">Colleagues</h2>
-            <div class="info-list">
-                <a href="https://gamejolt.com/@RabGamesStudio" style="text-decoration:none;color:inherit"><div class="info-item colleague-item"><strong>Rab Games Studio</strong><p class="es">Ilustrador & Sprite Artist</p><p class="en">Illustrator & Sprite Artist</p></div></a>
-                <a href="https://gamejolt.com/@NightmareLabs" style="text-decoration:none;color:inherit"><div class="info-item colleague-item"><strong>Nightmare Labs</strong><p class="es">Traductor Latino</p><p class="en">Latin Translator</p></div></a>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="es">Preguntas Frecuentes</h2><h2 class="en">FAQ</h2>
-            <div class="info-list">
-                <div class="info-item"><strong class="es">¿Haces comisiones?</strong><strong class="en">Do you do commissions?</strong><p class="es">Sí, vía VGen.</p><p class="en">Yes, via VGen.</p></div>
-                <div class="info-item"><strong class="es">¿Qué software usas?</strong><strong class="en">What software do you use?</strong><p>Photoshop, Aseprite, SynthV.</p></div>
-            </div>
-        </section>
-
         <footer>
-            <p>Xata Jr. • 2026 • <a href="https://github.com/addictive-gamer/xata-jr-portfolio" style="color:var(--accent)">GitHub Repo</a></p>
-            <p style="font-size:0.7rem;margin-top:10px">Developed with Gemini AI & Google Fonts</p>
+            <div class="credits-list">
+                <p><strong>Special Thanks:</strong> Nepo Edits (Idea original), Alex GD (Apoyo constante y testing).</p>
+                <p><strong>Partners:</strong> Rab Games Studio, Nightmare Labs.</p>
+                <p>Xata Jr. • 2026 • Powered by Gemini AI</p>
+            </div>
         </footer>
     </div>
 
     <div id="image-viewer">
-        <span class="close-viewer">&times;</span>
         <div class="viewer-content">
+            <span class="close-viewer">&times;</span>
             <div class="img-protector"></div>
             <div id="zoom-lens"><img id="zoomed-image" src=""></div>
             <img id="full-image" src="">
@@ -181,8 +219,9 @@
         function selectLang(lang) {
             document.body.setAttribute('data-lang', lang);
             document.getElementById('lang-popup').style.display = 'none';
-            document.getElementById('lang-toggle').style.display = 'block';
-            document.getElementById('lang-toggle').innerText = lang === 'es' ? 'ENGLISH' : 'ESPAÑOL';
+            const toggle = document.getElementById('lang-toggle');
+            toggle.style.display = 'block';
+            toggle.innerText = lang === 'es' ? 'ENGLISH' : 'ESPAÑOL';
         }
 
         function toggleLanguage() {
