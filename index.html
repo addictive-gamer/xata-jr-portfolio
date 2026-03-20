@@ -4,61 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xata Jr | Portfolio</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>Xata Jr</h1>
-        <p class="subtitle">Digital Illustrator | Cover Artist | Wannabe Composer</p>
+        <div class="container">
+            <h1>Xata Jr</h1>
+            <p class="aka-subtitle">(Also Known as Addictive Gamer)</p>
+            <p class="roles-subtitle">Digital Illustrator | Cover Artist | Wannabe Composer</p>
+        </div>
     </header>
 
-    <main>
+    <main class="container">
         <section id="about">
             <h2>Sobre Mí</h2>
-            <p>
-                ¡Hola! Soy <strong>Xata Jr</strong> (también conocido como <em>Addictive Gamer</em>). 
-                Soy un artista digital e ilustrador apasionado por el diseño de personajes. 
-                Actualmente, estoy expandiendo mis horizontes como <strong>wannabe composer</strong>, 
-                explorando la producción de audio y covers con una estética retro.
-            </p>
+            <div class="content-block">
+                <p>
+                    ¡Hola! Soy <strong>Xata Jr</strong>. Soy un artista digital e ilustrador 
+                    especializado en diseño de personajes. Mi pasión por la creación no se detiene 
+                    en lo visual; actualmente estoy explorando mi faceta de <strong>wannabe composer</strong>, 
+                    enfocado en la experimentación sonora y la producción de covers con una estética retro.
+                </p>
+            </div>
         </section>
 
         <section id="vgen">
             <h2>Apóyame en VGen</h2>
-            <div class="vgen-box">
-                <p>"Apoyame para conseguir mi codigo de artista para seguir dandote contenido de calidad"</p>
-                <a href="https://vgen.co/" target="_blank" class="btn">Ir a mi tienda de comisiones</a>
+            <div class="vgen-card">
+                <p class="vgen-message">
+                    "Apoyame para conseguir mi codigo de artista para seguir dandote contenido de calidad"
+                </p>
+                <a href="https://vgen.co/" target="_blank" class="btn-vgen">
+                    Visita mi Tienda de Comisiones
+                </a>
             </div>
         </section>
 
         <section id="skills">
-            <h2>Habilidades y Herramientas</h2>
-            
-            <div class="skill-category">
-                <h3>Creativo & Audio</h3>
-                <ul>
-                    <li><strong>Audacity:</strong> Edición, limpieza de audio y producción de covers.</li>
-                    <li><strong>Adobe Photoshop:</strong> Mi herramienta principal de diseño y retoque.</li>
-                    <li><strong>Affinity Suite:</strong> Ilustración profesional y diseño vectorial.</li>
-                    <li><strong>Vocal Covers:</strong> Grabación y mezcla con enfoque nostálgico.</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Web & Tech</h3>
-                <ul>
-                    <li><strong>HTML5 & CSS3:</strong> Estructuración y diseño de interfaces modernas.</li>
-                    <li><strong>Lanyard API:</strong> Integración de presencia de Discord (Nintendo Switch status).</li>
-                    <li><strong>Material Design:</strong> Aplicación de sistemas visuales limpios.</li>
-                </ul>
+            <h2>Habilidades & Herramientas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Creativo & Audio</h3>
+                    <ul>
+                        <li><strong>Audacity:</strong> Edición, grabación y producción de covers.</li>
+                        <li><strong>Adobe Photoshop:</strong> Mi herramienta principal de diseño desde los 8 años.</li>
+                        <li><strong>Affinity Suite:</strong> Ilustración profesional y diseño vectorial.</li>
+                        <li><strong>Vocal Covers:</strong> Grabación y mezcla con enfoque nostálgico.</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Web & Tech</h3>
+                    <ul>
+                        <li><strong>HTML5 & CSS3:</strong> Estructuración y diseño de interfaces web.</li>
+                        <li><strong>Lanyard API:</strong> Integración de presencia de Discord (Nintendo Switch status).</li>
+                        <li><strong>Material Design:</strong> Principios de diseño modernos y limpios.</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>✨ Creado con pasión por Xata Jr. &copy; 2026</p>
+        <div class="container">
+            <hr>
+            <p>✨ Creado con pasión por <strong>Xata Jr</strong>.</p>
+            <p class="collab-credit">
+                Diseñado en colaboración con <strong>Gemini AI</strong> | 2026
+            </p>
+        </div>
     </footer>
 
 </body>
