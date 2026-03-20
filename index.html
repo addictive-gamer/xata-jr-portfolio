@@ -3,79 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xata Jr. | Portfolio v6.4</title>
+    <title>Xata Jr. | Portfolio v7.0 (Definitive)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #08080a; --glass: rgba(22, 22, 31, 0.85); --accent: #9d4edd; --accent-glow: rgba(157, 78, 221, 0.5); --text-main: #f0f0f0; --text-secondary: #9494a5; }
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: radial-gradient(circle at top right, #1e0d36, var(--bg) 70%); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        * { box-sizing: border-box; outline: none; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: radial-gradient(circle at top right, #1e0d36, var(--bg) 70%); background-color: var(--bg); color: var(--text-main); display: flex; flex-direction: column; align-items: center; overflow-x: hidden; min-height: 100vh; }
         [data-lang="es"] .en, [data-lang="en"] .es { display: none !important; }
         #lang-popup { position: fixed; inset: 0; z-index: 9999; background: rgba(8,8,10,0.98); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: center; }
-        .popup-content { background: var(--glass); padding: 40px; border-radius: 25px; border: 1px solid var(--accent); text-align: center; }
-        .popup-btn { padding: 12px 25px; border-radius: 12px; border: 1px solid var(--accent); background: transparent; color: white; cursor: pointer; font-weight: bold; margin: 10px; }
+        .popup-content { background: var(--glass); padding: 40px; border-radius: 25px; border: 1px solid var(--accent); text-align: center; box-shadow: 0 0 30px var(--accent-glow); }
+        .popup-btn { padding: 12px 25px; border-radius: 12px; border: 1px solid var(--accent); background: transparent; color: white; cursor: pointer; font-weight: bold; margin: 10px; transition: 0.3s; }
+        .popup-btn:hover { background: var(--accent); transform: scale(1.05); }
         #lang-toggle { position: fixed; top: 15px; right: 15px; display: none; background: var(--glass); border: 1px solid var(--accent); color: var(--accent); padding: 8px 15px; border-radius: 20px; cursor: pointer; z-index: 1000; }
-        header { width: 90%; max-width: 1000px; padding: 80px 0 40px; text-align: center; }
-        h1 { font-size: clamp(3rem, 10vw, 5rem); margin: 0; font-weight: 900; }
+        header { width: 90%; max-width: 1000px; padding: 100px 0 50px; text-align: center; }
+        h1 { font-size: clamp(3rem, 10vw, 5rem); margin: 0; font-weight: 900; letter-spacing: -3px; }
         h1 span { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-        .container { width: 90%; max-width: 1000px; }
-        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 20px 0; }
-        .social-link { padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; border-radius: 15px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: 0.3s; }
-        .social-link:hover { background: var(--accent); transform: translateY(-3px); }
-        h2 { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin: 50px 0 20px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .info-card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); line-height: 1.6; }
+        .tagline { color: var(--text-secondary); margin: 5px 0; font-size: 1.2rem; font-style: italic; }
+        .container { width: 90%; max-width: 1000px; margin-bottom: 100px; }
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 30px 0; }
+        .social-link { padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; border-radius: 18px; text-align: center; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .social-link i { font-size: 1.4rem; color: var(--accent); }
+        .social-link:hover { background: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px var(--accent-glow); }
+        h2 { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin: 60px 0 20px; display: flex; align-items: center; text-transform: uppercase; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: rgba(255,255,255,0.1); margin-left: 20px; }
+        .info-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); line-height: 1.7; margin-bottom: 20px; }
+        .colleague-card { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; text-decoration: none; color: white; }
+        .colleague-card:hover { background: rgba(157, 78, 221, 0.1); border-color: var(--accent); }
         .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .example-item { background: var(--glass); border-radius: 20px; height: 280px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+        .example-item { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; height: 280px; overflow: hidden; position: relative; cursor: pointer; }
         .example-item img { width: 100%; height: 100%; object-fit: cover; }
-        #image-viewer { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); flex-direction: column; justify-content: center; align-items: center; }
+        .faq-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; margin-bottom: 10px; border-left: 4px solid var(--accent); }
+        .faq-q { font-weight: bold; color: var(--accent); margin-bottom: 5px; display: block; }
+        #image-viewer { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.97); backdrop-filter: blur(15px); flex-direction: column; justify-content: center; align-items: center; }
         .viewer-content { position: relative; width: 90vw; height: 70vh; display: flex; justify-content: center; align-items: center; }
-        #full-image { max-width: 100%; max-height: 100%; }
+        #full-image { max-width: 100%; max-height: 100%; border-radius: 10px; }
         .img-protector { position: absolute; width: 100%; height: 100%; z-index: 10002; cursor: crosshair; }
-        #zoom-lens { position: fixed; width: 180px; height: 180px; border-radius: 15px; border: 2px solid var(--accent); overflow: hidden; pointer-events: none; display: none; transform: translate(-50%, -50%); z-index: 10003; background: #000; }
+        #zoom-lens { position: fixed; width: 200px; height: 200px; border-radius: 15px; border: 2px solid var(--accent); overflow: hidden; pointer-events: none; display: none; transform: translate(-50%, -50%); z-index: 10003; box-shadow: 0 0 25px var(--accent-glow); background: #000; }
         #zoomed-image { position: absolute; }
         .close-viewer { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
-        #viewer-desc { margin-top: 20px; text-align: center; font-weight: bold; padding: 0 20px; }
-        footer { padding: 40px; text-align: center; opacity: 0.7; font-size: 0.8rem; }
+        #viewer-desc { margin-top: 25px; text-align: center; font-weight: bold; max-width: 80%; }
+        footer { padding: 60px; text-align: center; opacity: 0.6; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; }
         .repo-link { color: var(--accent); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body data-lang="es">
     <div id="lang-popup"><div class="popup-content"><h3>Language / Idioma</h3><button class="popup-btn" onclick="selectLang('es')">ESPAÑOL</button><button class="popup-btn" onclick="selectLang('en')">ENGLISH</button></div></div>
     <button id="lang-toggle" onclick="toggleLanguage()"></button>
-    <header><h1><span>Xata</span> Jr.</h1><p class="tagline">"Friki con potencial"</p><p><span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> • @Addictiive</p></header>
+
+    <header>
+        <h1><span>Xata</span> Jr.</h1>
+        <p class="tagline">"Friki con potencial"</p>
+        <p><span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> • @Addictiive</p>
+    </header>
+
     <div class="container">
-        <h2 class="es">Redes</h2><h2 class="en">Socials</h2>
+        <h2 class="es">Conexiones</h2><h2 class="en">Socials</h2>
         <div class="social-grid">
-            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i>Instagram</a>
-            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i>VGen</a>
-            <a href="https://www.youtube.com/@XATAJr" class="social-link"><i class="fab fa-youtube"></i>YouTube</a>
-            <a href="https://github.com/addictive-gamer" class="social-link"><i class="fab fa-github"></i>GitHub</a>
+            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i><strong>Insta Principal</strong></a>
+            <a href="https://www.instagram.com/xata.jr/" class="social-link"><i class="fab fa-instagram"></i><strong>Insta Xata Jr.</strong></a>
+            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i><strong>VGen</strong></a>
+            <a href="https://www.twitch.tv/xatajr" class="social-link"><i class="fab fa-twitch"></i><strong>Twitch</strong></a>
+            <a href="https://www.youtube.com/@XATAJr" class="social-link"><i class="fab fa-youtube"></i><strong>YouTube</strong></a>
+            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i><strong>GameJolt</strong></a>
+            <a href="https://kick.com/addictivegamer" class="social-link"><i class="fa-solid fa-bolt"></i><strong>Kick</strong></a>
+            <a href="https://ko-fi.com/xatajr" class="social-link"><i class="fa-solid fa-coffee"></i><strong>Ko-fi</strong></a>
         </div>
+
         <h2 class="es">Sobre Mí</h2><h2 class="en">About Me</h2>
-        <div class="info-card"><p class="es">Ilustrador en <b>Talk to the Hand</b> y admin de <b>The Baka Paradise</b>.</p><p class="en">Illustrator at <b>Talk to the Hand</b> and admin of <b>The Baka Paradise</b>.</p></div>
+        <div class="info-card">
+            <p class="es">Soy ilustrador, doy ideas creativas y soy amigo del desarrollador en <b>Talk to the Hand</b>. Por otro lado, gestiono <b>The Baka Paradise</b>, un servidor privado de Minecraft que creé por diversión para compartir con mis amigos.</p>
+            <p class="en">I'm an illustrator, creative thinker, and friend of the dev at <b>Talk to the Hand</b>. I also manage <b>The Baka Paradise</b>, a private Minecraft server I built for fun to share with friends.</p>
+        </div>
+
+        <h2 class="es">Colegas</h2><h2 class="en">Colleagues</h2>
+        <a href="https://gamejolt.com/@RabGamesStudio" class="colleague-card" target="_blank">
+            <div><strong>Rab Games Studio</strong><br><small class="es">Ilustrador y Sprite Artist</small></div><i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+        <a href="https://gamejolt.com/@NightmareLabs" class="colleague-card" target="_blank">
+            <div><strong>Nightmare Labs</strong><br><small class="es">Traductor oficial a Español Latino</small></div><i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+
         <h2 class="es">Portafolio</h2><h2 class="en">Portfolio</h2>
         <div class="examples-grid" id="gallery"></div>
+
+        <h2 class="es">FAQ (Preguntas Frecuentes)</h2><h2 class="en">FAQ</h2>
+        <div class="faq-item">
+            <span class="faq-q">¿Estás disponible para comisiones?</span>
+            <p class="es">Sí, mándame un mensaje por Instagram o Discord; casi siempre aceptaré (con algunas excepciones nwn).</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">¿Qué herramientas usas para tu música?</span>
+            <p class="es">Uso <b>BandLab</b> para covers vocales. Para cosas originales uso <b>LMMS</b> o <b>SynthV</b>.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">¿Puedo entrar a tu servidor de Minecraft?</span>
+            <p class="es">Es privado, pero se pueden hacer excepciones si preguntas.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">¿Cómo trabajas en traducciones?</span>
+            <p class="es">No estoy en un proyecto fijo; los equipos me mandan el texto y yo lo devuelvo traducido.</p>
+        </div>
+
+        <h2 class="es">Créditos Especiales</h2><h2 class="en">Special Credits</h2>
+        <div class="info-card">
+            <p class="es">✨ Gracias a <b>Nepo Edits</b> por darme la idea de este portafolio.</p>
+            <p class="es">✨ Gracias a <b>Alex GD</b> por apoyarme siempre y dejarme probar sus juegos antes que nadie.</p>
+        </div>
+
         <footer>
             <p>Xata Jr. • 2026</p>
-            <p><a href="https://github.com/addictive-gamer/xata-jr-portfolio" class="repo-link" target="_blank"><i class="fab fa-github"></i> Ver Repositorio del Proyecto</a></p>
+            <a href="https://github.com/addictive-gamer/xata-jr-portfolio" class="repo-link" target="_blank"><i class="fab fa-github"></i> Repository</a>
         </footer>
     </div>
-    <div id="image-viewer"><div class="viewer-content"><span class="close-viewer">&times;</span><div class="img-protector"></div><div id="zoom-lens"><img id="zoomed-image" src=""></div><img id="full-image" src=""></div><div id="viewer-desc"></div></div>
+
+    <div id="image-viewer">
+        <div class="viewer-content">
+            <span class="close-viewer">&times;</span>
+            <div class="img-protector"></div>
+            <div id="zoom-lens"><img id="zoomed-image" src=""></div>
+            <img id="full-image" src="">
+        </div>
+        <div id="viewer-desc"></div>
+    </div>
+
     <script>
         const imgs = [
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142", d:"Pixel Art fanart"},
             {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbf-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1", d:"Poster de práctica"},
-            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B", d:"Primera comisión pagada"},
-            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7", d:"Rosa dibujada"},
-            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265", d:"Ilustración vectorial"},
-            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/590419127_17954300289042073_8479797926541367907_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzc4MzY5MzQ2MTMxMzQ4MDYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=7ghJXFnIOX0Q7kNvwFy6Deq&_nc_oc=AdospSYfmkMdGihQiIS3I6kNjhQ31W3MOVrmWkwK1sbFXETvQ9WRQrd2Zbmxs9cCG4Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=raSWWJgdLpYn1q2VORRL8A&_nc_ss=7a30f&oh=00_AfzUgqw5XbYGf9aUTaK7Kg2-7yRbr5ZDywSLGDeAAuc9-g&oe=69C2CB76", d:"Poster de Ado"},
-            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654264653_17965461990042073_1764427884178748196_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTkzNzE5MzI5NDg4MzY5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMjV4MTEyNS5zZHIuQzMifQ%3D%3D&_nc_ohc=1Si7-L2IAikQ7kNvwHhIVg&_nc_oc=Adqoi-Y7aQfazt_UgB6O0vzEjH8heC9NmPwcj-5i_3WeuvONzLxHU3jC1goW6f3CFGw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=uGtTcbQuaAd3xcetvhRERw&_nc_ss=7a30f&oh=00_AfyF4-HgJyX7rPFv5Qrm3Eoyc1GGJnDLvcM_Mxeph5VTKw&oe=69C2AF0C", d:"DevLog TTTH"},
+            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B", d:"Comisión pagada"},
+            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7", d:"Rosa art"},
+            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265", d:"Vector art"},
+            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/590419127_17954300289042073_8479797926541367907_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzc4MzY5MzQ2MTMxMzQ4MDYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=7ghJXFnIOX0Q7kNvwFy6Deq&_nc_oc=AdospSYfmkMdGihQiIS3I6kNjhQ31W3MOVrmWkwK1sbFXETvQ9WRQrd2Zbmxs9cCG4Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=raSWWJgdLpYn1q2VORRL8A&_nc_ss=7a30f&oh=00_AfzUgqw5XbYGf9aUTaK7Kg2-7yRbr5ZDywSLGDeAAuc9-g&oe=69C2CB76", d:"Ado Poster"},
+            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654264653_17965461990042073_1764427884178748196_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTkzNzE5MzI5NDg4MzY5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMjV4MTEyNS5zZHIuQzMifQ%3D%3D&_nc_ohc=1Si7-L2IAikQ7kNvwHhIVg&_nc_oc=Adqoi-Y7aQfazt_UgB6O0vzEjH8heC9NmPwcj-5i_3WeuvONzLxHU3jC1goW6f3CFGw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=uGtTcbQuaAd3xcetvhRERw&_nc_ss=7a30f&oh=00_AfyF4-HgJyX7rPFv5Qrm3Eoyc1GGJnDLvcM_Mxeph5VTKw&oe=69C2AF0C", d:"TTTH DevLog"},
             {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653963152_17965461930042073_9186050970296493852_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1NTkzNjU4NTAyMDEwMzY1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=quiZXHiDzQIQ7kNvwHg2RBE&_nc_oc=AdqIOUHNG27YRZc_DuxwT7LgqyEBC2L8ZsIFMtX9kX2EwKOwvXywxDFfSvtJ8egOgnw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_Afwal-DLA38yo1w6GSYZbEw1plIegnukqOXU8rBcUYbmSQ&oe=69C2BC38", d:"Soundtrack TTTH"},
             {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653822324_17965463079042073_7237902828753501827_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTk0MDMyOTY1Mjc3NDU4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=fOMZoWGdm-AQ7kNvwF9fbwj&_nc_oc=AdpNKQ7NyjaGsB4ToMAKquiwY3FEpLZaFEH0k8OgqUhmjYIYX3bjklMZgmU7sZUOkXs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_AfyaiVv1tlzfkM5fpBVzA5h9kt3ePMVFI_Cvxo4v2lDfvg&oe=69C2C984", d:"Xata Jr Art"},
-            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/641279343_17878782819494454_6115844570974014657_n.webp", d:"Colab Instagram"}
+            {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/641279343_17878782819494454_6115844570974014657_n.webp?_nc_cat=109&ig_cache_key=Mzg0NDkyMTQ0ODkxNzQ5OTA2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4NTg1LnNkci5DMyJ9&_nc_ohc=uVBagHWp9gsQ7kNvwHGH5vt&_nc_oc=AdrzNkM3d-i7cGZFlcS405Ed6Xb6WSwE1V5wzEKDMDZ7M7UFsfvPpyQHRqD1pFcF-Rw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=F8oh7Bxk1v9CsgS9HBBevA&_nc_ss=7a30f&oh=00_Afz-0tdEnRJ8XiCSOWGpQIAY1LNIV-EUvqYrmJkS7fqu2g&oe=69C2C30A", d:"Colab Instagram con una amiga"}
         ];
 
-        function selectLang(l) { document.body.setAttribute('data-lang', l); document.getElementById('lang-popup').style.display='none'; document.getElementById('lang-toggle').style.display='block'; document.getElementById('lang-toggle').innerText = l==='es'?'EN':'ES'; }
+        function selectLang(l) { document.body.setAttribute('data-lang', l); document.getElementById('lang-popup').style.display='none'; document.getElementById('lang-toggle').style.display='block'; document.getElementById('lang-toggle').innerText = l==='es'?'ENGLISH':'ESPAÑOL'; }
         function toggleLanguage() { selectLang(document.body.getAttribute('data-lang')==='es'?'en':'es'); }
 
         window.onload = () => {
@@ -99,17 +165,17 @@
 
         function openV(u, d) { v.style.display='flex'; fi.src=u; zi.src=u; document.getElementById('viewer-desc').innerText=d; document.body.style.overflow='hidden'; }
         
-        pr.onmousedown = () => { holding=true; ln.style.display='block'; };
+        pr.onmousedown = (e) => { holding=true; ln.style.display='block'; moveZ(e); };
         window.onmouseup = () => { holding=false; ln.style.display='none'; };
-        
-        pr.onmousemove = (e) => {
-            if(!holding) return;
+        pr.onmousemove = (e) => { if(holding) moveZ(e); };
+
+        function moveZ(e) {
             const r = fi.getBoundingClientRect();
             const x = e.clientX - r.left; const y = e.clientY - r.top;
             if(x<0 || x>r.width || y<0 || y>r.height) return;
             ln.style.left = e.clientX+'px'; ln.style.top = e.clientY+'px';
-            const f = 2.5; zi.style.width=(r.width*f)+'px'; zi.style.left=-(x*f-90)+'px'; zi.style.top=-(y*f-90)+'px';
-        };
+            const f = 2.5; zi.style.width=(r.width*f)+'px'; zi.style.left=-(x*f-100)+'px'; zi.style.top=-(y*f-100)+'px';
+        }
 
         v.onclick = (e) => { if(e.target===v || e.target.className==='close-viewer' || e.target===pr) { v.style.display='none'; document.body.style.overflow='auto'; } };
     </script>
