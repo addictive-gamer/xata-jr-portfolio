@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Xata Jr. | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"> <title>Xata Jr. | Portfolio</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -108,7 +107,9 @@
         <span class="close-viewer">&times;</span>
         <div class="viewer-content">
             <div class="img-protector"></div>
+            <div id="zoom-lens"></div>
             <img id="full-image" src="" alt="Full Resolution">
+            <img id="zoomed-image" src="" alt="Zoomed Resolution">
         </div>
     </div>
 
@@ -147,36 +148,113 @@
             if(btn) btn.innerText = current === 'es' ? 'ENGLISH' : 'ESPAÑOL';
         }
 
-        // --- CORRECCIÓN LIGHTBOX ---
+        // --- LÓGICA LIGHTBOX v5.6 (Visor, Cierre y Lupa) ---
         document.addEventListener('DOMContentLoaded', () => {
             setAge();
 
             const viewer = document.getElementById('image-viewer');
             const fullImg = document.getElementById('full-image');
+            const zoomedImg = document.getElementById('zoomed-image');
+            const lens = document.getElementById('zoom-lens');
+            const protector = document.querySelector('.img-protector');
             const closeBtn = document.querySelector('.close-viewer');
-            const images = document.querySelectorAll('.example-item img');
+            const galleryImages = document.querySelectorAll('.example-item img');
 
-            images.forEach(img => {
+            // Abrir visor
+            galleryImages.forEach(img => {
                 img.addEventListener('click', () => {
                     viewer.style.display = 'flex';
                     fullImg.src = img.src;
-                    document.body.style.overflow = 'hidden';
+                    zoomedImg.src = img.src; // Cargar misma imagen para el zoom
+                    document.body.style.overflow = 'hidden'; // Scroll lock
                 });
             });
 
-            closeBtn.onclick = () => {
+            // Función cerrar
+            function closeViewer() {
                 viewer.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            };
+                document.body.style.overflow = 'auto'; // Reactivar scroll
+                resetZoom(); // Ocultar lupa si estaba activa
+            }
 
+            closeBtn.onclick = closeViewer;
+
+            // Cerrar si haces clic en cualquier lado FUERA de la imagen real
             viewer.onclick = (e) => {
-                if(e.target === viewer) {
-                    viewer.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                // Si haces clic en el protector invisible o en el visor oscuro, cierra
+                if(e.target === viewer || e.target === protector) {
+                    closeViewer();
                 }
             };
 
-            viewer.oncontextmenu = (e) => e.preventDefault();
+            // LÓGICA DE LUPA CUADRADA AL MANTENER PRESIONADO (PC/Móvil)
+            let isZooming = false;
+            let zoomTimeout;
+
+            // Iniciar zoom (mouse down o touch start)
+            function startZoom(e) {
+                e.preventDefault();
+                zoomTimeout = setTimeout(() => {
+                    isZooming = true;
+                    viewer.classList.add('zooming-active'); // Activa estilos de lupa
+                    moveLens(e); // Posición inicial
+                }, 150); // Pequeño retraso para diferenciar click de hold
+            }
+
+            // Mover zoom (mouse move o touch move)
+            function moveLens(e) {
+                if (!isZooming) return;
+                e.preventDefault();
+
+                // Obtener coordenadas correctas (mouse o touch)
+                let x, y;
+                if (e.type.includes('touch')) {
+                    x = e.touches[0].clientX;
+                    y = e.touches[0].clientY;
+                } else {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+
+                // Posicionar la lupa cuadrada (lens)
+                lens.style.left = x + 'px';
+                lens.style.top = y + 'px';
+
+                // Calcular el zoom de la imagen de fondo (zoomedImg)
+                const imgRect = fullImg.getBoundingClientRect();
+                const lensRect = lens.getBoundingClientRect();
+
+                // Factor de zoom (puedes ajustarlo aquí)
+                const zoomFactor = 2; 
+
+                // Calcular posición relativa dentro de la imagen base
+                const relX = (lensRect.left - imgRect.left) / imgRect.width;
+                const relY = (lensRect.top - imgRect.top) / imgRect.height;
+
+                // Mover la imagen con zoom dentro de la lupa
+                // zoomedImg.style.transform = `scale(${zoomFactor}) translate(${-relX * 100}%, ${-relY * 100}%)`;
+                 zoomedImg.style.left = -relX * (zoomedImg.offsetWidth - lens.offsetWidth) + 'px';
+                 zoomedImg.style.top = -relY * (zoomedImg.offsetHeight - lens.offsetHeight) + 'px';
+            }
+
+            // Resetear zoom (mouse up o touch end)
+            function resetZoom() {
+                clearTimeout(zoomTimeout);
+                isZooming = false;
+                viewer.classList.remove('zooming-active');
+            }
+
+            // Asignar eventos a la capa protectora para el hold y move
+            protector.addEventListener('mousedown', startZoom);
+            protector.addEventListener('touchstart', startZoom, {passive: false});
+
+            window.addEventListener('mousemove', moveLens);
+            window.addEventListener('touchmove', moveLens, {passive: false});
+
+            window.addEventListener('mouseup', resetZoom);
+            window.addEventListener('touchend', resetZoom);
+
+            viewer.oncontextmenu = (e) => e.preventDefault(); // Bloquear click derecho
         });
     </script>
 </body>
