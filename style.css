@@ -74,26 +74,35 @@ header h1 span { color: var(--accent); text-shadow: 0 0 35px var(--accent-glow);
 h2 { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; margin: 60px 0 30px; display: flex; align-items: center; gap: 15px; }
 h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
 
-/* CUADRÍCULA DE GALERÍA EXPANDIDA (v5.2) */
+/* GALERÍA CON ZOOM (v5.3) */
 .examples-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Bloques un poco más pequeños para que entren más */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
     gap: 15px; 
 }
 
 .example-item { 
     background: var(--glass); border: 1px solid var(--glass-border); 
-    border-radius: 20px; overflow: hidden; 
-    height: 180px; /* Altura un poco menor para la cuadrícula más densa */
-    transition: 0.3s;
+    border-radius: 20px; overflow: hidden; height: 220px; 
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.example-item:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-/* LISTA DE INFORMACIÓN & COLEGAS (v5.2) */
+.example-item:hover { 
+    border-color: var(--accent); transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(157, 78, 221, 0.3);
+}
+
+.example-img { width: 100%; height: 100%; }
+.example-img img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 0.5s ease; 
+}
+
+.example-item:hover .example-img img { transform: scale(1.1); }
+
 .info-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
 .info-item { background: rgba(255,255,255,0.02); padding: 22px; border-radius: 20px; border: 1px solid var(--glass-border); transition: 0.3s; }
 
-/* Efectos para los items de colegas que son links */
 .colleague-item:hover { background: var(--accent-glow); border-color: var(--accent); transform: translateY(-3px); }
 .colleague-item span { display: block; margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary); }
 
