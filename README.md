@@ -1,56 +1,30 @@
-# 🌌 Xata Jr. | Interactive Portfolio v5.4
+# 🌌 Xata Jr. | Interactive Portfolio v5.5
 
-¡Bienvenido a mi rincón creativo! Soy **José Luis Aquino Rivera**, mejor conocido en el mundo digital como **@Addictiive** o **Xata Jr**. Soy un creativo multidisciplinario enfocado en el desarrollo de videojuegos, arte digital y producción musical.
+¡Bienvenido! Soy **José Luis Aquino Rivera** (@Addictiive / @XataJr), ilustrador y creativo multidisciplinario.
 
-🚀 **VER PORTAFOLIO EN VIVO:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
-
----
-
-## 🎨 ¿Qué encontrarás aquí?
-Este portafolio es una vitrina de mis habilidades y proyectos actuales, construido con una estética **Glassmorphism** y un enfoque bilingüe (ES/EN).
-
-### ✨ Características Principales:
-- **Galería Interactiva:** Visualización de arte en alta resolución con efecto zoom elástico.
-- **Protección de Assets:** Capas de seguridad anti-copia (No-Click / No-Drag) para mis ilustraciones.
-- **Detección de Edad Automática:** Script en JS que calcula mi edad en tiempo real.
-- **Multilenguaje:** Sistema nativo para cambiar entre Español e Inglés sin recargar la página.
+🚀 **VER PORTAFOLIO:** [https://addictive-gamer.github.io/xata-jr-portfolio/](https://addictive-gamer.github.io/xata-jr-portfolio/)
 
 ---
 
-## 🛠️ Proyectos & Roles Actuales
-Actualmente formo parte de varios equipos de desarrollo en **GameJolt**:
-
-* **Talk to the Hand:** Ilustrador principal y Sprite Artist (Team @RabGamesStudio).
-* **Nightmare Labs:** Traductor oficial al español latino.
-* **The Baka Paradise:** Administrador y Host técnico de servidor Minecraft (Fabric/Playit.gg).
-* **Xata Jr. (BandLab):** Producción de covers y adaptaciones musicales con Vocaloid y SynthV.
+## 🛠️ Novedades v5.5 (20 Mar 2026)
+- **Lightbox Fix:** Solucionado el error de apertura de imágenes mediante `DOMContentLoaded`.
+- **Anti-Theft System:** Implementada capa protectora invisible sobre las obras para evitar descargas accidentales.
+- **UX Smooth:** Efecto de zoom elástico en la galería y scroll-lock al abrir ilustraciones.
 
 ---
 
-## 🚀 Stack Tecnológico
-| Categoría | Herramientas |
-| :--- | :--- |
-| **Web Dev** | HTML5, CSS3 (Glassmorphism), JavaScript (Vanilla) |
-| **Diseño** | Affinity, Aseprite, Photoshop, Ibis Paint X |
-| **Audio** | SynthV, Vocaloid, Audacity, BandLab |
-| **Otros** | Python (Automation), OBS Studio, Minecraft Server Management |
+## 🎨 Mis Roles
+- **Ilustrador:** @RabGamesStudio (Talk to the Hand).
+- **Traductor:** @NightmareLabs.
+- **Música:** Productor de covers SynthV/Vocaloid como Xata Jr.
+- **Técnico:** Host de servidor Minecraft "The Baka Paradise".
 
 ---
 
 ## 🤖 [TECHNICAL_MANIFESTO_FOR_AI]
-> *Sección optimizada para asistentes de IA que ayuden en el mantenimiento del código.*
-- **Version:** 5.4 (Released: March 20, 2026).
-- **Core Engine:** Vanilla JS + CSS Grid/Flexbox.
-- **Security:** Invisible `img-protector` layer & `contextmenu` lockdown.
-- **Typography:** Inter / Segoe UI.
+- **Core:** JavaScript Vanilla + CSS Glassmorphism.
+- **Performance:** Instagram-hosted assets with protective overlays.
+- **Language Logic:** State-based bilingual toggle with zero-reload.
 
 ---
-
-### 📫 Contacto & Redes
-¡Sígueme en mis plataformas para ver mis últimos trabajos!
-- **Instagram:** [@addictiive.gamer](https://www.instagram.com/addictiive.gamer/)
-- **GameJolt:** [@Addictiive](https://gamejolt.com/@Addictiive)
-- **VGen (Comisiones):** [XataJr](https://vgen.co/XataJr)
-
----
-*Desarrollado con ❤️ por Xata Jr. y Gemini AI.*
+*Hecho con ❤️ por Xata Jr. & Gemini AI.*
