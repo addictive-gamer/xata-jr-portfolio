@@ -52,24 +52,25 @@
 
         .container { width: 90%; max-width: 1000px; margin-bottom: 100px; }
 
-        /* REDES SOCIALES ORGANIZADAS */
-        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 30px 0; }
-        .social-link { padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-size: 0.85rem; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .social-link i { font-size: 1.2rem; color: var(--accent); }
-        .social-link:hover { background: var(--accent); transform: translateY(-3px); border-color: white; }
+        /* REDES SOCIALES */
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 30px 0; }
+        .social-link { padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: white; text-decoration: none; border-radius: 18px; text-align: center; font-size: 0.85rem; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .social-link i { font-size: 1.4rem; color: var(--accent); }
+        .social-link:hover { background: var(--accent); transform: translateY(-5px); border-color: white; box-shadow: 0 10px 20px var(--accent-glow); }
         .social-link small { opacity: 0.6; font-size: 0.7rem; }
 
         /* SECCIONES */
         h2 { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin: 80px 0 20px; display: flex; align-items: center; text-transform: uppercase; }
         h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); margin-left: 20px; }
-        
-        .info-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); line-height: 1.6; }
+        .info-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); line-height: 1.7; font-size: 1.05rem; }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .grid-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
+        .grid-item { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); transition: 0.3s; }
+        .colleague-link { text-decoration: none; color: inherit; }
+        .colleague-link:hover .grid-item { border-color: var(--accent); background: var(--accent-glow); }
 
         /* GALERÍA */
-        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .example-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; height: 280px; overflow: hidden; transition: 0.4s; position: relative; }
+        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .example-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; height: 320px; overflow: hidden; transition: 0.4s; position: relative; }
         .example-img { width: 100%; height: 100%; cursor: pointer; }
         .example-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .example-item:hover img { transform: scale(1.05); }
@@ -78,10 +79,10 @@
         #image-viewer {
             display: none; position: fixed; inset: 0; z-index: 10000;
             background: rgba(0,0,0,0.96); backdrop-filter: blur(15px);
-            justify-content: center; align-items: center;
+            flex-direction: column; justify-content: center; align-items: center;
         }
         .viewer-content { position: relative; display: flex; justify-content: center; align-items: center; }
-        #full-image { max-width: 90vw; max-height: 85vh; border-radius: 10px; pointer-events: none; }
+        #full-image { max-width: 90vw; max-height: 75vh; border-radius: 10px; pointer-events: none; }
         .img-protector { position: absolute; inset: 0; z-index: 10002; cursor: crosshair !important; }
         #zoom-lens {
             position: fixed; width: 180px; height: 180px; border-radius: 15px; border: 2px solid var(--accent);
@@ -90,9 +91,10 @@
         }
         #zoomed-image { position: absolute; width: 200%; }
         .close-viewer { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
+        #viewer-desc { margin-top: 25px; color: var(--text-main); font-weight: bold; text-align: center; max-width: 80%; line-height: 1.4; }
 
         footer { padding: 60px; text-align: center; opacity: 0.6; font-size: 0.85rem; border-top: 1px solid var(--glass-border); }
-        .credits-list { font-size: 0.75rem; margin-top: 20px; color: var(--text-secondary); }
+        .special-thanks { font-size: 0.75rem; margin-top: 10px; color: var(--accent); }
     </style>
 </head>
 <body data-lang="es">
@@ -111,90 +113,68 @@
 
     <header>
         <h1><span>Xata</span> Jr.</h1>
-        <p class="tagline"><span class="es">"Friki con potencial"</span><span class="en">"Geek with potential"</span></p>
-        <p><span id="age-num"></span> <span class="es">años</span><span class="en">years old</span> • Creative Mind</p>
+        <p class="tagline">"Friki con potencial"</p>
+        <p><span id="age-num"></span> años • @Addictiive</p>
     </header>
 
     <div class="container">
+        <h2 class="es">Conexiones</h2><h2 class="en">Connect</h2>
         <div class="social-grid">
-            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link">
-                <i class="fab fa-instagram"></i>
-                <strong>Instagram</strong>
-                <small class="es">Trabajo/DM</small><small class="en">Work/DM</small>
-            </a>
-            <div class="social-link">
-                <i class="fab fa-discord"></i>
-                <strong>Discord</strong>
-                <small>addictivegamer</small>
-            </div>
-            <a href="https://www.bandlab.com/xatajr" class="social-link">
-                <i class="fa-solid fa-music"></i>
-                <strong>BandLab</strong>
-                <small>Covers/Music</small>
-            </a>
-            <a href="https://gamejolt.com/@Addictiive" class="social-link">
-                <i class="fa-solid fa-gamepad"></i>
-                <strong>GameJolt</strong>
-                <small>Gaming/Dev</small>
-            </a>
+            <a href="https://www.instagram.com/addictiive.gamer/" class="social-link"><i class="fab fa-instagram"></i><strong>Instagram</strong><small>Trabajo/DM</small></a>
+            <a href="https://vgen.co/XataJr" class="social-link"><i class="fa-solid fa-brush"></i><strong>VGen</strong><small>Comisiones</small></a>
+            <a href="https://www.twitch.tv/xatajr" class="social-link"><i class="fab fa-twitch"></i><strong>Twitch</strong><small>Directos</small></a>
+            <a href="https://www.youtube.com/@XATAJr" class="social-link"><i class="fab fa-youtube"></i><strong>YouTube</strong><small>Contenido</small></a>
+            <a href="https://kick.com/addictivegamer" class="social-link"><i class="fa-solid fa-bolt"></i><strong>Kick</strong><small>Chill</small></a>
+            <a href="https://gamejolt.com/@Addictiive" class="social-link"><i class="fa-solid fa-gamepad"></i><strong>GameJolt</strong><small>Proyectos</small></a>
+            <a href="https://www.instagram.com/xata.jr/" class="social-link"><i class="fab fa-instagram"></i><strong>Instagram</strong><small>Personal</small></a>
+            <a href="https://ko-fi.com/xatajr" class="social-link"><i class="fa-solid fa-coffee"></i><strong>Ko-fi</strong><small>Apoyo</small></a>
         </div>
 
         <section>
             <h2 class="es">Sobre Mí</h2><h2 class="en">About Me</h2>
             <div class="info-card">
-                <p class="es">
-                    Soy alguien que da ideas, ilustra y sobre todo, un buen amigo de los desarrolladores. 
-                    Actualmente soy ilustrador y aporto ideas creativas en el proyecto <strong>Talk to the Hand</strong>. 
-                    También gestiono <strong>The Baka Paradise</strong>, un servidor de Minecraft personal que nació por pura diversión para compartir momentos con mis amigos.
-                </p>
-                <p class="en">
-                    I'm an idea generator, illustrator, and most importantly, a reliable friend to developers. 
-                    I'm currently an illustrator and creative contributor for <strong>Talk to the Hand</strong>. 
-                    I also manage <strong>The Baka Paradise</strong>, a personal Minecraft server created for fun and hanging out with friends.
-                </p>
+                <p class="es">Soy alguien que da ideas, ilustra y sobre todo, un buen amigo de los desarrolladores. Actualmente soy ilustrador en el proyecto <strong>Talk to the Hand</strong>. También gestiono <strong>The Baka Paradise</strong>, un servidor de Minecraft personal para divertirme con amigos.</p>
+                <p class="en">I generate ideas, illustrate, and am a loyal friend to developers. Illustrator for <strong>Talk to the Hand</strong> and manager of <strong>The Baka Paradise</strong>.</p>
             </div>
         </section>
 
         <section>
-            <h2 class="es">Preguntas Frecuentes</h2><h2 class="en">FAQ</h2>
+            <h2 class="es">Colegas de GameJolt</h2><h2 class="en">GameJolt Colleagues</h2>
             <div class="info-grid">
-                <div class="grid-item">
-                    <strong class="es">¿Haces comisiones?</strong><strong class="en">Do you do commissions?</strong>
-                    <p class="es">¡Sí! Casi siempre acepto trabajitos, aunque hay excepciones. Contáctame por Instagram o Discord (prefiero Instagram para temas serios).</p>
-                    <p class="en">Yes! I usually accept small jobs, with some exceptions. DM me on Instagram or Discord (Instagram preferred for business).</p>
-                </div>
-                <div class="grid-item">
-                    <strong class="es">¿Qué usas para tu música?</strong><strong class="en">What music tools do you use?</strong>
-                    <p class="es">Uso BandLab para mis covers vocales. Para temas originales uso LMMS o SynthV para insertar voces sintetizadas en pistas existentes.</p>
-                    <p class="en">I use BandLab for vocal covers. For original tracks, I use LMMS or SynthV to add synthesized vocals to existing tracks.</p>
-                </div>
-                <div class="grid-item">
-                    <strong class="es">¿Puedo entrar a tu server?</strong><strong class="en">Can I join your server?</strong>
-                    <p class="es">Es privado, pero podemos hacer excepciones. ¡Pregúntame!</p>
-                    <p class="en">It's private, but we can make exceptions. Just ask!</p>
-                </div>
-                <div class="grid-item">
-                    <strong class="es">¿Cómo traduces para Nightmare Labs?</strong><strong class="en">How do you translate for them?</strong>
-                    <p class="es">No trabajo en proyectos específicos de larga duración; ellos me envían el texto y yo les devuelvo la traducción lista.</p>
-                    <p class="en">I don't work on long-term specific projects; they send me the text and I send back the translation ready to go.</p>
-                </div>
+                <a href="https://gamejolt.com/@RabGamesStudio" class="colleague-link">
+                    <div class="grid-item">
+                        <strong>Rab Games Studio</strong>
+                        <p class="es">Trabajo como ilustrador y sprite artist en Talk to the Hand.</p>
+                    </div>
+                </a>
+                <a href="https://gamejolt.com/@NightmareLabs" class="colleague-link">
+                    <div class="grid-item">
+                        <strong>Nightmare Labs</strong>
+                        <p class="es">Trabajo como Traductor a Español Latino.</p>
+                    </div>
+                </a>
             </div>
         </section>
 
         <section>
-            <h2 class="es">Galería Visual</h2><h2 class="en">Visual Gallery</h2>
+            <h2 class="es">Portafolio</h2><h2 class="en">Portfolio</h2>
             <div class="examples-grid">
-                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142"></div></div>
-                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbf-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1"></div></div>
-                </div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142" data-desc="Pixel Art que hice como fanart al dibujo de un amigo"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbf-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1" data-desc="Poster que hice para un amigo y practica"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B" data-desc="Ilustración creada como regalo que terminó siendo mi primera comisión pagada"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7" data-desc="Una rosa que dibuje"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265" data-desc="Ilustración con vectores"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/590419127_17954300289042073_8479797926541367907_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzc4MzY5MzQ2MTMxMzQ4MDYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=7ghJXFnIOX0Q7kNvwFy6Deq&_nc_oc=AdospSYfmkMdGihQiIS3I6kNjhQ31W3MOVrmWkwK1sbFXETvQ9WRQrd2Zbmxs9cCG4Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=raSWWJgdLpYn1q2VORRL8A&_nc_ss=7a30f&oh=00_AfzUgqw5XbYGf9aUTaK7Kg2-7yRbr5ZDywSLGDeAAuc9-g&oe=69C2CB76" data-desc="Poster de la cantante Ado que hice originalmente para una tarea"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654264653_17965461990042073_1764427884178748196_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTkzNzE5MzI5NDg4MzY5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMjV4MTEyNS5zZHIuQzMifQ%3D%3D&_nc_ohc=1Si7-L2IAikQ7kNvwHhIVqg&_nc_oc=Adqoi-Y7aQfazt_UgB6O0vzEjH8heC9NmPwcj-5i_3WeuvONzLxHU3jC1goW6f3CFGw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=uGtTcbQuaAd3xcetvhRERw&_nc_ss=7a30f&oh=00_AfyF4-HgJyX7rPFv5Qrm3Eoyc1GGJnDLvcM_Mxeph5VTKw&oe=69C2AF0C" data-desc="Trabajo que hice para Talk To The Hand en un DevLog"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653963152_17965461930042073_9186050970296493852_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1NTkzNjU4NTAyMDEwMzY1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=quiZXHiDzQIQ7kNvwHg2RBE&_nc_oc=AdqIOUHNG27YRZc_DuxwT7LgqyEBC2L8ZsIFMtX9kX2EwKOwvXywxDFfSvtJ8egOgnw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_Afwal-DLA38yo1w6GSYZbEw1plIegnukqOXU8rBcUYbmSQ&oe=69C2BC38" data-desc="Caratula de el soundtrack original de Talk To The Hand, hecha con vectores"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653822324_17965463079042073_7237902828753501827_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTk0MDMyOTY1Mjc3NDU4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=fOMZoWGdm-AQ7kNvwF9fbwj&_nc_oc=AdpNKQ7NyjaGsB4ToMAKquiwY3FEpLZaFEH0k8OgqUhmjYIYX3bjklMZgmU7sZUOkXs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=P112A42vJpIhUPMBcXfAlA&_nc_ss=7a30f&oh=00_AfyaiVv1tlzfkM5fpBVzA5h9kt3ePMVFI_Cvxo4v2lDfvg&oe=69C2C984" data-desc="Ilustracion de Xata Jr Hecha con vectores"></div></div>
+                <div class="example-item"><div class="example-img"><img src="https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/641279343_17878782819494454_6115844570974014657_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzg0NDkyMTQ0ODkxNzQ5OTA2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4NTg1LnNkci5DMyJ9&_nc_ohc=uVBagHWp9gsQ7kNvwHGH5vt&_nc_oc=AdrzNkM3d-i7cGZFlcS405Ed6Xb6WSwE1V5wzEKDMDZ7M7UFsfvPpyQHRqD1pFcF-Rw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=ZATB1dMlaarpn-NfmuX5yQ&_nc_ss=7a30f&oh=00_AfwEdxEPdn-xJaq0Z__OuaELlfxO4JgrQrslNEB8-qUtKQ&oe=69C2C30A" data-desc="Ilustracion en Colaboracion con una amiga en instragram"></div></div>
+            </div>
         </section>
 
         <footer>
-            <div class="credits-list">
-                <p><strong>Special Thanks:</strong> Nepo Edits (Idea original), Alex GD (Apoyo constante y testing).</p>
-                <p><strong>Partners:</strong> Rab Games Studio, Nightmare Labs.</p>
-                <p>Xata Jr. • 2026 • Powered by Gemini AI</p>
-            </div>
+            <p>Xata Jr. • 2026</p>
+            <div class="special-thanks">Gracias especiales a Nepo Edits (Idea) y Alex GD (Apoyo)</div>
         </footer>
     </div>
 
@@ -205,6 +185,7 @@
             <div id="zoom-lens"><img id="zoomed-image" src=""></div>
             <img id="full-image" src="">
         </div>
+        <div id="viewer-desc"></div>
     </div>
 
     <script>
@@ -219,9 +200,8 @@
         function selectLang(lang) {
             document.body.setAttribute('data-lang', lang);
             document.getElementById('lang-popup').style.display = 'none';
-            const toggle = document.getElementById('lang-toggle');
-            toggle.style.display = 'block';
-            toggle.innerText = lang === 'es' ? 'ENGLISH' : 'ESPAÑOL';
+            document.getElementById('lang-toggle').style.display = 'block';
+            document.getElementById('lang-toggle').innerText = lang === 'es' ? 'ENGLISH' : 'ESPAÑOL';
         }
 
         function toggleLanguage() {
@@ -236,19 +216,19 @@
             const zoomedImg = document.getElementById('zoomed-image');
             const lens = document.getElementById('zoom-lens');
             const protector = document.querySelector('.img-protector');
+            const viewerDesc = document.getElementById('viewer-desc');
 
             document.querySelectorAll('.example-img img').forEach(img => {
                 img.onclick = () => {
                     viewer.style.display = 'flex';
                     fullImg.src = img.src;
                     zoomedImg.src = img.src;
+                    viewerDesc.innerText = img.getAttribute('data-desc');
                     document.body.style.overflow = 'hidden';
                 }
             });
 
             let isHolding = false;
-            const startZoom = (e) => { isHolding = true; lens.style.display = 'block'; moveZoom(e); };
-            const stopZoom = () => { isHolding = false; lens.style.display = 'none'; };
             const moveZoom = (e) => {
                 if(!isHolding) return;
                 const pos = protector.getBoundingClientRect();
@@ -256,24 +236,18 @@
                 const y = (e.clientY || (e.touches ? e.touches[0].clientY : 0)) - pos.top;
                 lens.style.left = (e.clientX || (e.touches ? e.touches[0].clientX : 0)) + 'px';
                 lens.style.top = (e.clientY || (e.touches ? e.touches[0].clientY : 0)) + 'px';
-                const percentX = (x / pos.width) * 100;
-                const percentY = (y / pos.height) * 100;
-                zoomedImg.style.left = -((percentX * 2) - 50) + '%';
-                zoomedImg.style.top = -((percentY * 2) - 50) + '%';
+                zoomedImg.style.left = -((x/pos.width*100)*2 - 50) + '%';
+                zoomedImg.style.top = -((y/pos.height*100)*2 - 50) + '%';
             };
 
-            protector.onmousedown = startZoom;
-            window.onmouseup = stopZoom;
+            protector.onmousedown = (e) => { isHolding = true; lens.style.display = 'block'; moveZoom(e); };
+            window.onmouseup = () => { isHolding = false; lens.style.display = 'none'; };
             protector.onmousemove = moveZoom;
-            protector.ontouchstart = startZoom;
-            window.ontouchend = stopZoom;
-            protector.ontouchmove = moveZoom;
-
+            
             viewer.onclick = (e) => {
                 if(e.target === viewer || e.target.className === 'close-viewer' || e.target === protector) {
                     viewer.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    stopZoom();
                 }
             };
         });
