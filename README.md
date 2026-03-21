@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.2-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.3-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -198,6 +198,20 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.3 — Formulario a correo via Formspree (2026)
+
+**✏️ Editado**
+- Formulario de contacto migrado de Instagram DM a **Formspree** (`https://formspree.io/f/xqeyokrq`)
+- Ahora envía directamente al correo del autor con los campos: nombre, correo de respuesta, motivo y mensaje
+- Submit asíncrono con `fetch` — muestra mensaje de éxito ✅ o error ❌ sin recargar la página
+- Botón deshabilitado durante el envío para evitar doble submit
+- Campo `email` añadido para que el autor pueda responder directamente
+
+**🗑️ Removido**
+- Lógica `buildDM()` e integración con `ig.me/m/addictiive.gamer`
+
+---
 
 ### v9.2 — Embed de Discord / SEO (2026)
 
