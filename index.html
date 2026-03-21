@@ -1492,69 +1492,91 @@
         <div class="contact-wrapper">
             <div class="contact-header">
                 <div class="contact-header-icon">
-                    <!-- Instagram icon -->
                     <svg viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                 </div>
                 <div class="contact-header-text">
-                    <h3 class="es">Envíame un DM en Instagram</h3>
-                    <h3 class="en">Send me a DM on Instagram</h3>
-                    <p class="es">Llena el formulario y te mandará directo a mi DM con el mensaje listo</p>
-                    <p class="en">Fill out the form and it'll open my DM with the message ready to send</p>
+                    <h3 class="es">Envíame un mensaje</h3>
+                    <h3 class="en">Send me a message</h3>
+                    <p class="es">Te responderé lo antes posible por correo</p>
+                    <p class="en">I'll get back to you as soon as possible</p>
                 </div>
             </div>
             <div class="contact-body">
-                <div class="contact-field">
-                    <label class="es">Tu nombre / usuario</label>
-                    <label class="en">Your name / username</label>
-                    <input type="text" id="cf-name" placeholder="@tuusuario" oninput="updatePreview()">
-                </div>
-                <div class="contact-field">
-                    <label class="es">Motivo del mensaje</label>
-                    <label class="en">Reason for contacting</label>
-                    <select id="cf-reason" onchange="updatePreview()">
-                        <option value="" class="es">— Selecciona un motivo —</option>
-                        <option value="" class="en">— Select a reason —</option>
-                        <option value="comision" class="es">🎨 Comisión de arte</option>
-                        <option value="comision" class="en">🎨 Art commission</option>
-                        <option value="colaboracion" class="es">🤝 Colaboración</option>
-                        <option value="colaboracion" class="en">🤝 Collaboration</option>
-                        <option value="traduccion" class="es">🌐 Traducción</option>
-                        <option value="traduccion" class="en">🌐 Translation</option>
-                        <option value="otro" class="es">💬 Otro</option>
-                        <option value="otro" class="en">💬 Other</option>
-                    </select>
-                </div>
-                <div class="contact-field">
-                    <label class="es">Mensaje</label>
-                    <label class="en">Message</label>
-                    <textarea id="cf-message" rows="4"
-                        placeholder="Hola Xata Jr., me gustaría..."
-                        oninput="updatePreview()"></textarea>
-                </div>
+                <form id="contact-form" action="https://formspree.io/f/xqeyokrq" method="POST">
 
-                <div class="contact-preview" id="cf-preview">
-                    <div class="contact-preview-label es">Vista previa del mensaje</div>
-                    <div class="contact-preview-label en">Message preview</div>
-                    <span id="cf-preview-text" style="color:var(--muted); font-style:italic;">
-                        <span class="es">El mensaje aparecerá aquí mientras escribes...</span>
-                        <span class="en">Your message will appear here as you type...</span>
-                    </span>
-                </div>
+                    <div class="contact-field">
+                        <label class="es">Tu nombre</label>
+                        <label class="en">Your name</label>
+                        <input type="text" name="name" id="cf-name" placeholder="Xata Jr." required oninput="updatePreview()">
+                    </div>
 
-                <a id="cf-send-btn" href="#" target="_blank" class="contact-send-btn" onclick="return buildDM()">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    <span class="es">Abrir en Instagram DM</span>
-                    <span class="en">Open in Instagram DM</span>
-                </a>
-                <p class="contact-note">
-                    <i class="fa-solid fa-circle-info" style="color:var(--accent); font-size:0.7rem;"></i>
-                    <span class="es">Se abrirá Instagram con el mensaje pre-rellenado. Solo tienes que enviarlo.</span>
-                    <span class="en">Instagram will open with the message pre-filled. Just hit send.</span>
-                </p>
+                    <div class="contact-field">
+                        <label class="es">Tu correo (para responderte)</label>
+                        <label class="en">Your email (so I can reply)</label>
+                        <input type="email" name="email" id="cf-email" placeholder="tu@correo.com" required>
+                    </div>
+
+                    <div class="contact-field">
+                        <label class="es">Motivo</label>
+                        <label class="en">Reason</label>
+                        <select name="reason" id="cf-reason" onchange="updatePreview()">
+                            <option value="" class="es">— Selecciona un motivo —</option>
+                            <option value="" class="en">— Select a reason —</option>
+                            <option value="Comisión de arte" class="es">🎨 Comisión de arte</option>
+                            <option value="Art commission" class="en">🎨 Art commission</option>
+                            <option value="Colaboración" class="es">🤝 Colaboración</option>
+                            <option value="Collaboration" class="en">🤝 Collaboration</option>
+                            <option value="Traducción" class="es">🌐 Traducción</option>
+                            <option value="Translation" class="en">🌐 Translation</option>
+                            <option value="Otro" class="es">💬 Otro</option>
+                            <option value="Other" class="en">💬 Other</option>
+                        </select>
+                    </div>
+
+                    <div class="contact-field">
+                        <label class="es">Mensaje</label>
+                        <label class="en">Message</label>
+                        <textarea name="message" id="cf-message" rows="4"
+                            placeholder="Hola Xata Jr., me gustaría..."
+                            oninput="updatePreview()" required></textarea>
+                    </div>
+
+                    <div class="contact-preview" id="cf-preview">
+                        <div class="contact-preview-label es">Vista previa</div>
+                        <div class="contact-preview-label en">Preview</div>
+                        <span id="cf-preview-text" style="color:var(--muted); font-style:italic;">
+                            <span class="es">El mensaje aparecerá aquí mientras escribes...</span>
+                            <span class="en">Your message will appear here as you type...</span>
+                        </span>
+                    </div>
+
+                    <button type="submit" class="contact-send-btn" id="cf-send-btn">
+                        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                        <span class="es">Enviar mensaje</span>
+                        <span class="en">Send message</span>
+                    </button>
+
+                    <p class="contact-note">
+                        <i class="fa-solid fa-circle-info" style="color:var(--accent); font-size:0.7rem;"></i>
+                        <span class="es">El mensaje llegará directo a mi correo. Te responderé pronto nwn</span>
+                        <span class="en">The message goes straight to my inbox. I'll reply soon nwn</span>
+                    </p>
+
+                </form>
+
+                <!-- Success / Error messages -->
+                <div id="cf-success" style="display:none; margin-top:16px; padding:16px 20px; background:rgba(199,125,255,0.1); border:1px solid var(--accent); border-radius:12px; font-size:0.88rem; color:var(--accent); font-family:'Syne',sans-serif; text-align:center;">
+                    <span class="es">✅ ¡Mensaje enviado! Te responderé pronto nwn</span>
+                    <span class="en">✅ Message sent! I'll reply soon nwn</span>
+                </div>
+                <div id="cf-error" style="display:none; margin-top:16px; padding:16px 20px; background:rgba(255,80,80,0.1); border:1px solid #ff5050; border-radius:12px; font-size:0.88rem; color:#ff5050; font-family:'Syne',sans-serif; text-align:center;">
+                    <span class="es">❌ Algo salió mal. Intenta de nuevo.</span>
+                    <span class="en">❌ Something went wrong. Please try again.</span>
+                </div>
             </div>
         </div>
 
@@ -1732,11 +1754,16 @@
         });
 
         // ── CONTACT FORM ──
+        // ── CONTACT FORM (Formspree) ──
         const reasonLabels = {
-            comision: { es: 'Comisión de arte', en: 'Art commission' },
-            colaboracion: { es: 'Colaboración', en: 'Collaboration' },
-            traduccion: { es: 'Traducción', en: 'Translation' },
-            otro: { es: 'Otro', en: 'Other' }
+            'Comisión de arte': { es: 'Comisión de arte', en: 'Art commission' },
+            'Art commission':   { es: 'Comisión de arte', en: 'Art commission' },
+            'Colaboración':     { es: 'Colaboración',     en: 'Collaboration' },
+            'Collaboration':    { es: 'Colaboración',     en: 'Collaboration' },
+            'Traducción':       { es: 'Traducción',       en: 'Translation' },
+            'Translation':      { es: 'Traducción',       en: 'Translation' },
+            'Otro':             { es: 'Otro',             en: 'Other' },
+            'Other':            { es: 'Otro',             en: 'Other' },
         };
 
         function updatePreview() {
@@ -1752,37 +1779,48 @@
                 return;
             }
 
-            const reasonText = reason && reasonLabels[reason] ? reasonLabels[reason][lang] : '';
+            const reasonLabel = reason && reasonLabels[reason] ? reasonLabels[reason][lang] : '';
             let preview = '';
-            if (name)       preview += `<span style="color:var(--accent)">${name}</span> · `;
-            if (reasonText) preview += `<span style="color:var(--accent)">${reasonText}</span><br><br>`;
-            if (msg)        preview += msg;
-
+            if (name)        preview += `<span style="color:var(--accent)">${name}</span> · `;
+            if (reasonLabel) preview += `<span style="color:var(--accent)">${reasonLabel}</span><br><br>`;
+            if (msg)         preview += msg;
             document.getElementById('cf-preview-text').innerHTML = preview || '<em style="color:var(--muted)">...</em>';
         }
 
-        function buildDM() {
-            const lang   = document.body.getAttribute('data-lang') || 'es';
-            const name   = document.getElementById('cf-name').value.trim();
-            const reason = document.getElementById('cf-reason').value;
-            const msg    = document.getElementById('cf-message').value.trim();
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('cf-send-btn');
+            btn.style.opacity = '0.6';
+            btn.disabled = true;
 
-            if (!msg) {
-                document.getElementById('cf-message').focus();
-                return false;
+            try {
+                const res = await fetch('https://formspree.io/f/xqeyokrq', {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    document.getElementById('cf-success').style.display = 'block';
+                    document.getElementById('cf-error').style.display   = 'none';
+                    this.reset();
+                    document.getElementById('cf-preview-text').innerHTML =
+                        `<span class="${document.body.getAttribute('data-lang')==='es'?'es':'en'}">
+                            ${document.body.getAttribute('data-lang')==='es'
+                                ? 'El mensaje aparecerá aquí mientras escribes...'
+                                : 'Your message will appear here as you type...'}
+                        </span>`;
+                } else {
+                    throw new Error('Error');
+                }
+            } catch {
+                document.getElementById('cf-error').style.display   = 'block';
+                document.getElementById('cf-success').style.display = 'none';
             }
 
-            const reasonText = reason && reasonLabels[reason] ? reasonLabels[reason][lang] : '';
-            let full = '';
-            if (name)       full += `${name}\n`;
-            if (reasonText) full += `${lang === 'es' ? 'Motivo' : 'Reason'}: ${reasonText}\n\n`;
-            full += msg;
-
-            const encoded = encodeURIComponent(full);
-            // Open Instagram DM to addictiive.gamer
-            window.open(`https://ig.me/m/addictiive.gamer?text=${encoded}`, '_blank');
-            return false;
-        }
+            btn.style.opacity = '1';
+            btn.disabled = false;
+        });
         // ── PARTICLES ──
         (function() {
             const canvas = document.getElementById('particles');
