@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.4-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.5-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -51,7 +51,7 @@ Construido en HTML/CSS/JS vanilla puro, sin frameworks, con diseño editorial re
 - **Visor modal** al hacer click: imagen a pantalla completa con zoom lens (lupa que sigue el cursor al mantener click)
 - Carga lazy (`loading="lazy"`)
 
-### ❓ FAQ Acordeón (8 preguntas)
+### ❓ FAQ Acordeón (22 preguntas)
 1. ¿Estás disponible para comisiones?
 2. ¿Qué herramientas usas para tu música?
 3. ¿Puedo entrar a tu servidor de Minecraft?
@@ -198,6 +198,23 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.5 — FAQ expandido + Easter egg fix (2026)
+
+**🐛 Bug fix**
+- Easter egg ya no muestra el popup de idioma por encima — `z-index` subido a `100001` y se fuerza el cierre del lang-popup al abrirlo con `openEgg()`
+- Easter egg ahora tiene `overflow-y: auto` para scroll en pantallas pequeñas
+
+**➕ Añadido**
+- 🖼️ 2 nuevas imágenes en la galería: *Dibujo de Xata Jr Humano* y *Dibujo de Kasane Teto* (desde Twitter/X CDN), colocadas al inicio
+- ❓ 11 nuevas preguntas al FAQ (ahora **22 en total**), agrupadas por categoría:
+  - **Arte** — overlays/emotes para streamers, formato PNG, OCs vs fanart, estilos (Furry/Anime/Realista)
+  - **Proyectos** — rol exacto en Talk to the Hand, requisitos de The Baka Paradise
+  - **Música y traducción** — translyrics, idiomas disponibles (ES/EN)
+  - **Setup** — recomendación Parblo Ninos Q, origen del portfolio (Gemini + Claude), historia del nombre "Xata" y las tortugas 🐢🐢
+- 🏷️ Versión actualizada a `v9.5` en el pie de página
+
+---
 
 ### v9.4 — Scroll, Mobile, FAQ & Versión (2026)
 
