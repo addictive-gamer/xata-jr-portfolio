@@ -1318,7 +1318,7 @@
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
         <p class="hero-eyebrow es">Portafolio creativo · también conocido como <strong style="color:var(--text)">Addictive Gamer</strong></p>
-        <p class="hero-eyebrow en" style="display:none">Creative portfolio · also known as <strong style="color:var(--text)">Addictive Gamer</strong></p>
+        <p class="hero-eyebrow en">Creative portfolio · also known as <strong style="color:var(--text)">Addictive Gamer</strong></p>
         <h1>
             <span class="name-x">X</span><span class="name-ata">ata</span>
             <span class="name-jr">Jr.</span>
@@ -1929,7 +1929,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v9.5 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v9.6 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2239,7 +2239,9 @@
 
         // ── EASTER EGG ──
         function openEgg() {
-            document.getElementById('lang-popup').style.display = 'none';
+            // Force-hide lang popup regardless of its current state
+            const lp = document.getElementById('lang-popup');
+            lp.style.setProperty('display', 'none', 'important');
             document.getElementById('easter-egg').classList.add('show');
         }
 
