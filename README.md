@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.0-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.1-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -168,19 +168,26 @@ ringY += (mouseY - ringY) * 0.12;
 // Se redimensiona con window.resize
 ```
 
-### Formulario → Correo via Web3Forms
+### Formulario → Cloudflare Worker (Resend + Discord DM)
 ```js
-// Campos hidden en el form:
-// access_key = "fc28079c-..."  ← autentica con Web3Forms
-// subject    = "Nuevo mensaje desde el Portfolio de Xata Jr."
-// from_name  = "Portfolio de Xata Jr."
-// botcheck   = ""  ← honeypot anti-spam
+// El formulario envía FormData directamente al Worker
+const WORKER_URL = 'https://xata-portfolio.addictivegamer.workers.dev';
 
-const res = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-});
+const formData = new FormData();
+formData.append('name',    '...');
+formData.append('email',   '...');
+formData.append('social',  '...');  // red social / nick (nuevo campo)
+formData.append('reason',  '...');
+formData.append('message', '...');
+formData.append('attachment', file); // soporta múltiples archivos
+
+const res = await fetch(WORKER_URL, { method: 'POST', body: formData });
+const data = await res.json(); // { success: true, results: { email, discord } }
+
+// El Worker internamente:
+// 1. Envía email HTML estilizado via Resend a 3 correos
+// 2. Manda DM a Discord via bot (User ID: 920017830605361232)
+// Credenciales guardadas como Secrets en Cloudflare (nunca en el código)
 ```
 
 ### Easter Egg
@@ -207,6 +214,26 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v10.1 — Cloudflare Worker + Discord DM bot (2026)
+
+**➕ Añadido**
+- 🌩️ **Cloudflare Worker** (`xata-portfolio.addictivegamer.workers.dev`) como backend del formulario de contacto
+- 📧 Emails HTML estilizados via **Resend** — enviados a 3 correos simultáneamente con reply-to al remitente, soporte de adjuntos en base64
+- 🤖 **Discord DM bot** — notificación instantánea al DM de Xata Jr. cada vez que alguien envía el formulario
+- 🐦 Nuevo campo **"Red social o Discord"** en el formulario (opcional)
+- Credenciales (`RESEND_API_KEY`, `DISCORD_BOT_TOKEN`) guardadas como Secrets en Cloudflare — nunca expuestas en el HTML
+
+**✏️ Editado**
+- Formulario migrado de Web3Forms a fetch manual hacia el Worker
+- Eliminados campos `<input type="hidden">` de Web3Forms (access_key, subject, from_name, botcheck)
+- `FormData` construido manualmente con todos los campos incluyendo archivos
+
+**🗑️ Removido**
+- Dependencia de Web3Forms
+- `action` y `method` del `<form>` (ahora es fetch puro)
+
+---
 
 ### v10.0 — Multi-archivo + validación completa (2026)
 
