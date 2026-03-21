@@ -212,7 +212,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 99997;
+            z-index: 100001;
             background: rgba(7,7,9,0.97);
             backdrop-filter: blur(20px);
             align-items: center;
@@ -220,6 +220,7 @@
             flex-direction: column;
             text-align: center;
             gap: 16px;
+            overflow-y: auto;
         }
 
         #easter-egg.show { display: flex; }
@@ -1608,6 +1609,142 @@
             </div>
         </div>
 
+        <!-- FAQ CATEGORÍA: DISEÑO PARA STREAMERS / FORMATOS -->
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Haces diseños para streamers (overlays, emotes, logos)?</span>
+                <span class="en">Do you make designs for streamers (overlays, emotes, logos)?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Sip, aunque pueden no ser los mejores jaja. Si tienes algo en mente mándame un DM y vemos qué podemos hacer.</p>
+                <p class="en">Yep, though they might not be the best haha. If you have something in mind, DM me and we'll see what we can do.</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿En qué formato entregas las ilustraciones?</span>
+                <span class="en">What format do you deliver illustrations in?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">PNG de alta resolución. También puedes sugerir la resolución que necesites y la adapto.</p>
+                <p class="en">High-resolution PNG. You can also suggest the resolution you need and I'll adapt it.</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Haces arte de personajes originales (OCs) o solo fanart?</span>
+                <span class="en">Do you draw original characters (OCs) or only fanart?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">De lo que necesites :3</p>
+                <p class="en">Whatever you need :3</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Dibujas estilos específicos como Furry, Anime o Realista?</span>
+                <span class="en">Do you draw specific styles like Furry, Anime or Realistic?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Ñopi, no soy capaz de replicar esos estilos. Seguramente habrá algunos que sí y más que no — tú dime y yo te digo si puedo apoyarte!</p>
+                <p class="en">Nope, I'm not able to replicate those styles. Some I might be able to do and others not — just tell me what you need and I'll let you know if I can help!</p>
+            </div>
+        </div>
+
+        <!-- FAQ CATEGORÍA: PROYECTOS -->
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Cuál es exactamente tu rol en Talk to the Hand?</span>
+                <span class="en">What exactly is your role in Talk to the Hand?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Ilustrador, sprite artist y apoyo moral jaja</p>
+                <p class="en">Illustrator, sprite artist and moral support haha</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Qué requisitos tiene The Baka Paradise para entrar?</span>
+                <span class="en">What are the requirements to join The Baka Paradise?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Tener Discord y ganarte nuestra confianza nwn</p>
+                <p class="en">Have Discord and earn our trust nwn</p>
+            </div>
+        </div>
+
+        <!-- FAQ CATEGORÍA: MÚSICA Y TRADUCCIÓN -->
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Haces adaptaciones de letras (translyrics) para los covers?</span>
+                <span class="en">Do you do lyric adaptations (translyrics) for covers?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Sip, pero solo en proyectos personales de momento. No he realizado ninguno para otra persona o estudio todavía.</p>
+                <p class="en">Yep, but only for personal projects for now. I haven't done one for another person or studio yet.</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿A qué idiomas traduces juegos o textos?</span>
+                <span class="en">What languages do you translate games or texts into?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Español e inglés jeje</p>
+                <p class="en">Spanish and English hehe</p>
+            </div>
+        </div>
+
+        <!-- FAQ CATEGORÍA: SETUP -->
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Recomiendas la tableta Veikk para empezar en el dibujo digital?</span>
+                <span class="en">Do you recommend the Veikk tablet for starting digital art?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Sip, es de bastante buena calidad. Pero si buscas algo bueno y más económico, recomiendo el <b>Parblo Ninos Q</b>, que fue con la que empecé :3</p>
+                <p class="en">Yep, it's pretty good quality. But if you're looking for something good and more affordable, I recommend the <b>Parblo Ninos Q</b> — that's the one I started with :3</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Este portafolio lo programaste tú o usaste alguna plantilla?</span>
+                <span class="en">Did you code this portfolio yourself or use a template?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Fue hecho bajo mi comando, pero sin <b>Gemini</b> no tendría la página, y si no fuera por <b>Claude</b> no estaría tan estilizada nwn</p>
+                <p class="en">It was built under my direction, but without <b>Gemini</b> I wouldn't have the page, and without <b>Claude</b> it wouldn't be this stylized nwn</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Por qué el nombre "Xata" si nunca has tenido gatos?</span>
+                <span class="en">Why the name "Xata" if you've never had cats?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Xata Jr. se creó originalmente para un concurso de versiones alternas de la mascota de un servidor llamado <b>Xata Family</b>. La mascota oficial se llamaba Xata — un gato con el ojo derecho morado, femenino. Xata Jr. es esa mascota pero con sombrero de copa, corbata y masculino. Según el servidor, "Xata" significaba amante de los gatos... aunque yo nunca he tenido uno. Actualmente cuento con mis dos queridas tortugas 🐢🐢</p>
+                <p class="en">Xata Jr. was originally created for a contest of alternate versions of the mascot of a server called <b>Xata Family</b>. The official mascot was named Xata — a cat with a purple right eye, feminine. Xata Jr. is that mascot but with a top hat, a tie, and masculine. According to the server, "Xata" meant cat lover... even though I've never had one. I currently have my two beloved turtles 🐢🐢</p>
+            </div>
+        </div>
+
         <!-- SETUP & TOOLS -->
         <div class="section-label reveal">
             <span class="es">Mi Setup y Herramientas</span>
@@ -1792,7 +1929,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v9.4 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v9.5 · 2026</p>
             </div>
         </div>
     </footer>
@@ -1813,7 +1950,7 @@
             {u:"https://pbs.twimg.com/media/HA1XS26XgAAw1f7?format=png&name=900x900", d:"Dibujo de Xata Jr Humano"},
             {u:"https://pbs.twimg.com/media/GzNnbw4XsAAaFf5?format=png&name=900x900", d:"Dibujo de Kasane Teto"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142", d:"Pixel Art fanart"},
-            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwGQ8UXj&_nc_oc=AdqkKBfSOS0XBvSVebp8H2-AzfE3L-3IDe42ozQIbFQhnE60bdBM4LJi7YkMl4hi4X4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=KAu6ujcm9XcOLC-0IuKCVg&_nc_ss=7a30f&oh=00_Afy2WYrYyFln2F-j-Eop3JZT_Ra0tv26KwLTOI-OYCXFZQ&oe=69C4AC21", d:"Poster de práctica"},
+            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbF-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1", d:"Poster de práctica"},
             {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B", d:"Comisión pagada"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7", d:"Rosa art"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265", d:"Vector art"},
@@ -2101,6 +2238,11 @@
         }
 
         // ── EASTER EGG ──
+        function openEgg() {
+            document.getElementById('lang-popup').style.display = 'none';
+            document.getElementById('easter-egg').classList.add('show');
+        }
+
         // Konami code: ↑↑↓↓←→←→BA
         const konamiCode = [38,38,40,40,37,39,37,39,66,65];
         let konamiIdx = 0;
@@ -2108,7 +2250,7 @@
             if (e.keyCode === konamiCode[konamiIdx]) {
                 konamiIdx++;
                 if (konamiIdx === konamiCode.length) {
-                    document.getElementById('easter-egg').classList.add('show');
+                    openEgg();
                     konamiIdx = 0;
                 }
             } else {
@@ -2122,7 +2264,7 @@
             clearTimeout(jrTimer);
             jrTimer = setTimeout(() => jrClicks = 0, 1500);
             if (jrClicks >= 5) {
-                document.getElementById('easter-egg').classList.add('show');
+                openEgg();
                 jrClicks = 0;
             }
         });
