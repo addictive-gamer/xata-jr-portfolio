@@ -1203,6 +1203,7 @@
             border-radius: 12px;
             cursor: pointer;
             transition: border-color 0.2s;
+            width: 100%;
         }
 
         .contact-field input[type="file"]:hover {
@@ -1228,6 +1229,27 @@
             background: var(--accent);
             color: white;
         }
+
+        .cf-file-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(199,125,255,0.25);
+            border-radius: 100px;
+            padding: 4px 12px 4px 8px;
+            font-size: 0.72rem;
+            color: var(--muted2);
+            font-family: 'Syne', sans-serif;
+        }
+
+        .cf-file-pill.error {
+            background: rgba(255,80,80,0.08);
+            border-color: #ff5050;
+            color: #ff5050;
+        }
+
+        .cf-file-pill span { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
         /* RESPONSIVE — mobile polished */
         @media (max-width: 768px) {
@@ -1918,14 +1940,18 @@
                     </div>
 
                     <div class="contact-field">
-                        <label class="es">Adjuntar imagen (opcional)</label>
-                        <label class="en">Attach image (optional)</label>
+                        <label class="es">Adjuntar imágenes (opcional)</label>
+                        <label class="en">Attach images (optional)</label>
                         <input type="file" name="attachment" id="cf-file"
-                            accept="image/png, image/jpeg, image/gif, image/webp">
-                        <small id="cf-file-name" style="display:block; margin-top:6px; font-size:0.75rem; color:var(--muted);">
-                            <span class="es">PNG, JPG, GIF o WEBP · máx. 5 MB</span>
-                            <span class="en">PNG, JPG, GIF or WEBP · max 5 MB</span>
-                        </small>
+                            accept="image/png, image/jpeg, image/gif, image/webp"
+                            multiple
+                            onchange="validateFiles(this)">
+                        <div id="cf-file-info" style="margin-top:8px; font-size:0.75rem; color:var(--muted);">
+                            <span class="es">PNG, JPG, GIF o WEBP · máx. 5 MB por archivo · hasta 5 archivos</span>
+                            <span class="en">PNG, JPG, GIF or WEBP · max 5 MB per file · up to 5 files</span>
+                        </div>
+                        <div id="cf-file-error" style="display:none; margin-top:8px; padding:10px 14px; background:rgba(255,80,80,0.08); border:1px solid #ff5050; border-radius:10px; font-size:0.8rem; color:#ff5050; line-height:1.6;"></div>
+                        <div id="cf-file-list" style="display:none; margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;"></div>
                     </div>
 
                     <div class="contact-preview" id="cf-preview">
@@ -1979,7 +2005,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v9.9 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v10.0 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2174,22 +2200,83 @@
             document.getElementById('cf-preview-text').innerHTML = preview || '<em style="color:var(--muted)">...</em>';
         }
 
+        // ── FILE VALIDATION ──
+        const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+        const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+        const MAX_FILES = 5;
+
+        function validateFiles(input) {
+            const lang = document.body.getAttribute('data-lang') || 'es';
+            const files = Array.from(input.files);
+            const errorBox = document.getElementById('cf-file-error');
+            const listBox  = document.getElementById('cf-file-list');
+            const errors   = [];
+
+            listBox.innerHTML = '';
+            errorBox.style.display = 'none';
+            errorBox.innerHTML = '';
+
+            if (files.length === 0) {
+                listBox.style.display = 'none';
+                return true;
+            }
+
+            // Too many files
+            if (files.length > MAX_FILES) {
+                errors.push(lang === 'es'
+                    ? `❌ Máximo ${MAX_FILES} archivos permitidos. Seleccionaste ${files.length}.`
+                    : `❌ Maximum ${MAX_FILES} files allowed. You selected ${files.length}.`);
+            }
+
+            // Validate each file
+            files.forEach(file => {
+                const isValidType = ALLOWED_TYPES.includes(file.type);
+                const isValidSize = file.size <= MAX_SIZE;
+                const sizeMB = (file.size / 1024 / 1024).toFixed(1);
+                let fileErrors = [];
+
+                if (!isValidType) {
+                    fileErrors.push(lang === 'es'
+                        ? `formato no permitido (${file.type || 'desconocido'})`
+                        : `format not allowed (${file.type || 'unknown'})`);
+                }
+                if (!isValidSize) {
+                    fileErrors.push(lang === 'es'
+                        ? `pesa ${sizeMB} MB, máx. 5 MB`
+                        : `${sizeMB} MB, max 5 MB`);
+                }
+
+                // Render pill
+                const pill = document.createElement('div');
+                pill.className = 'cf-file-pill' + (fileErrors.length ? ' error' : '');
+                pill.innerHTML = fileErrors.length
+                    ? `<span>⚠️</span><span title="${file.name}">${file.name}</span><span style="opacity:.7">· ${fileErrors.join(' · ')}</span>`
+                    : `<span>🖼️</span><span title="${file.name}">${file.name}</span><span style="opacity:.5">· ${sizeMB} MB</span>`;
+                listBox.appendChild(pill);
+
+                if (fileErrors.length) {
+                    errors.push(`<strong>${file.name}</strong>: ${fileErrors.join(' · ')}`);
+                }
+            });
+
+            listBox.style.display = files.length ? 'flex' : 'none';
+
+            if (errors.length) {
+                errorBox.innerHTML = errors.join('<br>');
+                errorBox.style.display = 'block';
+                return false;
+            }
+            return true;
+        }
+
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const btn = document.getElementById('cf-send-btn');
+            const btn  = document.getElementById('cf-send-btn');
             const lang = document.body.getAttribute('data-lang') || 'es';
 
-            // Validate file size (max 5MB)
+            // Validate files before sending
             const fileInput = document.getElementById('cf-file');
-            if (fileInput.files[0] && fileInput.files[0].size > 5 * 1024 * 1024) {
-                document.getElementById('cf-error').style.display = 'block';
-                document.getElementById('cf-success').style.display = 'none';
-                document.getElementById('cf-error').innerHTML =
-                    lang === 'es'
-                    ? '<span>❌ La imagen supera los 5 MB. Elige una más pequeña.</span>'
-                    : '<span>❌ Image exceeds 5 MB. Please choose a smaller one.</span>';
-                return;
-            }
+            if (!validateFiles(fileInput)) return;
 
             // Disable button while sending
             const originalHTML = btn.innerHTML;
@@ -2197,7 +2284,7 @@
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            // access_key already in hidden input — just use the form as-is
+            // access_key already in hidden input
             const formData = new FormData(this);
 
             try {
@@ -2207,11 +2294,12 @@
                 });
                 const data = await response.json();
 
-                // Web3Forms returns data.success, not response.ok
                 if (data.success) {
                     document.getElementById('cf-success').style.display = 'block';
-                    document.getElementById('cf-error').style.display = 'none';
+                    document.getElementById('cf-error').style.display   = 'none';
                     this.reset();
+                    document.getElementById('cf-file-list').style.display  = 'none';
+                    document.getElementById('cf-file-error').style.display = 'none';
                     document.getElementById('cf-preview-text').innerHTML =
                         lang === 'es'
                         ? '<span class="es">El mensaje aparecerá aquí mientras escribes...</span>'
@@ -2220,15 +2308,15 @@
                     throw new Error(data.message || 'Error');
                 }
             } catch (error) {
-                document.getElementById('cf-error').style.display = 'block';
+                document.getElementById('cf-error').style.display   = 'block';
                 document.getElementById('cf-success').style.display = 'none';
                 document.getElementById('cf-error').innerHTML =
                     lang === 'es'
                     ? '<span>❌ Algo salió mal. Intenta de nuevo.</span>'
                     : '<span>❌ Something went wrong. Please try again.</span>';
             } finally {
-                btn.innerHTML = originalHTML;
-                btn.disabled = false;
+                btn.innerHTML  = originalHTML;
+                btn.disabled   = false;
                 btn.style.opacity = '1';
             }
         });
