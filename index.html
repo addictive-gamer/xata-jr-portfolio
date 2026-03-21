@@ -272,6 +272,89 @@
 
         .egg-close:hover { border-color: var(--accent); color: var(--accent); }
 
+        .egg-fact-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 18px;
+            margin-top: 18px;
+            cursor: pointer;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.78rem;
+            color: var(--muted2);
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .egg-fact-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+        #egg-fact-arrow {
+            margin-left: auto;
+            transition: transform 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .egg-fact-open #egg-fact-arrow { transform: rotate(180deg); }
+
+        #egg-fact-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .egg-fact-text {
+            text-align: left;
+            margin-top: 14px;
+            font-style: normal !important;
+            font-size: 0.82rem !important;
+            line-height: 1.85;
+            color: var(--muted2);
+            max-width: 500px;
+        }
+
+        .egg-fact-text b { color: var(--text); font-weight: 600; }
+        .egg-fact-text em { color: var(--accent); font-style: italic; }
+
+        .egg-fact-toggle {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(199,125,255,0.3);
+            color: var(--accent);
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .egg-fact-toggle:hover { background: rgba(199,125,255,0.2); }
+
+        #egg-fact-arrow { transition: transform 0.3s; display: inline-block; }
+        #egg-fact-body {
+            max-width: 500px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-top: 8px;
+            text-align: left;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        #egg-fact-body::-webkit-scrollbar { width: 4px; }
+        #egg-fact-body::-webkit-scrollbar-track { background: transparent; }
+        #egg-fact-body::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
         /* LIGHT MODE */
         body.light-mode::before { opacity: 0.12; }
         body.light-mode .hero-grid {
@@ -1098,18 +1181,67 @@
             gap: 6px;
         }
 
-        /* RESPONSIVE */
+        /* SCROLL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE — mobile polished */
         @media (max-width: 768px) {
-            main { padding: 0 20px 80px; }
+            main { padding: 0 18px 80px; }
             h1 { letter-spacing: -2px; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-item { height: 180px; }
-            .contact-body, .contact-header { padding-left: 20px; padding-right: 20px; }
+
+            .social-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .social-link { padding: 14px 10px; border-radius: 12px; }
+            .social-link .s-logo { width: 22px; height: 22px; }
+            .social-link span { font-size: 0.65rem; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery-item { height: 160px; }
+
+            .setup-grid { grid-template-columns: 1fr; }
+
+            .contact-body, .contact-header { padding-left: 18px; padding-right: 18px; }
+            .contact-field input,
+            .contact-field select,
+            .contact-field textarea { font-size: 1rem; } /* prevents iOS zoom */
+
+            .colleague-card { padding: 16px 18px; }
+
+            .section-label { margin: 56px 0 20px; }
+
+            .egg-content { padding: 0 8px; }
+            .egg-fact-text { font-size: 0.78rem !important; }
+
+            #controls { top: 16px; right: 16px; gap: 6px; }
+            #lang-toggle { padding: 7px 12px; font-size: 0.68rem; }
+
+            footer { padding: 48px 20px; }
         }
 
         @media (max-width: 480px) {
-            header { padding: 80px 24px; }
-            .gallery-grid { grid-template-columns: 1fr; }
+            header { padding: 80px 20px 60px; }
+            h1 { font-size: clamp(3rem, 18vw, 5rem); letter-spacing: -3px; }
+
+            .social-grid { grid-template-columns: repeat(3, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item { height: 140px; }
+
+            .about-card { padding: 22px 20px; }
+            .credits-card { padding: 22px 20px; }
+            .setup-card { padding: 20px; }
+
+            .faq-trigger { padding: 18px 20px; font-size: 0.82rem; }
+            .faq-body p { padding: 0 20px 18px; }
+
+            .popup-content { padding: 36px 28px; }
         }
     </style>
 </head>
@@ -1128,12 +1260,42 @@
     <!-- EASTER EGG -->
     <div id="easter-egg">
         <div class="egg-content">
-            <span class="egg-emoji">🎨</span>
+            <span class="egg-emoji">🐱</span>
+
             <div class="egg-title es">¡Encontraste el easter egg!</div>
             <div class="egg-title en">You found the easter egg!</div>
-            <p class="egg-sub es">Hola, soy Xata Jr. — si llegaste hasta aquí, claramente eres de los buenos. nwn<br><br>Dato curioso: el nombre "Xata" viene de un apodo muy random que me pusieron mis amigos.</p>
-            <p class="egg-sub en">Hey, I'm Xata Jr. — if you made it this far, you're clearly one of the good ones. nwn<br><br>Fun fact: the name "Xata" comes from a super random nickname my friends gave me.</p>
-            <button class="egg-close" onclick="document.getElementById('easter-egg').classList.remove('show')">
+
+            <p class="egg-sub es">
+                Hola, Xata Jr. — si llegaste aquí, seguramente eres igual o más friki que yo 🧡<br><br>
+                <em>Besitos gatunos para ti, mente creativa</em>
+            </p>
+            <p class="egg-sub en">
+                Hey, Xata Jr. here — if you made it this far, you're probably just as nerdy as me 🧡<br><br>
+                <em>Cat kisses for you, creative mind</em>
+            </p>
+
+            <!-- Dato curioso desplegable -->
+            <div class="egg-fact-toggle" id="egg-fact-toggle" onclick="toggleEggFact()">
+                <span class="es">📖 La historia de mis nicks</span>
+                <span class="en">📖 The history of my usernames</span>
+                <span id="egg-fact-arrow">▾</span>
+            </div>
+            <div id="egg-fact-body">
+                <p class="egg-fact-text es">
+                    Mi nick original fue <b>ElGamer21</b> porque tenía una fascinación con ese número en específico. Luego pasé por <b>TheMysteryPro18</b> para Minecraft, cambié de cuenta y me llamé <b>PepinMixMaster</b> (¡y aún uso ese sobrenombre en Xbox!).<br><br>
+                    De ahí, en un intento de hacer un nick más sólido, comencé a hacer nombres: primero <b>ElGrandMaster4466</b> y más números que no recuerdo jaja. Luego <b>"The Gamer Without Limits"</b>, luego vimos que no era tan acertado gramaticalmente y me quise ir por el jugador adicto: <b>"The Addictive Gamer"</b>, aunque su significado literal es "el jugador adictivo". De ahí lo acorté a <b>Addictive Gamer</b>, luego su versión más simple <b>Addictive</b>, y de cariño <b>Adicto</b>.<br><br>
+                    Luego nació mi otro nick: <b>Xata Jr.</b>, derivado de un servidor de Discord llamado <i>Xata Family</i>, que según información del servidor significa "amante de los gatos". Su mascota, <b>Xata</b>, es un gato negro con el ojo derecho morado. Mi personaje Xata Jr. es literalmente la mascota pero con sombrero de copa y corbata.<br><br>
+                    Algo irónico: <em>nunca he tenido gatos</em> jaja 🐈‍⬛
+                </p>
+                <p class="egg-fact-text en">
+                    My original username was <b>ElGamer21</b> because I had a fascination with that specific number. Then came <b>TheMysteryPro18</b> for Minecraft, changed accounts and went with <b>PepinMixMaster</b> (and I still use that nickname on Xbox!).<br><br>
+                    Then, trying to build a more solid name, I started crafting usernames: first <b>ElGrandMaster4466</b> and more numbers I can't even remember lol. Then <b>"The Gamer Without Limits"</b> — but we realized it wasn't quite grammatically on point, so I went for the addicted gamer: <b>"The Addictive Gamer"</b>, even though its literal meaning is "the addictive player." Shortened it to <b>Addictive Gamer</b>, then its simpler version <b>Addictive</b>, and affectionately <b>Adicto</b>.<br><br>
+                    Then my other nickname was born: <b>Xata Jr.</b>, derived from a Discord server called <i>Xata Family</i>, which supposedly means "cat lover." The server mascot, <b>Xata</b>, is a black cat with a purple right eye. My character Xata Jr. is literally that mascot — but with a top hat and a tie.<br><br>
+                    Somewhat ironic: <em>I've never owned a cat</em> lol 🐈‍⬛
+                </p>
+            </div>
+
+            <button class="egg-close" onclick="closeEgg()">
                 <span class="es">volver al portfolio</span>
                 <span class="en">back to portfolio</span>
             </button>
@@ -1178,11 +1340,11 @@
     <main>
 
         <!-- SOCIALS -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Redes</span>
             <span class="en">Socials</span>
         </div>
-        <div class="social-grid">
+        <div class="social-grid reveal">
             <!-- Twitter / X -->
             <a href="https://x.com/XataJr" class="social-link" target="_blank">
                 <div class="s-logo">
@@ -1270,17 +1432,17 @@
         </div>
 
         <!-- ABOUT -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Sobre Mí</span>
             <span class="en">About Me</span>
         </div>
-        <div class="about-card">
+        <div class="about-card reveal">
             <p class="es">Soy ilustrador, doy ideas creativas y soy amigo del desarrollador en <b>Talk to the Hand</b>. Por otro lado, gestiono <b>The Baka Paradise</b>, un servidor privado de Minecraft que creé por diversión para compartir con mis amigos.</p>
             <p class="en">I'm an illustrator, creative thinker, and friend of the dev at <b>Talk to the Hand</b>. I also manage <b>The Baka Paradise</b>, a private Minecraft server I built for fun to share with friends.</p>
         </div>
 
         <!-- COLLEAGUES -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Colegas</span>
             <span class="en">Colleagues</span>
         </div>
@@ -1302,14 +1464,14 @@
         </a>
 
         <!-- PORTFOLIO GALLERY -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Portafolio</span>
             <span class="en">Portfolio</span>
         </div>
-        <div class="gallery-grid" id="gallery"></div>
+        <div class="gallery-grid reveal" id="gallery"></div>
 
         <!-- FAQ -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Preguntas Frecuentes</span>
             <span class="en">FAQ</span>
         </div>
@@ -1410,12 +1572,48 @@
             </div>
         </div>
 
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Tienes Discord?</span>
+                <span class="en">Do you have Discord?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Sí, pero no lo comparto públicamente. Si ya hablamos por Instagram y quieres seguir por ahí, te lo paso sin problema.</p>
+                <p class="en">Yes, but I don't share it publicly. If we've already talked on Instagram and you'd prefer Discord, just ask and I'll send it over.</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Haces streams o publicas contenido seguido?</span>
+                <span class="en">Do you stream or post content regularly?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">De vez en cuando. No tengo un horario fijo, pero cuando subo algo lo anuncio por mis redes. ¡Sígueme para enterarte! nwn</p>
+                <p class="en">Every now and then. I don't have a fixed schedule, but when I post something I announce it on my socials. Follow me to stay updated! nwn</p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <button class="faq-trigger" onclick="toggleFaq(this)">
+                <span class="es">¿Qué es Talk to the Hand?</span>
+                <span class="en">What is Talk to the Hand?</span>
+                <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-body">
+                <p class="es">Es un videojuego indie en desarrollo por <b>Rab Games Studio</b>. Soy amigo del desarrollador y colaboro con ideas creativas e ilustraciones. Puedes seguir su progreso en GameJolt.</p>
+                <p class="en">It's an indie video game in development by <b>Rab Games Studio</b>. I'm friends with the developer and collaborate with creative ideas and illustrations. You can follow its progress on GameJolt.</p>
+            </div>
+        </div>
+
         <!-- SETUP & TOOLS -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Mi Setup y Herramientas</span>
             <span class="en">My Setup & Tools</span>
         </div>
-        <div class="setup-grid">
+        <div class="setup-grid reveal">
             <div class="setup-card">
                 <div class="setup-card-title">
                     <i class="fa-solid fa-palette"></i>
@@ -1463,11 +1661,11 @@
         </div>
 
         <!-- SPECIAL CREDITS -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Créditos Especiales</span>
             <span class="en">Special Credits</span>
         </div>
-        <div class="credits-card">
+        <div class="credits-card reveal">
             <div class="credits-item">
                 <div class="credits-star"><i class="fa-solid fa-star"></i></div>
                 <div class="credits-text">
@@ -1485,11 +1683,11 @@
         </div>
 
         <!-- CONTACT -->
-        <div class="section-label">
+        <div class="section-label reveal">
             <span class="es">Contacto</span>
             <span class="en">Contact</span>
         </div>
-        <div class="contact-wrapper">
+        <div class="contact-wrapper reveal">
             <div class="contact-header">
                 <div class="contact-header-icon">
                     <svg viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
@@ -1594,7 +1792,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v9.4 · 2026</p>
             </div>
         </div>
     </footer>
@@ -1612,8 +1810,10 @@
 
     <script>
         const imgs = [
+            {u:"https://pbs.twimg.com/media/HA1XS26XgAAw1f7?format=png&name=900x900", d:"Dibujo de Xata Jr Humano"},
+            {u:"https://pbs.twimg.com/media/GzNnbw4XsAAaFf5?format=png&name=900x900", d:"Dibujo de Kasane Teto"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/654446773_17965461636042073_5471663183961094901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg1NTkzNTgwNTkzNjUyOTQxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyMDB4MTIwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=j1Nw8b73aQ0Q7kNvwEkzzxs&_nc_oc=AdodW2CXEHi-qeOjSKUidshzHmh3O5IwLftgqMXYAiIz7eKKmDQTsQ4qTWT28JcIhJI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_AfyXHJKs3qEOGxo8TsHOa11JPB7B_PdVaDR80pWFNGy1kQ&oe=69C2B142", d:"Pixel Art fanart"},
-            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwEBTZzj&_nc_oc=AdqL5isjIiLyDIoQzDiIhMNR83rtS0nIGQnbF-q4-X2CL4day2qXSWYdWaH4oTbq1mg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afw0P9oQNe6IsCuzeYkQnRVplP8oL-ybZoYdz7L3e5sK1A&oe=69C2B1E1", d:"Poster de práctica"},
+            {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/653489693_17965460616042073_2832858631520505287_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1NTkyOTk4MDg4NzEyNDQzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=IZX_RnJaI6cQ7kNvwGQ8UXj&_nc_oc=AdqkKBfSOS0XBvSVebp8H2-AzfE3L-3IDe42ozQIbFQhnE60bdBM4LJi7YkMl4hi4X4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=KAu6ujcm9XcOLC-0IuKCVg&_nc_ss=7a30f&oh=00_Afy2WYrYyFln2F-j-Eop3JZT_Ra0tv26KwLTOI-OYCXFZQ&oe=69C4AC21", d:"Poster de práctica"},
             {u:"https://instagram.fvsa2-2.fna.fbcdn.net/v/t51.82787-15/628093254_17961255081042073_2002318254276129318_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgzMDIyOTczNzMzNjEwNzg0OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1SfKUsynnA8Q7kNvwGYQT8r&_nc_oc=AdowJ0KCoXri8pcEE214kzI0FGYIF2yZoGKBEKn-hMPUHDDgBMUFMKrQzoG1qf6Tugo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-2.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz-mjFQXyBYAHkHzowroqODkqc_pxyeetV8cRg7dm4jPg&oe=69C2A29B", d:"Comisión pagada"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/628968021_17961254775042073_1587509881095113418_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgzMDIyODU2NzUyNzk2NTcwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTI5My5zZHIuQzMifQ%3D%3D&_nc_ohc=ovMLBeKjtE0Q7kNvwFWbSfy&_nc_oc=AdoG14i9bMn_l4hpWXrYyFwVY3XAwuYUcy4wO7pngIoS1kulj_lT0ZwT-w6m72Q0uFg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=iY-51uHyBulDIe94DmcCYQ&_nc_ss=7a30f&oh=00_Afz_TEUn3gKq0zWafyoLdFNr0YJpLUIWAXpa338XICjlGg&oe=69C2C5D7", d:"Rosa art"},
             {u:"https://instagram.fvsa2-1.fna.fbcdn.net/v/t51.82787-15/611218823_17957476029042073_2169975977789083675_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgwNDQ4OTMxNjE2OTU5ODYzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=dwzNSOxUdL0Q7kNvwGxDzCk&_nc_oc=AdqPuSrQKvthFX6Y9-imQCWZFqQJ00CIpDkFjSp02t9Xy8unU1qXa90R3ZE4mVhsZM0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fvsa2-1.fna&_nc_gid=P7hWJS7IrM_L0RUIVGFKnQ&_nc_ss=7a30f&oh=00_AfyijbvTmt9Esfbu7LsHxOteHtxzT6pLtSnJAb4stTim4A&oe=69C2B265", d:"Vector art"},
@@ -1821,7 +2021,20 @@
             btn.style.opacity = '1';
             btn.disabled = false;
         });
-        // ── PARTICLES ──
+        // ── SCROLL REVEAL ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Slight stagger for sibling elements
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, 60);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         (function() {
             const canvas = document.getElementById('particles');
             const ctx = canvas.getContext('2d');
@@ -1915,8 +2128,31 @@
         });
         document.getElementById('easter-egg').addEventListener('click', e => {
             if (e.target === document.getElementById('easter-egg'))
-                document.getElementById('easter-egg').classList.remove('show');
+                closeEgg();
         });
+
+        function closeEgg() {
+            const ee = document.getElementById('easter-egg');
+            ee.classList.remove('show');
+            // Reset fact panel when closing
+            const body = document.getElementById('egg-fact-body');
+            const toggle = document.getElementById('egg-fact-toggle');
+            body.style.maxHeight = '0';
+            toggle.classList.remove('egg-fact-open');
+        }
+
+        function toggleEggFact() {
+            const body   = document.getElementById('egg-fact-body');
+            const toggle = document.getElementById('egg-fact-toggle');
+            const isOpen = toggle.classList.contains('egg-fact-open');
+            if (isOpen) {
+                body.style.maxHeight = '0';
+                toggle.classList.remove('egg-fact-open');
+            } else {
+                body.style.maxHeight = body.scrollHeight + 'px';
+                toggle.classList.add('egg-fact-open');
+            }
+        }
     </script>
 </body>
 </html>
