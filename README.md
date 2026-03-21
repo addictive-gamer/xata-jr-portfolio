@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.5-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.6-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -198,6 +198,17 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.6 — Fixes de eyebrow y easter egg (2026)
+
+**🐛 Bug fix**
+- Hero eyebrow EN tenía `style="display:none"` hardcodeado que ignoraba el sistema de idiomas — eliminado, ahora lo controla correctamente la clase `.en`
+- Easter egg: `openEgg()` ahora usa `setProperty('display','none','important')` para forzar el cierre del lang-popup sin importar su estado, solucionando el bug de superposición definitivamente
+
+**✏️ Editado**
+- Versión actualizada a `v9.6` en el pie de página
+
+---
 
 ### v9.5 — FAQ expandido + Easter egg fix (2026)
 
