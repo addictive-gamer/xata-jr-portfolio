@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.8-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.9-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -207,6 +207,14 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.9 — Fix formulario Web3Forms (2026)
+
+**🐛 Bug fix**
+- Eliminado `formData.append('access_key', ...)` duplicado — ya estaba en el `<input type="hidden">` del HTML, el doble envío causaba el error
+- Cambiado `response.ok` por `data.success` para la verificación del resultado — Web3Forms devuelve `{ success: true }` en su JSON, no un HTTP 200 estándar
+
+---
 
 ### v9.8 — Web3Forms oficial + adjuntar imagen (2026)
 
