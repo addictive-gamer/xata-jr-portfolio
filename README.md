@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.6-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.8-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -168,10 +168,19 @@ ringY += (mouseY - ringY) * 0.12;
 // Se redimensiona con window.resize
 ```
 
-### Formulario → DM de Instagram
+### Formulario → Correo via Web3Forms
 ```js
-const encoded = encodeURIComponent(`${nombre}\nMotivo: ${motivo}\n\n${mensaje}`);
-window.open(`https://ig.me/m/addictiive.gamer?text=${encoded}`, '_blank');
+// Campos hidden en el form:
+// access_key = "fc28079c-..."  ← autentica con Web3Forms
+// subject    = "Nuevo mensaje desde el Portfolio de Xata Jr."
+// from_name  = "Portfolio de Xata Jr."
+// botcheck   = ""  ← honeypot anti-spam
+
+const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+});
 ```
 
 ### Easter Egg
@@ -198,6 +207,38 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.8 — Web3Forms oficial + adjuntar imagen (2026)
+
+**➕ Añadido**
+- 📎 Campo de adjuntar imagen en el formulario de contacto (PNG, JPG, GIF, WEBP · máx. 5 MB)
+- Validación de tamaño de archivo en el cliente antes de enviar (muestra error localizado ES/EN si supera 5 MB)
+- Estilos propios para `input[type="file"]` con `::file-selector-button` en color acento
+
+**✏️ Editado**
+- Submit handler reescrito siguiendo el patrón oficial de Web3Forms (sin header `Accept`, `formData.append('access_key', ...)` explícito, manejo de `data.message` en errores, botón con texto "Enviando..." / "Sending..." durante el envío)
+- Botón restaura su HTML original tras el envío (ícono + texto) usando `finally`
+
+**📱 Compatibilidad móvil**
+- Cursor personalizado desactivado en touch (`@media (hover: none)`) ✅
+- `font-size: 1rem` en inputs previene zoom automático en iOS ✅
+- Grid de redes 3 columnas en móvil ✅
+- `input[type="file"]` nativo — funciona con la galería de fotos del teléfono ✅
+
+---
+
+### v9.7 — Migración a Web3Forms (2026)
+
+**✏️ Editado**
+- Formulario de contacto migrado de **Formspree** a **Web3Forms** (`https://api.web3forms.com/submit`)
+- Access key configurada via campo `<input type="hidden" name="access_key">`
+- Añadidos campos hidden: `subject` (asunto del email), `from_name` (nombre del remitente) y `botcheck` (anti-spam)
+- La lógica de envío asíncrono (`fetch`, feedback ✅/❌) permanece igual
+
+**🗑️ Removido**
+- Endpoint y lógica de Formspree (`https://formspree.io/f/xqeyokrq`)
+
+---
 
 ### v9.6 — Fixes de eyebrow y easter egg (2026)
 
