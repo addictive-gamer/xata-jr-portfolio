@@ -1194,6 +1194,41 @@
             transform: translateY(0);
         }
 
+        .contact-field input[type="file"] {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: var(--muted2);
+            background: var(--surface2);
+            border: 1px dashed rgba(199,125,255,0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .contact-field input[type="file"]:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-field input[type="file"]::file-selector-button {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 8px;
+            padding: 5px 12px;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background 0.2s;
+        }
+
+        .contact-field input[type="file"]::file-selector-button:hover {
+            background: var(--accent);
+            color: white;
+        }
+
         /* RESPONSIVE — mobile polished */
         @media (max-width: 768px) {
             main { padding: 0 18px 80px; }
@@ -1839,7 +1874,11 @@
                 </div>
             </div>
             <div class="contact-body">
-                <form id="contact-form" action="https://formspree.io/f/xqeyokrq" method="POST">
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="fc28079c-8f2d-4d5a-9602-667f85c4a14a">
+                    <input type="hidden" name="subject" value="Nuevo mensaje desde el Portfolio de Xata Jr.">
+                    <input type="hidden" name="from_name" value="Portfolio de Xata Jr.">
+                    <input type="hidden" name="botcheck" value="" style="display:none">
 
                     <div class="contact-field">
                         <label class="es">Tu nombre</label>
@@ -1876,6 +1915,17 @@
                         <textarea name="message" id="cf-message" rows="4"
                             placeholder="Hola Xata Jr., me gustaría..."
                             oninput="updatePreview()" required></textarea>
+                    </div>
+
+                    <div class="contact-field">
+                        <label class="es">Adjuntar imagen (opcional)</label>
+                        <label class="en">Attach image (optional)</label>
+                        <input type="file" name="attachment" id="cf-file"
+                            accept="image/png, image/jpeg, image/gif, image/webp">
+                        <small id="cf-file-name" style="display:block; margin-top:6px; font-size:0.75rem; color:var(--muted);">
+                            <span class="es">PNG, JPG, GIF o WEBP · máx. 5 MB</span>
+                            <span class="en">PNG, JPG, GIF or WEBP · max 5 MB</span>
+                        </small>
                     </div>
 
                     <div class="contact-preview" id="cf-preview">
@@ -1929,7 +1979,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v9.6 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v9.8 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2091,7 +2141,7 @@
         });
 
         // ── CONTACT FORM ──
-        // ── CONTACT FORM (Formspree) ──
+        // ── CONTACT FORM (Web3Forms) ──
         const reasonLabels = {
             'Comisión de arte': { es: 'Comisión de arte', en: 'Art commission' },
             'Art commission':   { es: 'Comisión de arte', en: 'Art commission' },
@@ -2127,36 +2177,59 @@
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('cf-send-btn');
-            btn.style.opacity = '0.6';
-            btn.disabled = true;
+            const lang = document.body.getAttribute('data-lang') || 'es';
 
-            try {
-                const res = await fetch('https://formspree.io/f/xqeyokrq', {
-                    method: 'POST',
-                    body: new FormData(this),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (res.ok) {
-                    document.getElementById('cf-success').style.display = 'block';
-                    document.getElementById('cf-error').style.display   = 'none';
-                    this.reset();
-                    document.getElementById('cf-preview-text').innerHTML =
-                        `<span class="${document.body.getAttribute('data-lang')==='es'?'es':'en'}">
-                            ${document.body.getAttribute('data-lang')==='es'
-                                ? 'El mensaje aparecerá aquí mientras escribes...'
-                                : 'Your message will appear here as you type...'}
-                        </span>`;
-                } else {
-                    throw new Error('Error');
-                }
-            } catch {
-                document.getElementById('cf-error').style.display   = 'block';
+            // Validate file size (max 5MB)
+            const fileInput = document.getElementById('cf-file');
+            if (fileInput.files[0] && fileInput.files[0].size > 5 * 1024 * 1024) {
+                document.getElementById('cf-error').style.display = 'block';
                 document.getElementById('cf-success').style.display = 'none';
+                document.getElementById('cf-error').innerHTML =
+                    lang === 'es'
+                    ? '<span>❌ La imagen supera los 5 MB. Elige una más pequeña.</span>'
+                    : '<span>❌ Image exceeds 5 MB. Please choose a smaller one.</span>';
+                return;
             }
 
-            btn.style.opacity = '1';
-            btn.disabled = false;
+            // Disable button while sending
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<span>${lang === 'es' ? 'Enviando...' : 'Sending...'}</span>`;
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            const formData = new FormData(this);
+            formData.append('access_key', 'fc28079c-8f2d-4d5a-9602-667f85c4a14a');
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('cf-success').style.display = 'block';
+                    document.getElementById('cf-error').style.display = 'none';
+                    this.reset();
+                    document.getElementById('cf-preview-text').innerHTML =
+                        lang === 'es'
+                        ? '<span class="es">El mensaje aparecerá aquí mientras escribes...</span>'
+                        : '<span class="en">Your message will appear here as you type...</span>';
+                } else {
+                    throw new Error(data.message || 'Error');
+                }
+            } catch (error) {
+                document.getElementById('cf-error').style.display = 'block';
+                document.getElementById('cf-success').style.display = 'none';
+                document.getElementById('cf-error').innerHTML =
+                    lang === 'es'
+                    ? '<span>❌ Algo salió mal. Intenta de nuevo.</span>'
+                    : '<span>❌ Something went wrong. Please try again.</span>';
+            } finally {
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
         });
         // ── SCROLL REVEAL ──
         const revealObserver = new IntersectionObserver((entries) => {
