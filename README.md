@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.1-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.2-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -198,6 +198,17 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.2 — Embed de Discord / SEO (2026)
+
+**➕ Añadido**
+- Meta tags **Open Graph** para embed rico en Discord, WhatsApp, Telegram y similares
+- Meta tags **Twitter/X Card** para preview al compartir en X
+- Meta tag `theme-color` — el borde del embed en Discord aparece en `#c77dff` (acento del portfolio)
+- Meta tags de SEO: `description` y `author`
+- Imagen del embed: `favicon.png` via URL absoluta de GitHub Pages
+
+---
 
 ### v9.1 — Fix botones superpuestos (2026)
 
