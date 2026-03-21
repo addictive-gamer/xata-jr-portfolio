@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.3-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-9.4-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -198,6 +198,22 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v9.4 — Scroll, Mobile, FAQ & Versión (2026)
+
+**➕ Añadido**
+- ✨ Animaciones de scroll: todas las secciones entran con fade-up usando `IntersectionObserver` (clase `.reveal` + `.visible`)
+- ❓ 3 nuevas preguntas al FAQ (11 en total):
+  - ¿Tienes Discord?
+  - ¿Haces streams o publicas contenido seguido?
+  - ¿Qué es Talk to the Hand?
+- 🏷️ Versión `v9.4` visible en el pie de página
+
+**✏️ Editado**
+- **Móvil mejorado** — grid de redes 3 columnas, logos más compactos, fuente de inputs `1rem` (evita zoom en iOS), padding ajustado en cards, controles más pequeños
+- Responsive rediseñado con breakpoints `768px` y `480px` más completos y detallados
+
+---
 
 ### v9.3 — Formulario a correo via Formspree (2026)
 
