@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.1-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.2-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -214,6 +214,22 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v10.2 — Worker URL actualizada + Secrets configurados (2026)
+
+**✏️ Editado**
+- URL del Worker actualizada a `https://xata-portfolio-bot.addictivegamer.workers.dev`
+- Secrets configurados en Cloudflare: `RESEND_API_KEY` y `DISCORD_BOT_TOKEN` (cifrados, nunca expuestos en código)
+- Badge de versión actualizado a v10.2 en pie de página y README
+
+**📋 Estado del sistema de contacto**
+- ✅ Cloudflare Worker desplegado con código completo
+- ✅ Secrets añadidos en Cloudflare Settings → Variables and Secrets
+- ✅ URL apuntada correctamente en `index.html`
+- ✅ Bot de Discord creado (`Xata Portfolio Bot`)
+- ⏳ Bot pendiente de invitar al servidor de Discord (OAuth2 → URL Generator → scope `bot` + `Send Messages`)
+
+---
 
 ### v10.1 — Cloudflare Worker + Discord DM bot (2026)
 
