@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-9.9-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.0-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -207,6 +207,26 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v10.0 — Multi-archivo + validación completa (2026)
+
+**➕ Añadido**
+- 📎 Soporte para **múltiples archivos** en el campo de adjuntos (`multiple`) — hasta 5 imágenes a la vez
+- Validación en tiempo real al seleccionar archivos (`onchange`) con `validateFiles()`:
+  - ❌ Más de 5 archivos seleccionados
+  - ❌ Formato no permitido (muestra el tipo recibido)
+  - ❌ Archivo mayor a 5 MB (muestra el tamaño exacto)
+  - Cada archivo con error muestra su pill en rojo con el motivo específico
+  - Archivos válidos muestran pill en morado con nombre y tamaño
+- Errores de validación bloquean el envío hasta que se corrijan
+- Al enviar con éxito se limpian las pills y los errores de archivo
+- Todos los mensajes de error bilingües (ES/EN)
+
+**✏️ Editado**
+- Label cambiado a "Adjuntar imágenes" (plural)
+- Info del campo actualizada: "hasta 5 archivos"
+
+---
 
 ### v9.9 — Fix formulario Web3Forms (2026)
 
