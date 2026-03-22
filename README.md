@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.3-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.4-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -214,6 +214,35 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v10.4 — Worker unificado para dos portfolios (2026)
+
+**➕ Añadido**
+- 🔀 Worker unificado — un solo endpoint maneja mensajes de **Xata Jr. Portfolio** y **RabGamesStudio**
+- Campo `<input type="hidden" name="source" value="xata">` en el formulario identifica el origen
+- Cada portfolio tiene su propia configuración en `SOURCES`:
+  - **`xata`** → color morado, emoji 🐱, correos de Xata Jr.
+  - **`rab`** → color rosa, emoji 🎮, correos de RabGamesStudio
+- Email HTML con colores dinámicos según el portfolio de origen
+- Badge en el header del email muestra `🐱 Xata Jr. Portfolio` o `🎮 RabGamesStudio`
+- Discord DM muestra el emoji y nombre del portfolio en el título
+
+**Para añadir el Worker al portfolio de RabGamesStudio:**
+```html
+<!-- Añadir al formulario de RabGamesStudio -->
+<input type="hidden" name="source" value="rab">
+
+<!-- JS — mismo WORKER_URL -->
+const WORKER_URL = 'https://xata-portfolio-bot.addictivegamer.workers.dev';
+```
+
+**Correos por portfolio:**
+| Portfolio | Correos |
+|---|---|
+| Xata Jr. | pepin, nekoaddictive, theaddictivegamer9 |
+| RabGamesStudio | rabbitgames0103, pepin, nekoaddictive, theaddictivegamer9 |
+
+---
 
 ### v10.3 — Discord spoilers + correos confirmados (2026)
 
