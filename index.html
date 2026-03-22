@@ -1912,9 +1912,30 @@
                     </div>
 
                     <div class="contact-field">
-                        <label class="es">Red social o Discord (opcional)</label>
-                        <label class="en">Social media or Discord (optional)</label>
-                        <input type="text" name="social" id="cf-social" placeholder="@tuusuario en Instagram, Discord...">
+                        <label class="es">Nick / usuario (opcional)</label>
+                        <label class="en">Nick / username (optional)</label>
+                        <input type="text" name="social" id="cf-social"
+                            placeholder="@tuusuario"
+                            oninput="updateSocialPlatformVisibility(); updatePreview()">
+                    </div>
+
+                    <div class="contact-field" id="cf-platform-row" style="display:none; margin-top:-8px;">
+                        <label class="es">¿En qué red es ese nick? <span style="color:#ff5050">*</span></label>
+                        <label class="en">Which platform is that nick from? <span style="color:#ff5050">*</span></label>
+                        <select name="socialPlatform" id="cf-social-platform">
+                            <option value="" class="es">— Selecciona la red —</option>
+                            <option value="" class="en">— Select the platform —</option>
+                            <option value="discord">💬 Discord</option>
+                            <option value="twitter">🐦 Twitter / X</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="gamejolt">🎮 GameJolt</option>
+                            <option value="itchio">🕹️ itch.io</option>
+                            <option value="bluesky">🦋 Bluesky</option>
+                            <option value="facebook">📘 Facebook</option>
+                            <option value="youtube">▶️ YouTube</option>
+                            <option value="tiktok">🎵 TikTok</option>
+                            <option value="otro">🌐 Otro</option>
+                        </select>
                     </div>
 
                     <div class="contact-field">
@@ -2182,6 +2203,18 @@
             'Other':            { es: 'Otro',             en: 'Other' },
         };
 
+        // ── SOCIAL PLATFORM VISIBILITY ──
+        function updateSocialPlatformVisibility() {
+            const nick = document.getElementById('cf-social').value.trim();
+            const row  = document.getElementById('cf-platform-row');
+            if (nick !== '') {
+                row.style.display = 'block';
+            } else {
+                row.style.display = 'none';
+                document.getElementById('cf-social-platform').value = '';
+            }
+        }
+
         function updatePreview() {
             const lang   = document.body.getAttribute('data-lang') || 'es';
             const name   = document.getElementById('cf-name').value.trim();
@@ -2290,13 +2323,26 @@
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
+            // Validate social platform before sending
+            const socialVal   = document.getElementById('cf-social').value.trim();
+            const platformVal = document.getElementById('cf-social-platform').value;
+            if (socialVal !== '' && platformVal === '') {
+                document.getElementById('cf-platform-row').style.display = 'block';
+                document.getElementById('cf-social-platform').focus();
+                btn.innerHTML  = originalHTML;
+                btn.disabled   = false;
+                btn.style.opacity = '1';
+                return;
+            }
+
             // Build FormData with all fields including files
             const formData = new FormData();
-            formData.append('name',    document.getElementById('cf-name').value.trim());
-            formData.append('email',   document.getElementById('cf-email').value.trim());
-            formData.append('social',  document.getElementById('cf-social').value.trim());
-            formData.append('reason',  document.getElementById('cf-reason').value);
-            formData.append('message', document.getElementById('cf-message').value.trim());
+            formData.append('name',           document.getElementById('cf-name').value.trim());
+            formData.append('email',          document.getElementById('cf-email').value.trim());
+            formData.append('social',         socialVal);
+            formData.append('socialPlatform', platformVal);
+            formData.append('reason',         document.getElementById('cf-reason').value);
+            formData.append('message',        document.getElementById('cf-message').value.trim());
 
             // Attach files
             const files = fileInput.files;
@@ -2315,8 +2361,10 @@
                     document.getElementById('cf-success').style.display = 'block';
                     document.getElementById('cf-error').style.display   = 'none';
                     this.reset();
-                    document.getElementById('cf-file-list').style.display  = 'none';
-                    document.getElementById('cf-file-error').style.display = 'none';
+                    document.getElementById('cf-file-list').style.display    = 'none';
+                    document.getElementById('cf-file-error').style.display   = 'none';
+                    document.getElementById('cf-platform-row').style.display = 'none';
+                    document.getElementById('cf-social-platform').value      = '';
                     document.getElementById('cf-preview-text').innerHTML =
                         lang === 'es'
                         ? '<span class="es">El mensaje aparecerá aquí mientras escribes...</span>'
