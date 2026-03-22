@@ -2,17 +2,17 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.6-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.8-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
-![worker](https://img.shields.io/badge/Backend-Cloudflare_Worker-orange?style=for-the-badge&logo=cloudflare)
+![worker](https://img.shields.io/badge/Backend-Cloudflare_Worker_v3.0-orange?style=for-the-badge&logo=cloudflare)
 
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
 ilustrador, adaptador musical y traductor.
-Construido en HTML/CSS/JS vanilla puro, sin frameworks ni bundlers, con diseño editorial refinado y experiencia interactiva completa.
+Construido en HTML/CSS/JS vanilla puro, sin frameworks ni bundlers.
 
-**Versión actual:** `v10.6` · **Última actualización:** 21 de marzo de 2026
+**Versión actual:** `v10.8` · **Última actualización:** 21 de marzo de 2026
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)
 **Contacto:** [pepin.aquino.rivera@gmail.com](mailto:pepin.aquino.rivera@gmail.com)
 
@@ -49,7 +49,7 @@ Construido en HTML/CSS/JS vanilla puro, sin frameworks ni bundlers, con diseño 
 
 ### El origen del nombre "Xata"
 
-Xata Jr. se creó originalmente para un concurso de versiones alternas de la mascota de un servidor llamado **Xata Family**. La mascota oficial se llamaba Xata — un gato con el ojo derecho morado, femenino. Xata Jr. es esa mascota pero con sombrero de copa, corbata y masculino. Según el servidor, "Xata" significaba amante de los gatos, aunque el autor nunca ha tenido uno. Actualmente cuida dos tortugas 🐢🐢
+Xata Jr. se creó originalmente para un concurso de versiones alternas de la mascota de un servidor llamado **Xata Family**. La mascota oficial se llamaba Xata — un gato con el ojo derecho morado, femenino. Xata Jr. es esa mascota pero con sombrero de copa, corbata y masculino. Actualmente cuida dos tortugas 🐢🐢
 
 ---
 
@@ -94,74 +94,45 @@ Mini PC Machenike · AMD Ryzen 7 · AMD Radeon 7600 · 16 GB RAM · Windows 11
 ## ✨ Features Completas
 
 ### 🌐 Internacionalización (ES/EN)
-
 - Sistema bilingüe **Español / English** sin recargar la página
-- Implementado con atributo `data-lang` en `<body>` + clases `.es` / `.en` en cada elemento de texto
-- Pop-up de selección de idioma al cargar, con botón de toggle fijo en esquina superior derecha
-- Todo el contenido está traducido: FAQ (22 preguntas), formulario, secciones, mensajes de error, preview en tiempo real, easter egg
+- `[data-lang]` en `<body>` + clases `.es` / `.en` en cada elemento de texto
+- Pop-up de idioma al cargar, con botón toggle fijo en esquina superior derecha
+- Todo el contenido traducido: FAQ (22 preguntas), formulario, secciones, mensajes de error, easter egg
 
 ### 🎨 Diseño & Identidad Visual
-
-- **Tipografía:** Syne (headings, labels, UI) + DM Sans (cuerpo de texto) vía Google Fonts
-- **Paleta oscura** por defecto con design tokens en variables CSS (`--bg`, `--surface`, `--accent`, etc.)
+- **Tipografía:** Syne (headings, labels) + DM Sans (cuerpo) vía Google Fonts
+- **Paleta oscura** por defecto con variables CSS (`--bg`, `--surface`, `--accent`, etc.)
 - **Modo claro / oscuro** con toggle ☀️/🌙, persistido en `localStorage`
-- Efecto de ruido (noise texture SVG) como overlay global para profundidad visual
+- Efecto de ruido (noise texture SVG) como overlay global
 - Grilla de fondo sutil en el hero con mask radial CSS
 
 ### 🦸 Hero Section
-
-- Full-screen con animaciones de entrada escalonadas (`@keyframes fadeUp` + `animation-delay`)
-- Título con efecto tipográfico: "X" en outline (`-webkit-text-stroke`), "ata" en color acento
-- **Partículas flotantes** en `<canvas>`: puntitos animados en el color de acento, se adaptan al tamaño de ventana y al modo claro/oscuro
+- Full-screen con animaciones de entrada escalonadas (`@keyframes fadeUp`)
+- Título con efecto tipográfico: "X" en outline, "ata" en color acento
+- **Partículas flotantes** en `<canvas>`: animadas, adaptadas al modo claro/oscuro
 
 ### 🖱️ Cursor Personalizado
-
-- Punto pequeño (`#cursor-dot`) que sigue al mouse en tiempo real vía `mousemove`
-- Anillo exterior (`#cursor-ring`) con lag suave vía `requestAnimationFrame` (lerp al 12%)
-- Se agranda al pasar sobre elementos interactivos (links, botones, cards, inputs)
-- Oculto automáticamente en dispositivos touch (`@media (hover: none)`)
+- Punto (`#cursor-dot`) + anillo (`#cursor-ring`) con lag lerp 12%
+- Se agranda al pasar sobre elementos interactivos
+- Oculto automáticamente en dispositivos touch
 
 ### 📱 Redes Sociales
-
-- Grid responsivo de 9 plataformas con logos SVG inline monocromáticos en `var(--accent)`
-- Hover con lift + glow + escala del logo
+- Grid responsivo de 9 plataformas con logos SVG inline monocromáticos
 
 ### 🖼️ Galería de Portfolio
-
-- Grid responsivo con imágenes desde Instagram CDN + Twitter/X CDN
-- Overlay con nombre de la obra al hacer hover
-- **Visor modal** a pantalla completa con zoom lens (lupa que sigue el cursor al mantener click presionado)
-- Carga lazy (`loading="lazy"`)
+- Grid responsivo · Overlay al hover · **Visor modal** con zoom lens
+- Carga lazy · imágenes desde Instagram CDN + Twitter/X CDN
 
 ### ❓ FAQ Acordeón (22 preguntas)
+Agrupadas en 5 categorías: General · Arte · Proyectos · Música y traducción · Setup
 
-Agrupadas por categoría:
-- **General** — comisiones, disponibilidad, tipos de trabajo, arte en proyectos ajenos
-- **Arte** — overlays/emotes, formatos, OCs vs fanart, estilos
-- **Proyectos** — rol en Talk to the Hand, requisitos de The Baka Paradise
-- **Música y traducción** — translyrics, idiomas (ES/EN)
-- **Setup** — tableta recomendada, origen del portfolio (Gemini + Claude), nombre "Xata", las tortugas
-
-Apertura/cierre con `max-height` transition. Solo uno puede estar abierto a la vez.
-
-### 📬 Formulario de Contacto (Cloudflare Worker)
-
-Ver sección dedicada más abajo para detalles completos.
+### 📬 Formulario con contador de caracteres
+Ver sección dedicada más abajo.
 
 ### 🥚 Easter Egg
-
-- **Trigger 1 — Código Konami:** `↑ ↑ ↓ ↓ ← → ← → B A` en el teclado
-- **Trigger 2 — 5 clicks rápidos** sobre el texto "Jr." en el hero (compatible con móvil)
-- Abre popup con mensaje personal + dato curioso sobre el origen del nombre "Xata"
-- Al activarse, fuerza el cierre del lang-popup con `setProperty('display','none','important')`
-
-### 📋 Secciones Adicionales
-
-- **Sobre Mí** — descripción, especialidades y proyectos activos
-- **Colegas** — links a RabGamesStudio y Nightmare Labs
-- **Mi Setup** — 3 tarjetas: Arte, Música, PC Specs
-- **Créditos Especiales** — Nepo Edits y Alex GD
-- **Scroll Reveal** — todas las secciones entran con fade-up via `IntersectionObserver` (clase `.reveal` + `.visible`)
+- **Trigger 1:** Código Konami `↑ ↑ ↓ ↓ ← → ← → B A`
+- **Trigger 2:** 5 clicks rápidos sobre "Jr." en el hero (compatible con móvil)
+- Fuerza el cierre del lang-popup con `setProperty('display','none','important')`
 
 ---
 
@@ -172,17 +143,18 @@ Ver sección dedicada más abajo para detalles completos.
 ```
 index.html                    ← único archivo — HTML + CSS inline + JS inline
 ├── <head>
-│   ├── Meta tags (SEO, OG, Twitter Card, theme-color)
+│   ├── Meta tags (SEO, OG, Twitter Card, theme-color #c77dff)
 │   ├── Google Fonts CDN (Syne + DM Sans)
 │   ├── Font Awesome 6.5.1 CDN
-│   └── <style> — Todo el CSS (~600 líneas)
-│       ├── :root — design tokens (dark mode)
-│       ├── body.light-mode — design tokens (light mode)
+│   └── <style>  ~700 líneas
+│       ├── :root — design tokens dark
+│       ├── body.light-mode — design tokens light
 │       ├── Cursor personalizado
-│       ├── Lang popup
-│       ├── Hero + partículas
-│       ├── Secciones: redes, galería, FAQ, setup, créditos, contacto
-│       └── Footer + Easter egg
+│       ├── .char-counter · .field-counter-wrap · .field-over
+│       ├── .sensitive-field · .sensitive-disclaimer
+│       ├── Lang popup · Hero · Partículas
+│       ├── Secciones: redes, galería, FAQ, setup, contacto
+│       └── Footer · Easter egg · Responsive
 ├── <body data-lang="">
 │   ├── #lang-popup
 │   ├── #controls (lang toggle + theme toggle)
@@ -190,106 +162,25 @@ index.html                    ← único archivo — HTML + CSS inline + JS inli
 │   ├── <header> — Hero + canvas#particles
 │   ├── <main> — Todas las secciones
 │   ├── <footer>
-│   ├── #image-viewer — Modal de galería con zoom lens
+│   ├── #image-viewer — Modal galería con zoom lens
 │   ├── #easter-egg — Popup del easter egg
-│   └── <script> — Todo el JS (~450 líneas)
+│   └── <script>  ~550 líneas
+│       ├── updateCharCounter(el, max)
+│       ├── submit handler con validación de chars
+│       └── ...resto de lógica
 ```
 
 ### Sin dependencias externas instaladas
 
-- **Sin npm · Sin bundler · Sin framework · Sin build step**
-- Solo 2 CDNs: Font Awesome 6.5.1 + Google Fonts
-- Funciona abriendo `index.html` directo en el navegador (excepto el formulario, que necesita el Worker)
+**Sin npm · Sin bundler · Sin framework · Sin build step**
+Solo 2 CDNs: Font Awesome 6.5.1 + Google Fonts
 
 ### Sistema de Idiomas
 
-```html
-<!-- Estructura base -->
-<body data-lang="es">
-  <p class="es">Hola</p>    <!-- visible solo en español -->
-  <p class="en">Hello</p>   <!-- visible solo en inglés -->
-</body>
-```
 ```css
 [data-lang="es"] .en { display: none !important; }
 [data-lang="en"] .es { display: none !important; }
 ```
-```js
-function selectLang(l) {
-    document.body.setAttribute('data-lang', l);
-    // muestra toggle de idioma + toggle de tema
-}
-```
-
-### Variables CSS (Design Tokens)
-
-```css
-:root {
-  /* Fondos */
-  --bg: #070709;
-  --surface: #0f0f14;
-  --surface2: #16161e;
-  --border: rgba(255,255,255,0.07);
-
-  /* Acentos */
-  --accent: #c77dff;
-  --accent2: #7b2fff;
-  --accent-dim: rgba(199,125,255,0.12);
-  --accent-glow: rgba(199,125,255,0.35);
-
-  /* Texto */
-  --text: #ececf1;
-  --muted: #6b6b7e;
-  --muted2: #9898ab;
-}
-
-/* Modo claro: body.light-mode { ... } sobrescribe todas las variables */
-```
-
-### Lógica del Cursor
-
-```js
-// Dot: sigue al mouse exactamente en mousemove
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-
-// Ring: sigue con retraso (lerp 12%) en requestAnimationFrame
-function animateCursor() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(animateCursor);
-}
-```
-
-### Lógica de Partículas
-
-```js
-// Canvas dentro del <header>, z-index: 0
-// Densidad: count = Math.floor((W * H) / 14000)
-// Cada partícula: { x, y, vx, vy, r, alpha, da }
-// Color: getComputedStyle(document.documentElement).getPropertyValue('--accent')
-// Se redimensiona con window.resize → reinicia las partículas
-```
-
-### Funciones JS Globales
-
-| Función | Descripción |
-|---|---|
-| `selectLang(l)` | Aplica idioma 'es' / 'en' al `data-lang` del body |
-| `toggleTheme()` | Alterna dark/light mode, persiste en `localStorage` |
-| `updatePreview()` | Actualiza la vista previa del formulario en tiempo real |
-| `updateSocialPlatformVisibility()` | Muestra/oculta el selector de plataforma según si hay nick |
-| `validateFiles(input)` | Valida tipo y tamaño de archivos adjuntos (PNG/JPG/GIF/WEBP, máx 5 MB, hasta 5) |
-| `toggleFaq(btn)` | Abre/cierra ítems del acordeón FAQ |
-| `openEgg()` / `closeEgg()` | Abre/cierra el easter egg |
-| `toggleEggFact()` | Despliega el dato curioso dentro del easter egg |
-
-### Responsive Breakpoints
-
-| Breakpoint | Cambios |
-|---|---|
-| `768px` | Grid de redes a 3 columnas, cards de setup apiladas, inputs `font-size: 1rem` (anti-zoom iOS) |
-| `480px` | Reducción de padding, tipografía más pequeña, elementos de UI más compactos |
 
 ---
 
@@ -301,40 +192,89 @@ function animateCursor() {
 Usuario llena formulario
        ↓
 FormData enviado a Cloudflare Worker (POST)
-  con campo source="xata" (explícito en JS)
+  con campo source="xata"  ← formData.append explícito en JS
        ↓
 Worker identifica fuente → config Xata Jr.
        ↓
-Worker procesa y envía en paralelo:
-  ├── 📧 Email HTML estilizado vía Resend → 3 destinatarios
-  │     (adjuntos incluidos como attachments en Resend)
-  └── 💬 Discord DM con Embed Discohook → IDs configurados
-        (adjuntos como embeds separados con imagen inline + spoiler)
+Worker envía en paralelo:
+  ├── 📧 Email HTML vía Resend → 3 destinatarios
+  │     · Adjuntos como body.attachments
+  │     · Info sensible en sección amarilla
+  └── 💬 Discord DM (bot) → IDs configurados
+        · Intento 1: embed Discohook
+        · Fallback: markdown enriquecido si DM de bot
+        · Adjuntos: embeds SPOILER_ con imagen inline
+        · Info sensible: ||spoiler|| al click
 ```
 
 ### Campos del formulario
 
-| Campo HTML | `name` | Tipo | Notas |
+| ID | `name` | Tipo | Límite | Notas |
+|---|---|---|---|---|
+| `#cf-name` | `name` | text | **80** | Requerido |
+| `#cf-email` | `email` | email | **254** | Requerido · RFC 5321 |
+| `#cf-social` | `social` | text | **60** | Opcional — nick/usuario |
+| `#cf-social-platform` | `socialPlatform` | select | — | Requerido si `social ≠ ""` |
+| `#cf-reason` | `reason` | select | — | Motivo de contacto |
+| `#cf-message` | `message` | textarea | **2000** | Requerido · límite Discord |
+| `#cf-file` | `attachment` | file | PNG/JPG/GIF/WEBP · 5 MB · ×5 | Opcional |
+| `#cf-sensitive` | `sensitiveInfo` | textarea | **500** | Opcional · spoiler Discord |
+| *(hidden)* | `source` | — | — | `"xata"` hardcoded |
+
+### Indicador de caracteres restantes
+
+Contador `restantes / máximo` a la derecha debajo de cada campo:
+
+| Nivel | Color | Condición | Animación |
 |---|---|---|---|
-| `#cf-name` | `name` | text | Requerido |
-| `#cf-email` | `email` | email | Requerido |
-| `#cf-social` | `social` | text | Opcional — nick/usuario |
-| `#cf-social-platform` | `socialPlatform` | select | Requerido si `social` tiene valor |
-| `#cf-reason` | `reason` | select | Motivo de contacto |
-| `#cf-message` | `message` | textarea | Requerido |
-| `#cf-file` | `attachment` | file | Opcional · PNG/JPG/GIF/WEBP · máx 5 MB · hasta 5 archivos |
-| *(hidden)* | `source` | hidden | `value="xata"` — identifica el origen al Worker |
+| Normal | Gris muted | > 50 restantes | — |
+| Advertencia | 🟡 Amarillo (`#e8c000`) | ≤ 50 | `c-pulse` |
+| Peligro | 🟠 Naranja (`#ff9500`) | ≤ 20 | `c-pulse` |
+| Límite | 🔴 Rojo (`#ff4466`) + negrita | ≤ 0 | `c-shake` + borde rojo |
 
-### Plataformas disponibles en el selector de red social
+`maxlength` en HTML + validación JS en submit. Reset automático al enviar con éxito.
 
-`discord` · `twitter` · `instagram` · `gamejolt` · `itchio` · `bluesky` · `facebook` · `youtube` · `tiktok` · `otro`
+### Campo de información sensible
 
-### Validación en el cliente
+Visible siempre. Diseño con borde amarillo tenue, ícono 🔐, franja superior degradada.
+Disclaimer de privacidad bilingüe (ES/EN) encima del textarea.
 
-- Si `social` está vacío → `#cf-platform-row` permanece oculto
-- Si `social` tiene texto → `#cf-platform-row` aparece (oninput)
-- Al intentar enviar: si `social` ≠ "" y `socialPlatform` = "" → muestra el selector y detiene el envío
-- Al resetear el formulario (éxito): oculta el selector y limpia su valor
+- **Discord (embed):** campo `🔐 Información sensible` con `||contenido||`
+- **Discord (markdown):** `> 🔐 **INFORMACIÓN SENSIBLE:**` + `|| contenido ||`
+- **Email:** sección con fondo amarillo etiquetada "Información sensible"
+
+### Embeds de Discord (estilo Discohook)
+
+```
+content: 🐱 Nuevo mensaje en Xata Jr. Portfolio
+
+[EMBED]
+ author: 🖼 Xata Jr. Portfolio · Formulario de contacto
+ title:  👤 Nombre del remitente
+ color:  #7b2fff (morado Xata)
+ fields:
+   📧 Correo          [inline]
+   🌐 Red social      [inline]  ← solo si se proporcionó
+   ␣ spacer           [inline]
+   🎯 Motivo          [full]
+   💬 Mensaje         [full]
+   🔐 Info sensible   [full]  ← ||spoiler|| si se proporcionó
+   📎 Adjuntos        [full]  ← solo si los hay
+ footer: Xata Jr. Portfolio · favicon
+ timestamp: <t:UNIX:f>
+```
+
+**Favicon URL:** `https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/favicon.png`
+
+### Configuración del Worker (Cloudflare Secrets)
+
+| Secret | Valor |
+|---|---|
+| `DISCORD_BOT_TOKEN` | Token del bot de Discord |
+| `RESEND_API_KEY_XATA` | API key de Resend para Xata Jr. |
+| `XATA_DISCORD_ID_1` | `920017830605361232` (Addictive Gamer) |
+| `XATA_DISCORD_ID_2` | `536493452549160970` (Colega Xata) |
+| `XATA_DISCORD_ID_3` | vacío o `blank` |
 
 ### Respuesta del Worker
 
@@ -346,227 +286,66 @@ Worker procesa y envía en paralelo:
 }
 ```
 
-### Configuración del Worker (Cloudflare Secrets)
-
-| Secret | Descripción |
-|---|---|
-| `DISCORD_BOT_TOKEN` | Token del bot de Discord |
-| `RESEND_API_KEY_XATA` | API key de Resend para este portfolio |
-| `XATA_DISCORD_ID_1` | ID Discord: Addictive Gamer (920017830605361232) |
-| `XATA_DISCORD_ID_2` | ID Discord: Colega Xata (536493452549160970) |
-| `XATA_DISCORD_ID_3` | (vacío por ahora) |
-
-### Embeds de Discord (estilo Discohook)
-
-- **`content`:** `🐱 Nuevo mensaje en Xata Jr. Portfolio` (texto sobre el embed)
-- **`author`:** `Xata Jr. Portfolio · Formulario de contacto` + favicon Xata como icono izquierdo
-- **`title`:** `👤 [Nombre del remitente]`
-- **`thumbnail`:** Favicon de Xata Jr. en esquina superior derecha del embed
-  - URL: `https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/favicon.png`
-- **`color`:** `0x7b2fff` — morado Xata
-- **Campos inline (fila 1):** Correo · Red social con emoji de plataforma · spacer invisible
-- **Campos block:** Motivo (blockquote) · Mensaje
-- **`footer`:** `Xata Jr. Portfolio · timestamp horario México` + favicon como icono
-- **Adjuntos:** Cada imagen va en un embed separado con `image.url = attachment://SPOILER_nombre` — renderiza inline con efecto blur (spoiler) hasta que el usuario haga click
-- **⚠️ Fix v10.6:** `source='xata'` ahora se incluye explícitamente en el `FormData` del JS
-
 ---
 
 ## 📦 Historial de Versiones
 
-### v10.6 — Worker v2.0: Discohook + fuente correcta + source fix (21 mar 2026)
+### v10.8 — Contador de caracteres (21 mar 2026)
 
-**🐛 Bug fix crítico**
-- `source='xata'` ahora se añade correctamente al `FormData` en el submit handler de JS
-  - Antes: el campo `<input type="hidden" name="source" value="xata">` existía en el HTML pero el JS construía el `FormData` manual y **no lo incluía** — el Worker recibía `source=undefined` y usaba el fallback `xata`, pero era incorrecto por diseño
-  - Ahora: `formData.append('source', 'xata')` explícito en la primera línea del handler
-
-**➕ Añadido / Mejorado (Worker v2.0)**
-- Embeds de Discord rediseñados al estilo **Discohook**:
-  - `author.icon_url` → favicon de Xata Jr. como icono en la línea de autor
-  - `title` → `👤 Nombre del remitente`
-  - `thumbnail` → favicon de Xata Jr. en esquina superior derecha del embed
-    - URL: `https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/favicon.png`
-  - `footer.icon_url` → favicon de Xata Jr. junto al timestamp
-- Adjuntos en Discord: cada imagen en embed separado con `image.url = attachment://SPOILER_nombre` (render inline + spoiler blur)
-- Adjuntos en email: incluidos como `body.attachments` en Resend
+**➕ Añadido**
+- Contador `restantes / máximo` en todos los campos de texto del formulario
+- 4 estados: normal → 🟡 amarillo (≤50) → 🟠 naranja (≤20) → 🔴 rojo+shake (≤0)
+- `maxlength` en HTML + validación JS secundaria antes del fetch
+- Función `updateCharCounter(el, max)` reutilizable
+- Reset automático al enviar exitosamente
+- Límites: nombre 80 · correo 254 · nick 60 · mensaje 2000 · sensible 500
 
 ---
 
-### v10.5 — Nick + Plataforma en formulario & Discord Embeds (2026)
+### v10.7 — Campo de información sensible (21 mar 2026)
 
 **➕ Añadido**
-- 🎯 Campo de **Nick/usuario** en el formulario ahora es **opcional** — cuando se escribe algo, aparece dinámicamente el selector de **red social** (`#cf-platform-row`)
-- 🌐 Selector de plataforma con 10 opciones y emoji: Discord · Twitter/X · Instagram · GameJolt · itch.io · Bluesky · Facebook · YouTube · TikTok · Otro
-- ✅ Validación: si hay nick sin plataforma → muestra el selector y detiene el envío con feedback visual
-- 💬 Discord ahora usa **embeds enriquecidos** en lugar de texto plano: título coloreado, campos estructurados, timestamp ISO, footer, imágenes como embeds spoiler separados
-- `socialPlatform` añadido al `FormData` y enviado al Worker
+- Campo `Información sensible` opcional con diseño amarillo + ícono 🔐
+- Disclaimer de privacidad bilingüe
+- Discord: `||spoiler||` en embed y markdown · Email: sección amarilla
 
-**✏️ Editado**
-- Label del campo cambiado a "Nick / usuario (opcional)" / "Nick / username (optional)"
-- El campo de red social ya no es un texto libre `@usuario en Instagram, Discord...` — ahora está separado en nick + selector
-- Al resetear el formulario (éxito): `#cf-platform-row` vuelve a ocultarse y el select se limpia
-- Versión actualizada a `v10.5` en el pie de página
+---
+
+### v10.6 — Worker v2.0 · source fix · Discohook (21 mar 2026)
+
+**🐛 Bug fix crítico**
+- `source='xata'` ahora se añade explícitamente en `formData.append('source','xata')` — antes se omitía del FormData manual
+
+**➕ Añadido**
+- Embeds Discohook con favicon correcto de Xata Jr.
+- Timestamps nativos `<t:UNIX:f>` + `<t:UNIX:R>`
+- Adjuntos `SPOILER_` · base64 chunked 32 KB
+
+---
+
+### v10.5 — Red social opcional + selector de plataforma (21 mar 2026)
+
+- `#cf-social` con selector `#cf-social-platform` que aparece dinámicamente
+- Validación: si hay nick sin plataforma → error + foco
 
 ---
 
 ### v10.4 — Cloudflare Worker unificado (2026)
 
-**➕ Añadido**
-- Integración con **Cloudflare Worker** unificado (`xata-portfolio-bot.addictivegamer.workers.dev`)
-- Campo `source="xata"` (hidden) para que el Worker distinga el origen
-- Campo de **Red social / Nick** (`#cf-social`) como texto libre
-- **Adjuntos** múltiples (`#cf-file`): PNG, JPG, GIF, WEBP · máx 5 MB por archivo · hasta 5 archivos
-- Validación de archivos en el cliente (tipo + tamaño) con mensajes bilingües de error y lista de archivos seleccionados
-- Feedback visual del botón durante el envío (deshabilitado + texto "Enviando...")
-- Mensajes de éxito ✅ y error ❌ debajo del formulario
-
-**✏️ Editado**
-- Formulario migrado de Web3Forms a Cloudflare Worker
-- Submit handler completamente reescrito
+- Integración con Worker unificado · campo `source="xata"`
+- Adjuntos múltiples · validación de archivos · feedback visual
 
 ---
 
-### v10.0 → v10.3 — Cloudflare Worker (iteraciones) (2026)
+### v10.0 → v10.3 — Worker iteraciones (2026)
 
-- Worker conectado inicialmente solo a Resend (email)
-- DM de Discord añadido en v10.1
-- Campo de adjuntos en v10.2
-- Correcciones de `FormData` y manejo de errores en v10.3
+- v10.1: DM Discord · v10.2: adjuntos · v10.3: fixes FormData
 
 ---
 
-### v9.9 — Fix formulario Web3Forms (2026)
+### v9.x — Web3Forms · Formspree · SEO · Easter Egg · Galería
 
-**🐛 Bug fix**
-- Eliminado `formData.append('access_key', ...)` duplicado — el doble envío causaba el error
-- Cambiado `response.ok` por `data.success` para la verificación del resultado
-
----
-
-### v9.8 — Web3Forms oficial + adjuntar imagen (2026)
-
-**➕ Añadido**
-- Campo de adjuntar imagen: PNG, JPG, GIF, WEBP · máx 5 MB
-- Validación de tamaño en el cliente con mensaje localizado ES/EN
-- Estilos para `input[type="file"]` con `::file-selector-button` en color acento
-
-**✏️ Editado**
-- Submit handler reescrito con patrón oficial Web3Forms
-- Botón restaura HTML original tras el envío (ícono + texto) usando `finally`
-
----
-
-### v9.7 — Migración a Web3Forms (2026)
-
-**✏️ Editado**
-- Formulario migrado de Formspree a Web3Forms (`https://api.web3forms.com/submit`)
-- Campos hidden: `access_key`, `subject`, `from_name`, `botcheck`
-
-**🗑️ Removido**
-- Endpoint de Formspree
-
----
-
-### v9.6 — Fixes eyebrow y easter egg (2026)
-
-**🐛 Bug fix**
-- Hero eyebrow EN tenía `style="display:none"` hardcodeado — eliminado, ahora lo controla `.en`
-- Easter egg: `openEgg()` usa `setProperty('display','none','important')` — fix superposición definitivo con lang-popup
-
----
-
-### v9.5 — FAQ expandido + galería ampliada (2026)
-
-**➕ Añadido**
-- 2 nuevas imágenes en galería: *Dibujo de Xata Jr Humano* y *Dibujo de Kasane Teto* (desde Twitter/X CDN)
-- 11 nuevas preguntas al FAQ (total: **22 preguntas** en 5 categorías)
-- Easter egg: `overflow-y: auto` para scroll en pantallas pequeñas
-
-**🐛 Bug fix**
-- Easter egg ya no muestra el popup de idioma por encima — `z-index` subido y `openEgg()` fuerza el cierre del lang-popup
-
----
-
-### v9.4 — Scroll Reveal + FAQ + Móvil (2026)
-
-**➕ Añadido**
-- Animaciones de scroll con `IntersectionObserver` (`.reveal` + `.visible`)
-- 3 nuevas preguntas al FAQ (total: 11)
-- Versión `v9.4` visible en footer
-
-**✏️ Editado**
-- Grid de redes a 3 columnas en móvil, `font-size: 1rem` en inputs (anti-zoom iOS)
-- Responsive con breakpoints `768px` y `480px`
-
----
-
-### v9.3 — Formulario a correo (Formspree) (2026)
-
-**✏️ Editado**
-- Formulario migrado de Instagram DM a Formspree
-- Submit asíncrono con feedback ✅/❌ sin recargar la página
-- Campo `email` añadido para poder responder directamente
-
-**🗑️ Removido**
-- Lógica `buildDM()` e integración con `ig.me/m/addictiive.gamer`
-
----
-
-### v9.2 — SEO + Discord Embed (2026)
-
-**➕ Añadido**
-- Meta tags Open Graph completos (Discord, WhatsApp, Facebook, Telegram)
-- Meta tags Twitter/X Card
-- `theme-color` → `#c77dff` (borde del embed en Discord)
-- Meta tags SEO: `description`, `author`
-
----
-
-### v9.1 — Fix controles superpuestos (2026)
-
-**🐛 Bug fix**
-- Contenedor `#controls` con `display: flex` y `gap: 8px` — botones de idioma y tema ya no se superponen
-
----
-
-### v9.0 — Interactividad completa (2026)
-
-**➕ Añadido**
-- 🌙 Modo claro/oscuro con toggle ☀️/🌙, persistido en `localStorage`
-- ✨ Canvas de partículas flotantes en el hero
-- 🥚 Easter egg con dos triggers (Konami + 5 clicks en "Jr.")
-- 📬 Formulario con preview en tiempo real → DM a `@addictiive.gamer`
-- 🖱️ Cursor personalizado: punto + anillo con lerp 12%
-- 4 nuevas preguntas al FAQ
-
----
-
-### v8.0 — Rediseño completo (2026)
-
-**➕ Añadido**
-- Nueva tipografía: Syne + DM Sans (reemplaza Inter)
-- Hero full-screen con animaciones escalonadas
-- Logos SVG inline para 9 redes sociales
-- Galería con overlay al hover + visor modal con zoom lens
-- Grid de setup en 3 cards (Arte / Música / PC)
-- Footer rediseñado con nombre tipográfico
-
-**✏️ Editado**
-- FAQ de lista estática a acordeón interactivo
-
-**🗑️ Removido**
-- Fuente Inter · Estilos glassmorphism · `h2` con decoración de línea
-
----
-
-### v7.0 — Base original (2026)
-
-- Sistema bilingüe ES/EN dinámico
-- Visor de imágenes modal con zoom lens
-- 8 redes sociales + 2 perfiles de Instagram
-- FAQ estático
-- Setup grid básico
+Ver historial completo en el repositorio.
 
 ---
 
@@ -574,31 +353,25 @@ Worker procesa y envía en paralelo:
 
 ### GitHub Pages (método actual)
 
-1. Crea un repositorio en GitHub
-2. Asegúrate de que el archivo se llame `index.html`
-3. Ve a **Settings → Pages → Source → Deploy from branch → main / root**
-4. Tu web estará en `https://TU_USUARIO.github.io/NOMBRE_DEL_REPO/`
+1. Repositorio con `index.html` en la raíz
+2. **Settings → Pages → Deploy from branch → main / root**
+3. URL: `https://addictive-gamer.github.io/xata-jr-portfolio/`
 
-Para dominio personalizado: agrega un archivo `CNAME` con tu dominio y configura los DNS.
+### Conectar el Cloudflare Worker
+
+1. [workers.cloudflare.com](https://workers.cloudflare.com) → nuevo Worker
+2. Pegar `worker-unified.js` (compartido con RabGamesStudio)
+3. **Settings → Variables and Secrets** → todos los secrets de la tabla
+4. `WORKER_URL` en `index.html` ya apunta a `https://xata-portfolio-bot.addictivegamer.workers.dev`
 
 ### Estructura recomendada del repo
 
 ```
 /
-├── index.html          ← el portfolio completo (un solo archivo)
-├── favicon.png         ← ícono del tab y embed de redes
-└── README.md           ← este archivo
+├── index.html   ← el portfolio completo (un solo archivo)
+├── favicon.png  ← ícono del tab, embed de redes y cabecera Discord
+└── README.md    ← este archivo
 ```
-
-### Conectar el Cloudflare Worker
-
-1. Crea una cuenta en [workers.cloudflare.com](https://workers.cloudflare.com)
-2. Crea un nuevo Worker y pega el código de `worker-unified.js`
-3. Ve a **Settings → Variables and Secrets** y configura todos los secrets (ver tabla arriba)
-4. En `index.html`, cambia `WORKER_URL` por la URL de tu Worker:
-   ```js
-   const WORKER_URL = 'https://TU-WORKER.TU-CUENTA.workers.dev';
-   ```
 
 ---
 
@@ -609,11 +382,11 @@ Para dominio personalizado: agrega un archivo `CNAME` con tu dominio y configura
 | 💡 Idea original del portafolio | **Nepo Edits** |
 | 🎨 Dirección de arte, contenido e identidad | **José Luis Aquino Rivera** · [@Addictiive](https://github.com/addictive-gamer) |
 | 🤖 Desarrollo v7 — estructura y lógica base | **Gemini AI** (Google) |
-| ✨ Rediseño v8–v10.5 — identidad visual, interactividad, worker, embeds | **Claude** (Anthropic) |
+| ✨ Rediseño v8–v10.8 — identidad visual, interactividad, worker, embeds | **Claude** (Anthropic) |
 | 🧪 Apoyo & Beta Testing | **Alex GD** |
 | 🌐 Hosting | **GitHub Pages** |
 | 📧 Emails | **Resend** |
-| ⚙️ Backend | **Cloudflare Workers** |
+| ⚙️ Backend | **Cloudflare Workers v3.0** |
 | 🔤 Tipografías | **Google Fonts** (Syne · DM Sans) |
 | 🎨 Iconos UI | **Font Awesome 6.5.1** |
 
