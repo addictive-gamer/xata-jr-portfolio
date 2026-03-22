@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.5-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.6-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -12,7 +12,7 @@ Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **
 ilustrador, adaptador musical y traductor.
 Construido en HTML/CSS/JS vanilla puro, sin frameworks ni bundlers, con diseño editorial refinado y experiencia interactiva completa.
 
-**Versión actual:** `v10.5` · **Última actualización:** 21 de marzo de 2026
+**Versión actual:** `v10.6` · **Última actualización:** 21 de marzo de 2026
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)
 **Contacto:** [pepin.aquino.rivera@gmail.com](mailto:pepin.aquino.rivera@gmail.com)
 
@@ -301,10 +301,15 @@ function animateCursor() {
 Usuario llena formulario
        ↓
 FormData enviado a Cloudflare Worker (POST)
+  con campo source="xata" (explícito en JS)
+       ↓
+Worker identifica fuente → config Xata Jr.
        ↓
 Worker procesa y envía en paralelo:
   ├── 📧 Email HTML estilizado vía Resend → 3 destinatarios
-  └── 💬 Discord DM con Embed enriquecido → IDs configurados
+  │     (adjuntos incluidos como attachments en Resend)
+  └── 💬 Discord DM con Embed Discohook → IDs configurados
+        (adjuntos como embeds separados con imagen inline + spoiler)
 ```
 
 ### Campos del formulario
@@ -351,19 +356,42 @@ Worker procesa y envía en paralelo:
 | `XATA_DISCORD_ID_2` | ID Discord: Colega Xata (536493452549160970) |
 | `XATA_DISCORD_ID_3` | (vacío por ahora) |
 
-### Embeds de Discord
+### Embeds de Discord (estilo Discohook)
 
-El Worker envía embeds estilo Discohook con:
-- **Color:** `#7b2fff` (morado Xata)
-- **Título:** `🐱 Nuevo mensaje — Xata Jr. Portfolio`
-- **Campos inline:** Nombre · Correo · Red social (con emoji de la plataforma)
-- **Campos block:** Motivo · Mensaje
-- **Footer:** Timestamp en hora México (America/Mexico_City)
-- Las imágenes adjuntas se envían como mensajes separados con embed spoiler (`||🖼️ filename||`)
+- **`content`:** `🐱 Nuevo mensaje en Xata Jr. Portfolio` (texto sobre el embed)
+- **`author`:** `Xata Jr. Portfolio · Formulario de contacto` + favicon Xata como icono izquierdo
+- **`title`:** `👤 [Nombre del remitente]`
+- **`thumbnail`:** Favicon de Xata Jr. en esquina superior derecha del embed
+  - URL: `https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/favicon.png`
+- **`color`:** `0x7b2fff` — morado Xata
+- **Campos inline (fila 1):** Correo · Red social con emoji de plataforma · spacer invisible
+- **Campos block:** Motivo (blockquote) · Mensaje
+- **`footer`:** `Xata Jr. Portfolio · timestamp horario México` + favicon como icono
+- **Adjuntos:** Cada imagen va en un embed separado con `image.url = attachment://SPOILER_nombre` — renderiza inline con efecto blur (spoiler) hasta que el usuario haga click
+- **⚠️ Fix v10.6:** `source='xata'` ahora se incluye explícitamente en el `FormData` del JS
 
 ---
 
 ## 📦 Historial de Versiones
+
+### v10.6 — Worker v2.0: Discohook + fuente correcta + source fix (21 mar 2026)
+
+**🐛 Bug fix crítico**
+- `source='xata'` ahora se añade correctamente al `FormData` en el submit handler de JS
+  - Antes: el campo `<input type="hidden" name="source" value="xata">` existía en el HTML pero el JS construía el `FormData` manual y **no lo incluía** — el Worker recibía `source=undefined` y usaba el fallback `xata`, pero era incorrecto por diseño
+  - Ahora: `formData.append('source', 'xata')` explícito en la primera línea del handler
+
+**➕ Añadido / Mejorado (Worker v2.0)**
+- Embeds de Discord rediseñados al estilo **Discohook**:
+  - `author.icon_url` → favicon de Xata Jr. como icono en la línea de autor
+  - `title` → `👤 Nombre del remitente`
+  - `thumbnail` → favicon de Xata Jr. en esquina superior derecha del embed
+    - URL: `https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/favicon.png`
+  - `footer.icon_url` → favicon de Xata Jr. junto al timestamp
+- Adjuntos en Discord: cada imagen en embed separado con `image.url = attachment://SPOILER_nombre` (render inline + spoiler blur)
+- Adjuntos en email: incluidos como `body.attachments` en Resend
+
+---
 
 ### v10.5 — Nick + Plataforma en formulario & Discord Embeds (2026)
 
