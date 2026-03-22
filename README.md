@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.2-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.3-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -214,6 +214,22 @@ zi.style.top   = -(y * f - 90) + 'px';
 ---
 
 ## 📜 Changelog completo
+
+### v10.3 — Discord spoilers + correos confirmados (2026)
+
+**➕ Añadido**
+- 🖼️ Imágenes adjuntas enviadas al Discord DM como **spoiler** — prefijo `SPOILER_` en el nombre del archivo hace que Discord las oculte hasta que el usuario haga clic
+- Cada imagen se envía en un mensaje separado con `||🖼️ nombre.png||` como contenido
+- El mensaje principal avisa cuántas imágenes vienen antes de los spoilers
+
+**✅ Confirmado**
+- Emails enviados a los 3 correos simultáneamente:
+  - `pepin.aquino.rivera@gmail.com`
+  - `nekoaddictive@gmail.com`
+  - `theaddictivegamer9@gmail.com`
+- `reply_to` apunta al correo del remitente para responder directamente
+
+---
 
 ### v10.2 — Worker URL actualizada + Secrets configurados (2026)
 
