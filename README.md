@@ -211,7 +211,7 @@ Worker envía en paralelo:
 ### Campo de información sensible
 Borde amarillo tenue, ícono 🔐, disclaimer bilingüe. Discord: `||spoiler||`. Email: sección amarilla.
 
-### Mensajes Discord (Worker v4.0)
+### Mensajes Discord (Worker v5.0)
 
 ```
 # 🐱 NUEVO MENSAJE — XATA JR. PORTFOLIO
@@ -251,7 +251,15 @@ Borde amarillo tenue, ícono 🔐, disclaimer bilingüe. Discord: `||spoiler||`.
 
 ## 📦 Historial de Versiones
 
-### v10.10 — Optimización móvil (21 mar 2026)
+### v10.10 — Optimización móvil + compatibilidad Worker v5.0 (21 mar 2026)
+
+**✅ Compatibilidad verificada con Worker v5.0:**
+- `source="xata"` se añade explícitamente con `formData.append` ✓
+- `socialPlatform` enviado correctamente ✓
+- `sensitiveInfo` como spoiler en Discord ✓
+- Adjuntos con MIME type correcto ✓
+
+**➕ Añadido (móvil)**
 
 **➕ Añadido**
 - `.char-counter` a `0.72rem` en ≤480px
