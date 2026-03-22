@@ -1282,6 +1282,9 @@
             #lang-toggle { padding: 7px 12px; font-size: 0.68rem; }
 
             footer { padding: 48px 20px; }
+
+            /* field-counter-wrap — asegurar visibilidad del contador */
+            .field-counter-wrap { overflow: visible; }
         }
 
         @media (max-width: 480px) {
@@ -1300,6 +1303,14 @@
             .faq-body p { padding: 0 20px 18px; }
 
             .popup-content { padding: 36px 28px; }
+
+            /* Contador de caracteres — más legible en móvil */
+            .char-counter { font-size: 0.72rem !important; }
+
+            /* Campo sensible */
+            .sensitive-field { padding: 12px; }
+            .sensitive-disclaimer { font-size: 0.72rem; }
+            .sensitive-textarea { min-height: 80px; }
         }
     
         /* ── SENSITIVE INFO FIELD ── */
@@ -2044,8 +2055,8 @@
                         <label class="es">Mensaje</label>
                         <label class="en">Message</label>
                         <div class="field-counter-wrap"><textarea name="message" id="cf-message" rows="4"
-                            placeholder="Hola Xata Jr., me gustaría..." maxlength="2000"
-                            oninput="updatePreview();updateCharCounter(this,2000)" required></textarea><span class="char-counter" id="cf-message_counter">2000</span></div>
+                            placeholder="Hola Xata Jr., me gustaría..." maxlength="1000"
+                            oninput="updatePreview();updateCharCounter(this,1000)" required></textarea><span class="char-counter" id="cf-message_counter">1000</span></div>
                     </div>
 
                     <div class="contact-field">
@@ -2130,7 +2141,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v10.8 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v10.10 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2446,7 +2457,7 @@
             btn.style.opacity = '0.7';
 
             // Validar límites de caracteres
-            const charLimits = { 'cf-name':80, 'cf-email':254, 'cf-social':60, 'cf-message':2000, 'cf-sensitive':500 };
+            const charLimits = { 'cf-name':80, 'cf-email':254, 'cf-social':60, 'cf-message':1000, 'cf-sensitive':500 };
             for (const [id, max] of Object.entries(charLimits)) {
                 const el = document.getElementById(id);
                 if (el && el.value.length > max) {
@@ -2513,7 +2524,7 @@
                     document.getElementById('cf-social-platform').value      = '';
                     document.getElementById('cf-sensitive').value               = '';
                     // Reset all counters
-                    const resetMap = {'cf-name':80,'cf-email':254,'cf-social':60,'cf-message':2000,'cf-sensitive':500};
+                    const resetMap = {'cf-name':80,'cf-email':254,'cf-social':60,'cf-message':1000,'cf-sensitive':500};
                     for (const [id, max] of Object.entries(resetMap)) {
                         const el = document.getElementById(id);
                         const sp = document.getElementById(id+'_counter');
