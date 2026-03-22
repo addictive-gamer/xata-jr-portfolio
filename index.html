@@ -1301,7 +1301,92 @@
 
             .popup-content { padding: 36px 28px; }
         }
-    </style>
+    
+        /* ── SENSITIVE INFO FIELD ── */
+        .sensitive-field {
+            background: rgba(255, 220, 0, 0.03);
+            border: 1px solid rgba(255, 220, 0, 0.22);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sensitive-field::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffe600, transparent);
+            opacity: .5;
+        }
+        .sensitive-label {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.72rem;
+            color: #ffe600;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sensitive-disclaimer {
+            font-size: 0.75rem;
+            color: var(--muted2);
+            line-height: 1.65;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 220, 0, 0.03);
+            border-left: 2px solid rgba(255, 220, 0, 0.28);
+            border-radius: 0 6px 6px 0;
+        }
+        .sensitive-disclaimer strong { color: #ffe600; }
+        .sensitive-textarea {
+            border-color: rgba(255, 220, 0, 0.18) !important;
+            background: rgba(255, 220, 0, 0.015) !important;
+        }
+        .sensitive-textarea:focus {
+            border-color: rgba(255, 220, 0, 0.45) !important;
+            box-shadow: 0 0 0 3px rgba(255, 220, 0, 0.06) !important;
+        }
+        
+        /* ── CHARACTER COUNTER ── */
+        .field-counter-wrap { position: relative; }
+        .char-counter {
+            display: block;
+            text-align: right;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-top: 4px;
+            letter-spacing: 0.04em;
+            transition: color .2s, font-size .15s, transform .15s;
+            user-select: none;
+        }
+        .char-counter.warn   { color: #e8c000; font-size: 0.72rem; }
+        .char-counter.danger { color: #ff9500; font-size: 0.72rem; }
+        .char-counter.over   { color: #ff4466; font-size: 0.72rem; font-weight: 800; }
+        .char-counter.warn   { animation: c-pulse .4s ease; }
+        .char-counter.danger { animation: c-pulse .3s ease; }
+        .char-counter.over   { animation: c-shake .25s ease; }
+        @keyframes c-pulse {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        @keyframes c-shake {
+            0%,100% { transform: translateX(0); }
+            25%      { transform: translateX(-3px); }
+            75%      { transform: translateX(3px); }
+        }
+        .contact-field input.field-over,
+        .contact-field textarea.field-over {
+            border-color: #ff4466 !important;
+            box-shadow: 0 0 0 3px rgba(255,68,102,0.1) !important;
+        }
+        </style>
 </head>
 <body data-lang="es">
 
@@ -1902,21 +1987,21 @@
                     <div class="contact-field">
                         <label class="es">Tu nombre</label>
                         <label class="en">Your name</label>
-                        <input type="text" name="name" id="cf-name" placeholder="Xata Jr." required oninput="updatePreview()">
+                        <div class="field-counter-wrap"><input type="text" name="name" id="cf-name" placeholder="Xata Jr." required maxlength="80" oninput="updatePreview();updateCharCounter(this,80)"><span class="char-counter" id="cf-name_counter">80</span></div>
                     </div>
 
                     <div class="contact-field">
                         <label class="es">Tu correo (para responderte)</label>
                         <label class="en">Your email (so I can reply)</label>
-                        <input type="email" name="email" id="cf-email" placeholder="tu@correo.com" required>
+                        <div class="field-counter-wrap"><input type="email" name="email" id="cf-email" placeholder="tu@correo.com" required maxlength="254" oninput="updateCharCounter(this,254)"><span class="char-counter" id="cf-email_counter">254</span></div>
                     </div>
 
                     <div class="contact-field">
                         <label class="es">Nick / usuario (opcional)</label>
                         <label class="en">Nick / username (optional)</label>
-                        <input type="text" name="social" id="cf-social"
+                        <div class="field-counter-wrap"><input type="text" name="social" id="cf-social"
                             placeholder="@tuusuario"
-                            oninput="updateSocialPlatformVisibility(); updatePreview()">
+                            maxlength="60" oninput="updateCharCounter(this,60);updateSocialPlatformVisibility(); updatePreview()"><span class="char-counter" id="cf-social_counter">60</span></div>
                     </div>
 
                     <div class="contact-field" id="cf-platform-row" style="display:none; margin-top:-8px;">
@@ -1958,9 +2043,9 @@
                     <div class="contact-field">
                         <label class="es">Mensaje</label>
                         <label class="en">Message</label>
-                        <textarea name="message" id="cf-message" rows="4"
-                            placeholder="Hola Xata Jr., me gustaría..."
-                            oninput="updatePreview()" required></textarea>
+                        <div class="field-counter-wrap"><textarea name="message" id="cf-message" rows="4"
+                            placeholder="Hola Xata Jr., me gustaría..." maxlength="2000"
+                            oninput="updatePreview();updateCharCounter(this,2000)" required></textarea><span class="char-counter" id="cf-message_counter">2000</span></div>
                     </div>
 
                     <div class="contact-field">
@@ -1976,6 +2061,22 @@
                         </div>
                         <div id="cf-file-error" style="display:none; margin-top:8px; padding:10px 14px; background:rgba(255,80,80,0.08); border:1px solid #ff5050; border-radius:10px; font-size:0.8rem; color:#ff5050; line-height:1.6;"></div>
                         <div id="cf-file-list" style="display:none; margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;"></div>
+                    </div>
+
+
+                    <div class="contact-field sensitive-field" id="cf-sensitive-row">
+                        <div class="sensitive-label">
+                            <svg width="13" height="13" viewBox="0 0 20 20" fill="#ffe600"><path d="M10 2a5 5 0 0 0-5 5v1H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1V7a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v1H7V7a3 3 0 0 1 3-3zm0 8a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+                            <span class="es">Información sensible (opcional)</span>
+                            <span class="en">Sensitive information (optional)</span>
+                        </div>
+                        <div class="sensitive-disclaimer">
+                            <span class="es"><strong>⚠ AVISO DE PRIVACIDAD:</strong> Para información confidencial (claves, datos personales, detalles privados). Se enviará como <strong>spoiler oculto</strong> y será manejado con discreción.</span>
+                            <span class="en"><strong>⚠ PRIVACY NOTICE:</strong> For confidential info (passwords, personal data, private details). Will be sent as a <strong>hidden spoiler</strong> and handled with discretion.</span>
+                        </div>
+                        <div class="field-counter-wrap"><textarea name="sensitiveInfo" id="cf-sensitive" rows="3"
+                            class="sensitive-textarea" maxlength="500"
+                            placeholder="Información que prefieres mantener privada... / Info you prefer to keep private..." oninput="updateCharCounter(this,500)"></textarea><span class="char-counter" id="cf-sensitive_counter">500</span></div>
                     </div>
 
                     <div class="contact-preview" id="cf-preview">
@@ -2029,7 +2130,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v10.6 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v10.8 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2306,6 +2407,27 @@
         }
 
         // ── CONTACT FORM → Cloudflare Worker ──
+        // ── CHARACTER COUNTER ──
+        function updateCharCounter(el, max) {
+            const len  = el.value.length;
+            const left = max - len;
+            const span = document.getElementById(el.id + '_counter');
+            if (!span) return;
+
+            span.textContent = left + ' / ' + max;
+            span.classList.remove('warn','danger','over');
+            el.classList.remove('field-over');
+
+            if (left <= 0) {
+                span.classList.add('over');
+                el.classList.add('field-over');
+            } else if (left <= 20) {
+                span.classList.add('danger');
+            } else if (left <= 50) {
+                span.classList.add('warn');
+            }
+        }
+
         const WORKER_URL = 'https://xata-portfolio-bot.addictivegamer.workers.dev';
 
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
@@ -2322,6 +2444,25 @@
             btn.innerHTML = `<span>${lang === 'es' ? 'Enviando...' : 'Sending...'}</span>`;
             btn.disabled = true;
             btn.style.opacity = '0.7';
+
+            // Validar límites de caracteres
+            const charLimits = { 'cf-name':80, 'cf-email':254, 'cf-social':60, 'cf-message':2000, 'cf-sensitive':500 };
+            for (const [id, max] of Object.entries(charLimits)) {
+                const el = document.getElementById(id);
+                if (el && el.value.length > max) {
+                    document.getElementById('cf-error').style.display   = 'block';
+                    document.getElementById('cf-success').style.display = 'none';
+                    document.getElementById('cf-error').innerHTML =
+                        lang === 'es'
+                        ? `<span>❌ El campo excede el límite de ${max} caracteres. Por favor acórtalo.</span>`
+                        : `<span>❌ A field exceeds the ${max} character limit. Please shorten it.</span>`;
+                    btn.innerHTML  = originalHTML;
+                    btn.disabled   = false;
+                    btn.style.opacity = '1';
+                    el.focus();
+                    return;
+                }
+            }
 
             // Validate social platform before sending
             const socialVal   = document.getElementById('cf-social').value.trim();
@@ -2345,6 +2486,10 @@
             formData.append('reason',         document.getElementById('cf-reason').value);
             formData.append('message',        document.getElementById('cf-message').value.trim());
 
+            // Attach sensitive info if provided
+            const sensitiveVal = document.getElementById('cf-sensitive').value.trim();
+            if (sensitiveVal) formData.append('sensitiveInfo', sensitiveVal);
+
             // Attach files
             const files = fileInput.files;
             for (let i = 0; i < files.length; i++) {
@@ -2366,6 +2511,15 @@
                     document.getElementById('cf-file-error').style.display   = 'none';
                     document.getElementById('cf-platform-row').style.display = 'none';
                     document.getElementById('cf-social-platform').value      = '';
+                    document.getElementById('cf-sensitive').value               = '';
+                    // Reset all counters
+                    const resetMap = {'cf-name':80,'cf-email':254,'cf-social':60,'cf-message':2000,'cf-sensitive':500};
+                    for (const [id, max] of Object.entries(resetMap)) {
+                        const el = document.getElementById(id);
+                        const sp = document.getElementById(id+'_counter');
+                        if (el) el.classList.remove('field-over');
+                        if (sp) { sp.textContent = max; sp.className = 'char-counter'; }
+                    }
                     document.getElementById('cf-preview-text').innerHTML =
                         lang === 'es'
                         ? '<span class="es">El mensaje aparecerá aquí mientras escribes...</span>'
