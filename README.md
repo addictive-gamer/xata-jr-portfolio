@@ -6,7 +6,7 @@
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
-![worker](https://img.shields.io/badge/Backend-Cloudflare_Worker_v4.0-orange?style=for-the-badge&logo=cloudflare)
+![worker](https://img.shields.io/badge/Backend-Cloudflare_Worker_v5.0-orange?style=for-the-badge&logo=cloudflare)
 ![mobile](https://img.shields.io/badge/Mobile-Optimizado-39ff14?style=for-the-badge)
 
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
@@ -245,6 +245,8 @@ Borde amarillo tenue, ícono 🔐, disclaimer bilingüe. Discord: `||spoiler||`.
 | `XATA_DISCORD_ID_2` | `536493452549160970` (Colega Xata) |
 | `XATA_DISCORD_ID_3` | vacío o `blank` |
 
+> **Compatibilidad:** Xata Jr. y RabGamesStudio comparten el mismo Worker (`worker-unified.js`). Los campos enviados por ambas páginas son idénticos — el Worker los distingue por `source="xata"` / `source="rab"`. Verificado: ✅ 100% compatible.
+
 ---
 
 ## 📦 Historial de Versiones
@@ -322,7 +324,7 @@ Ver historial completo en el repositorio.
 | 🧪 Beta Testing | **Alex GD** |
 | 🌐 Hosting | **GitHub Pages** |
 | 📧 Emails | **Resend** |
-| ⚙️ Backend | **Cloudflare Workers v4.0** |
+| ⚙️ Backend | **Cloudflare Workers v5.0** |
 | 🔤 Tipografías | **Google Fonts** (Syne · DM Sans) |
 | 🎨 Iconos | **Font Awesome 6.5.1** |
 
