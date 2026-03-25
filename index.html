@@ -1397,7 +1397,44 @@
             border-color: #ff4466 !important;
             box-shadow: 0 0 0 3px rgba(255,68,102,0.1) !important;
         }
-        </style>
+        
+        /* ── IMAGE PREVIEW (adjuntos) ── */
+        #cf-img-preview {
+            display: none;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .xata-prev-wrap {
+            position: relative;
+            width: 76px; height: 76px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--surface2);
+            transition: border-color 0.2s;
+        }
+        .xata-prev-wrap:hover { border-color: var(--accent); }
+        .xata-prev-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+        .xata-prev-rm {
+            position: absolute; top: 3px; right: 3px;
+            width: 18px; height: 18px;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(199,125,255,0.4);
+            border-radius: 5px;
+            color: var(--accent); font-size: 9px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all .15s; font-family: monospace;
+        }
+        .xata-prev-rm:hover { background: var(--accent); color: var(--bg); }
+        .xata-prev-count {
+            font-size: 0.7rem; color: var(--muted);
+            font-family: 'Syne', sans-serif;
+            margin-top: 4px; letter-spacing: 0.05em;
+            width: 100%;
+        }
+</style>
 </head>
 <body data-lang="es">
 
@@ -1998,13 +2035,13 @@
                     <div class="contact-field">
                         <label class="es">Tu nombre</label>
                         <label class="en">Your name</label>
-                        <div class="field-counter-wrap"><input type="text" name="name" id="cf-name" placeholder="Xata Jr." required maxlength="80" oninput="updatePreview();updateCharCounter(this,80)"><span class="char-counter" id="cf-name_counter">80</span></div>
+                        <div class="field-counter-wrap"><input type="text" name="name" id="cf-name" placeholder="Xata Jr." required maxlength="80" oninput="updatePreview();updateCharCounter(this,80)"><span class="char-counter" id="cf-name_counter">80 / 80</span></div>
                     </div>
 
                     <div class="contact-field">
                         <label class="es">Tu correo (para responderte)</label>
                         <label class="en">Your email (so I can reply)</label>
-                        <div class="field-counter-wrap"><input type="email" name="email" id="cf-email" placeholder="tu@correo.com" required maxlength="254" oninput="updateCharCounter(this,254)"><span class="char-counter" id="cf-email_counter">254</span></div>
+                        <div class="field-counter-wrap"><input type="email" name="email" id="cf-email" placeholder="tu@correo.com" required maxlength="254" oninput="updateCharCounter(this,254)"><span class="char-counter" id="cf-email_counter">254 / 254</span></div>
                     </div>
 
                     <div class="contact-field">
@@ -2012,7 +2049,7 @@
                         <label class="en">Nick / username (optional)</label>
                         <div class="field-counter-wrap"><input type="text" name="social" id="cf-social"
                             placeholder="@tuusuario"
-                            maxlength="60" oninput="updateCharCounter(this,60);updateSocialPlatformVisibility(); updatePreview()"><span class="char-counter" id="cf-social_counter">60</span></div>
+                            maxlength="60" oninput="updateCharCounter(this,60);updateSocialPlatformVisibility(); updatePreview()"><span class="char-counter" id="cf-social_counter">60 / 60</span></div>
                     </div>
 
                     <div class="contact-field" id="cf-platform-row" style="display:none; margin-top:-8px;">
@@ -2056,7 +2093,7 @@
                         <label class="en">Message</label>
                         <div class="field-counter-wrap"><textarea name="message" id="cf-message" rows="4"
                             placeholder="Hola Xata Jr., me gustaría..." maxlength="1000"
-                            oninput="updatePreview();updateCharCounter(this,1000)" required></textarea><span class="char-counter" id="cf-message_counter">1000</span></div>
+                            oninput="updatePreview();updateCharCounter(this,1000)" required></textarea><span class="char-counter" id="cf-message_counter">1000 / 1000</span></div>
                     </div>
 
                     <div class="contact-field">
@@ -2065,7 +2102,8 @@
                         <input type="file" name="attachment" id="cf-file"
                             accept="image/png, image/jpeg, image/gif, image/webp"
                             multiple
-                            onchange="validateFiles(this)">
+                            onchange="validateFiles(this); updateXataPreview(this)">
+                        <div id="cf-img-preview"></div>
                         <div id="cf-file-info" style="margin-top:8px; font-size:0.75rem; color:var(--muted);">
                             <span class="es">PNG, JPG, GIF o WEBP · máx. 5 MB por archivo · hasta 5 archivos</span>
                             <span class="en">PNG, JPG, GIF or WEBP · max 5 MB per file · up to 5 files</span>
@@ -2087,7 +2125,7 @@
                         </div>
                         <div class="field-counter-wrap"><textarea name="sensitiveInfo" id="cf-sensitive" rows="3"
                             class="sensitive-textarea" maxlength="500"
-                            placeholder="Información que prefieres mantener privada... / Info you prefer to keep private..." oninput="updateCharCounter(this,500)"></textarea><span class="char-counter" id="cf-sensitive_counter">500</span></div>
+                            placeholder="Información que prefieres mantener privada... / Info you prefer to keep private..." oninput="updateCharCounter(this,500)"></textarea><span class="char-counter" id="cf-sensitive_counter">500 / 500</span></div>
                     </div>
 
                     <div class="contact-preview" id="cf-preview">
@@ -2193,7 +2231,7 @@
                 const d = document.createElement('div');
                 d.className = 'gallery-item';
                 d.innerHTML = `
-                    <img src="${i.u}" loading="lazy" alt="${i.d}">
+                    <img src="${i.u}" loading="lazy" alt="${i.d}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23111%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2214%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';this.style.opacity='0.4'">
                     <div class="gallery-item-overlay"><span>${i.d}</span></div>
                 `;
                 d.onclick = () => openV(i.u, i.d);
@@ -2519,6 +2557,7 @@
                     document.getElementById('cf-error').style.display   = 'none';
                     this.reset();
                     document.getElementById('cf-file-list').style.display    = 'none';
+                    var xprev = document.getElementById('cf-img-preview'); if(xprev){xprev.innerHTML='';xprev.style.display='none';}
                     document.getElementById('cf-file-error').style.display   = 'none';
                     document.getElementById('cf-platform-row').style.display = 'none';
                     document.getElementById('cf-social-platform').value      = '';
@@ -2529,7 +2568,7 @@
                         const el = document.getElementById(id);
                         const sp = document.getElementById(id+'_counter');
                         if (el) el.classList.remove('field-over');
-                        if (sp) { sp.textContent = max; sp.className = 'char-counter'; }
+                        if (sp) { sp.textContent = max + ' / ' + max; sp.className = 'char-counter'; }
                     }
                     document.getElementById('cf-preview-text').innerHTML =
                         lang === 'es'
@@ -2690,6 +2729,40 @@
                 toggle.classList.add('egg-fact-open');
             }
         }
-    </script>
+    
+        // ── IMAGE PREVIEW (xata) ──
+        function updateXataPreview(input) {
+            const prev = document.getElementById('cf-img-preview');
+            if (!prev) return;
+            prev.innerHTML = '';
+            const files = Array.from(input.files);
+            if (!files.length) { prev.style.display = 'none'; return; }
+            prev.style.display = 'flex';
+            files.forEach(function(file) {
+                if (!file.type.startsWith('image/')) return;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'xata-prev-wrap';
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = file.name;
+                    img.title = file.name + ' (' + (file.size/1024).toFixed(0) + ' KB)';
+                    const rm = document.createElement('div');
+                    rm.className = 'xata-prev-rm';
+                    rm.textContent = '✕';
+                    rm.title = 'Quitar';
+                    rm.onclick = function() { wrap.style.opacity='0.3'; wrap.style.pointerEvents='none'; };
+                    wrap.appendChild(img); wrap.appendChild(rm);
+                    prev.appendChild(wrap);
+                };
+                reader.readAsDataURL(file);
+            });
+            var cnt = document.createElement('div');
+            cnt.className = 'xata-prev-count';
+            cnt.textContent = files.length + ' archivo' + (files.length !== 1 ? 's' : '') + ' adjunto' + (files.length !== 1 ? 's' : '');
+            prev.appendChild(cnt);
+        }
+        </script>
 </body>
 </html>
