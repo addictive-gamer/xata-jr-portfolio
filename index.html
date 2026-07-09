@@ -1007,13 +1007,143 @@
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
         }
 
-        #full-video {
+        /* CUSTOM VIDEO PLAYER */
+        .video-wrap {
+            position: relative;
             max-width: 100%;
             max-height: 100%;
-            border-radius: 12px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             display: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             background: #000;
+            line-height: 0;
+        }
+
+        .video-wrap video {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .video-center-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: rgba(7,7,9,0.55);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .video-center-btn.show-pulse {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .video-center-btn i { margin-left: 4px; }
+        .video-center-btn:hover { background: var(--accent); border-color: var(--accent); transform: translate(-50%, -50%) scale(1.08); }
+
+        .video-controls {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 28px 14px 12px;
+            background: linear-gradient(to top, rgba(7,7,9,0.92) 0%, rgba(7,7,9,0.55) 55%, transparent 100%);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.25s, transform 0.25s;
+            z-index: 4;
+        }
+
+        .video-wrap.controls-visible .video-controls { opacity: 1; transform: translateY(0); }
+        .video-wrap.controls-visible .video-center-btn.is-paused { opacity: 1; pointer-events: auto; }
+
+        .video-progress {
+            position: relative;
+            height: 4px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            margin-bottom: 12px;
+            touch-action: none;
+        }
+
+        .video-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            border-radius: 100px;
+            pointer-events: none;
+        }
+
+        .video-progress-handle {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent-glow);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: transform 0.15s;
+        }
+
+        .video-progress:hover .video-progress-handle { transform: translate(-50%, -50%) scale(1.3); }
+
+        .video-controls-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .video-btn:hover { color: var(--accent); background: rgba(255,255,255,0.06); }
+
+        .video-time {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.5px;
+            color: var(--muted2);
+            white-space: nowrap;
+            margin-left: 2px;
         }
 
         .img-protector {
@@ -1343,6 +1473,14 @@
             .gallery-play-btn { width: 42px; height: 42px; }
             .gallery-play-btn i { font-size: 0.9rem; }
             .gallery-item-badge { font-size: 0.56rem; padding: 3px 7px; top: 8px; right: 8px; }
+
+            .video-wrap video { max-height: 55vh; }
+            .video-center-btn { width: 56px; height: 56px; font-size: 1.1rem; }
+            .video-controls { padding: 22px 10px 10px; }
+            .video-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .video-time { font-size: 0.64rem; }
+            .video-progress { height: 5px; margin-bottom: 10px; }
+            .video-progress-handle { width: 14px; height: 14px; }
 
             .setup-grid { grid-template-columns: 1fr; }
 
@@ -2259,7 +2397,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v10.16 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v10.17 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2271,7 +2409,23 @@
             <div class="img-protector"></div>
             <div id="zoom-lens"><img id="zoomed-image" src=""></div>
             <img id="full-image" src="">
-            <video id="full-video" controls playsinline></video>
+            <div class="video-wrap" id="video-wrap">
+                <video id="full-video" playsinline webkit-playsinline disablePictureInPicture></video>
+                <div class="video-center-btn" id="video-center-btn"><i class="fa-solid fa-play"></i></div>
+                <div class="video-controls" id="video-controls">
+                    <div class="video-progress" id="video-progress">
+                        <div class="video-progress-fill" id="video-progress-fill"></div>
+                        <div class="video-progress-handle" id="video-progress-handle"></div>
+                    </div>
+                    <div class="video-controls-row">
+                        <button class="video-btn" id="video-playpause" type="button"><i class="fa-solid fa-pause"></i></button>
+                        <button class="video-btn" id="video-mute" type="button"><i class="fa-solid fa-volume-high"></i></button>
+                        <span class="video-time" id="video-time">0:00 / 0:00</span>
+                        <div style="flex:1"></div>
+                        <button class="video-btn" id="video-fullscreen" type="button"><i class="fa-solid fa-expand"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="viewer-desc"></div>
     </div>
@@ -2368,6 +2522,7 @@
         // Image / video viewer
         const viewer = document.getElementById('image-viewer');
         const fi = document.getElementById('full-image');
+        const vw = document.getElementById('video-wrap');
         const fv = document.getElementById('full-video');
         const zi = document.getElementById('zoomed-image');
         const ln = document.getElementById('zoom-lens');
@@ -2380,19 +2535,21 @@
 
             fi.style.display = isVideo ? 'none' : 'block';
             pr.style.display = isVideo ? 'none' : 'block';
-            fv.style.display = isVideo ? 'block' : 'none';
+            vw.style.display = isVideo ? 'inline-block' : 'none';
 
             if (isVideo) {
                 fv.src = u;
                 fv.currentTime = 0;
-                fv.play().catch(() => {});
+                vw.classList.remove('controls-visible');
+                fv.play().then(() => showVideoControls(true)).catch(() => { vpp.innerHTML = '<i class="fa-solid fa-play"></i>'; vcb.classList.add('is-paused'); showVideoControls(false); });
                 fi.src = '';
                 zi.src = '';
             } else {
                 fi.src = u;
                 zi.src = u;
                 fv.pause();
-                fv.src = '';
+                fv.removeAttribute('src');
+                fv.load();
             }
 
             const desc = document.getElementById('viewer-desc');
@@ -2424,9 +2581,130 @@
             if (e.target === viewer || e.target.className === 'close-viewer') {
                 viewer.style.display = 'none';
                 fv.pause();
+                fv.removeAttribute('src');
+                fv.load();
                 document.body.style.overflow = 'auto';
             }
         };
+
+        // ── CUSTOM VIDEO PLAYER ──
+        const vcb   = document.getElementById('video-center-btn');
+        const vctrl = document.getElementById('video-controls');
+        const vpp   = document.getElementById('video-playpause');
+        const vmute = document.getElementById('video-mute');
+        const vfs   = document.getElementById('video-fullscreen');
+        const vtime = document.getElementById('video-time');
+        const vprog = document.getElementById('video-progress');
+        const vfill = document.getElementById('video-progress-fill');
+        const vhand = document.getElementById('video-progress-handle');
+        let vHideTimer = null;
+        let vScrubbing = false;
+
+        function fmtTime(s) {
+            if (!isFinite(s) || s < 0) s = 0;
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60).toString().padStart(2, '0');
+            return `${m}:${sec}`;
+        }
+
+        function showVideoControls(autoHide) {
+            vw.classList.add('controls-visible');
+            clearTimeout(vHideTimer);
+            if (autoHide && !fv.paused) {
+                vHideTimer = setTimeout(() => { if (!fv.paused && !vScrubbing) vw.classList.remove('controls-visible'); }, 2600);
+            }
+        }
+
+        function toggleVideoPlay() {
+            if (fv.paused) { fv.play(); } else { fv.pause(); }
+        }
+
+        fv.addEventListener('play', () => {
+            vpp.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            vcb.innerHTML = '<i class="fa-solid fa-play"></i>';
+            vcb.classList.remove('is-paused');
+            showVideoControls(true);
+        });
+
+        fv.addEventListener('pause', () => {
+            vpp.innerHTML = '<i class="fa-solid fa-play"></i>';
+            vcb.innerHTML = '<i class="fa-solid fa-play"></i>';
+            vcb.classList.add('is-paused');
+            showVideoControls(false);
+        });
+
+        fv.addEventListener('timeupdate', () => {
+            if (vScrubbing || !fv.duration) return;
+            const pct = (fv.currentTime / fv.duration) * 100;
+            vfill.style.width = pct + '%';
+            vhand.style.left = pct + '%';
+            vtime.innerText = `${fmtTime(fv.currentTime)} / ${fmtTime(fv.duration)}`;
+        });
+
+        fv.addEventListener('loadedmetadata', () => {
+            vtime.innerText = `${fmtTime(0)} / ${fmtTime(fv.duration)}`;
+        });
+
+        fv.addEventListener('ended', () => {
+            vcb.classList.add('is-paused');
+            vcb.innerHTML = '<i class="fa-solid fa-rotate-right"></i>';
+            showVideoControls(false);
+        });
+
+        // Tap the video itself: toggle play, and reveal controls
+        fv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (vw.classList.contains('controls-visible') || fv.paused) {
+                toggleVideoPlay();
+            }
+            showVideoControls(true);
+        });
+
+        vw.addEventListener('mousemove', () => showVideoControls(true));
+        vw.addEventListener('touchstart', () => showVideoControls(true), { passive: true });
+
+        vcb.onclick = (e) => { e.stopPropagation(); if (fv.ended) { fv.currentTime = 0; } toggleVideoPlay(); showVideoControls(true); };
+        vpp.onclick = (e) => { e.stopPropagation(); toggleVideoPlay(); showVideoControls(true); };
+
+        vmute.onclick = (e) => {
+            e.stopPropagation();
+            fv.muted = !fv.muted;
+            vmute.innerHTML = fv.muted ? '<i class="fa-solid fa-volume-xmark"></i>' : '<i class="fa-solid fa-volume-high"></i>';
+            showVideoControls(true);
+        };
+
+        vfs.onclick = (e) => {
+            e.stopPropagation();
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else if (vw.requestFullscreen) {
+                vw.requestFullscreen();
+            } else if (fv.webkitEnterFullscreen) {
+                fv.webkitEnterFullscreen();
+            }
+            showVideoControls(true);
+        };
+
+        function seekFromEvent(e) {
+            const r = vprog.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let pct = (clientX - r.left) / r.width;
+            pct = Math.min(1, Math.max(0, pct));
+            if (fv.duration) fv.currentTime = pct * fv.duration;
+            vfill.style.width = (pct * 100) + '%';
+            vhand.style.left = (pct * 100) + '%';
+            vtime.innerText = `${fmtTime(pct * (fv.duration || 0))} / ${fmtTime(fv.duration)}`;
+        }
+
+        vprog.addEventListener('mousedown', (e) => { e.stopPropagation(); vScrubbing = true; showVideoControls(false); seekFromEvent(e); });
+        window.addEventListener('mousemove', (e) => { if (vScrubbing) seekFromEvent(e); });
+        window.addEventListener('mouseup', () => { vScrubbing = false; showVideoControls(true); });
+
+        vprog.addEventListener('touchstart', (e) => { e.stopPropagation(); vScrubbing = true; showVideoControls(false); seekFromEvent(e); }, { passive: true });
+        vprog.addEventListener('touchmove', (e) => { if (vScrubbing) seekFromEvent(e); }, { passive: true });
+        vprog.addEventListener('touchend', (e) => { e.stopPropagation(); vScrubbing = false; showVideoControls(true); }, { passive: true });
+
+        vw.onclick = (e) => e.stopPropagation();
 
         // ── CUSTOM CURSOR ──
         const dot  = document.getElementById('cursor-dot');
