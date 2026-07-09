@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.14-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.16-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -13,7 +13,7 @@
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
 ilustrador, adaptador musical y traductor. HTML/CSS/JS vanilla puro, sin frameworks.
 
-**Versión actual:** `v10.14` · **Última actualización:** 08 de julio de 2026  
+**Versión actual:** `v10.16` · **Última actualización:** 08 de julio de 2026  
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)  
 **Contacto:** pepin.aquino.rivera@gmail.com
 
@@ -256,6 +256,19 @@ Las URLs de Instagram contienen tokens de sesión (`oh=`, `oe=`) que expiran. Cu
 ---
 
 ## 📦 Historial de Versiones
+
+### v10.16 — Manifest completo + preview de link mejorado (08 jul 2026)
+
+- `site.webmanifest` ahora incluye `name`, `short_name`, `description`, `theme_color` (`#c77dff`) y `background_color` (`#070709`) acorde a la identidad visual del sitio (antes venía vacío del generador de favicon.io)
+- Preview del link (Discord/Twitter/X) mejorado: descripción más completa mencionando ilustración, animación 3D, traducción y la galería con arte/videos
+- Corregido typo en meta `description` ("Ilustrr" → "Ilustrador")
+- Añadidos `og:image:type` y textos `alt` en las imágenes de preview para mejor accesibilidad
+
+### v10.15 — Set completo de favicon (08 jul 2026)
+
+- Reemplazado el `<link rel="icon">` único por el set completo generado por favicon.io: `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png` y `site.webmanifest`
+- Íconos correctos ahora en pestaña del navegador, accesos directos de iOS/Android y PWA
+- `og:image` / `twitter:image` actualizados a `android-chrome-512x512.png` (mayor resolución para previews en Discord/redes)
 
 ### v10.14 — Logo del sitio en la galería (08 jul 2026)
 
