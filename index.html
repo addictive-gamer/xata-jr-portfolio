@@ -703,6 +703,65 @@
         .gallery-item:hover img { transform: scale(1.05); }
         .gallery-item:hover .gallery-item-overlay { opacity: 1; }
 
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+            pointer-events: none;
+            background: #000;
+        }
+
+        .gallery-item:hover video { transform: scale(1.05); }
+
+        .gallery-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(7,7,9,0.55);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-play-btn i {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-left: 3px;
+        }
+
+        .gallery-item:hover .gallery-play-btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .gallery-item-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(7,7,9,0.65);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            color: var(--muted);
+            font-family: 'Syne', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            border-radius: 100px;
+            z-index: 2;
+        }
+
         /* FAQ */
         .faq-item {
             background: var(--surface);
@@ -937,6 +996,15 @@
             max-height: 100%;
             border-radius: 12px;
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+        }
+
+        #full-video {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+            display: none;
+            background: #000;
         }
 
         .img-protector {
@@ -1263,6 +1331,9 @@
 
             .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .gallery-item { height: 160px; }
+            .gallery-play-btn { width: 42px; height: 42px; }
+            .gallery-play-btn i { font-size: 0.9rem; }
+            .gallery-item-badge { font-size: 0.56rem; padding: 3px 7px; top: 8px; right: 8px; }
 
             .setup-grid { grid-template-columns: 1fr; }
 
@@ -2179,7 +2250,7 @@
             <div class="footer-meta">
                 <p class="es">Desarrollado con el apoyo de <strong>Gemini AI</strong> · Mejorado con <strong>Claude</strong></p>
                 <p class="en">Developed with <strong>Gemini AI</strong> · Enhanced with <strong>Claude</strong></p>
-                <p>Hosted by <strong>GitHub Pages</strong> · v10.10 · 2026</p>
+                <p>Hosted by <strong>GitHub Pages</strong> · v10.13 · 2026</p>
             </div>
         </div>
     </footer>
@@ -2191,24 +2262,35 @@
             <div class="img-protector"></div>
             <div id="zoom-lens"><img id="zoomed-image" src=""></div>
             <img id="full-image" src="">
+            <video id="full-video" controls playsinline></video>
         </div>
         <div id="viewer-desc"></div>
     </div>
 
     <script>
         const imgs = [
-            {u:"https://pbs.twimg.com/media/HA1XS26XgAAw1f7?format=png&name=900x900", d:"Dibujo de Xata Jr Humano"},
-            {u:"https://pbs.twimg.com/media/GzNnbw4XsAAaFf5?format=png&name=900x900", d:"Dibujo de Kasane Teto"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Alex%20Fanart.png", d:"Pixel Art fanart"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Pyke%20Sand%20Wraith.png", d:"Poster de práctica"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Nepo%20Drawing.png", d:"Comisión pagada"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Rose.png", d:"Rosa art"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/The%20Knight.png", d:"Vector art"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Ado%20Poster.png", d:"Ado Poster"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/DevLog%233.png", d:"TTTH DevLog"},
-            {u:"https://github.com/addictive-gamer/xata-jr-portfolio/blob/main/Cover%20Art%20OST.png?raw=true", d:"Soundtrack TTTH"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/XATA%20JR%20LOGO.png", d:"Xata Jr Art"},
-            {u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Collab.webp", d:"Colab Instagram"}
+            {type:"image", u:"https://pbs.twimg.com/media/HA1XS26XgAAw1f7?format=png&name=900x900", d:{es:"Dibujo de Xata Jr Humano", en:"Drawing of Human Xata Jr."}},
+            {type:"image", u:"https://pbs.twimg.com/media/GzNnbw4XsAAaFf5?format=png&name=900x900", d:{es:"Dibujo de Kasane Teto", en:"Kasane Teto drawing"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Alex%20Fanart.png", d:{es:"Pixel Art fanart", en:"Pixel art fanart"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Pyke%20Sand%20Wraith.png", d:{es:"Poster de práctica", en:"Practice poster"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Nepo%20Drawing.png", d:{es:"Comisión pagada", en:"Paid commission"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Rose.png", d:{es:"Rosa art", en:"Rose art"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/The%20Knight.png", d:{es:"Vector art", en:"Vector art"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Ado%20Poster.png", d:{es:"Ado Poster", en:"Ado poster"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/DevLog%233.png", d:{es:"TTTH DevLog", en:"TTTH DevLog"}},
+            {type:"image", u:"https://github.com/addictive-gamer/xata-jr-portfolio/blob/main/Cover%20Art%20OST.png?raw=true", d:{es:"Soundtrack TTTH", en:"TTTH soundtrack cover"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/XATA%20JR%20LOGO.png", d:{es:"Xata Jr Art", en:"Xata Jr. art"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Collab.webp", d:{es:"Colab Instagram", en:"Instagram collab"}},
+            {type:"video", u:"https://github.com/addictive-gamer/xata-jr-portfolio/raw/refs/heads/main/Metal%20Sonic%20ANIMATION%20(with%20sfx%20n%20music).mp4", d:{es:"Animación 3D de Metal Sonic realizada en Blender, inspirada en The Roaring Knight de Deltarune", en:"3D Metal Sonic animation made in Blender, inspired by Deltarune's The Roaring Knight"}},
+            {type:"video", u:"https://github.com/addictive-gamer/xata-jr-portfolio/raw/refs/heads/main/MinecraftAnim1.mp4", d:{es:"Animación 3D de Minecraft hecha en Blender — mi primera animación 3D", en:"3D Minecraft animation made in Blender — my first 3D animation"}},
+            {type:"video", u:"https://github.com/addictive-gamer/xata-jr-portfolio/raw/refs/heads/main/MinecraftAnim2.mp4", d:{es:"Otra animación 3D de Minecraft hecha en Blender, realizada para practicar", en:"Another 3D Minecraft animation made in Blender, done for practice"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Xata%20Cat%20Sleeping.gif", d:{es:"Animación hecha con ezgif y Affinity para mi overlay de Twitch", en:"Animation made with ezgif and Affinity for my Twitch overlay"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Xata%20Sprite%20Undertale%20Stylewawa.png", d:{es:"Un intento de imitar el estilo de los sprites de talkbox de Undertale/Deltarune", en:"An attempt at imitating the Undertale/Deltarune talkbox sprite style"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Xata-Link%20Logo.png", d:{es:"Un logo hecho para una herramienta personal", en:"A logo made for a personal tool"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Metal%20Sonic%20POSTER.png", d:{es:"Un poster simple realizado para un amigo en Affinity", en:"A simple poster made for a friend in Affinity"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Banner%20OFFLINE.png", d:{es:"El banner para cuando estoy fuera de línea en Twitch", en:"My offline banner for Twitch"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/Banner%20TWITCH.png", d:{es:"El banner de mi canal de Twitch", en:"My Twitch channel banner"}},
+            {type:"image", u:"https://raw.githubusercontent.com/addictive-gamer/xata-jr-portfolio/refs/heads/main/New%20Gamejolt%20Banner.png", d:{es:"Banner para mi perfil de GameJolt", en:"Banner for my GameJolt profile"}}
         ];
 
         // Language
@@ -2230,11 +2312,21 @@
             imgs.forEach(i => {
                 const d = document.createElement('div');
                 d.className = 'gallery-item';
-                d.innerHTML = `
-                    <img src="${i.u}" loading="lazy" alt="${i.d}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23111%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2214%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';this.style.opacity='0.4'">
-                    <div class="gallery-item-overlay"><span>${i.d}</span></div>
-                `;
-                d.onclick = () => openV(i.u, i.d);
+                const descHtml = `<span class="es">${i.d.es}</span><span class="en">${i.d.en}</span>`;
+                if (i.type === 'video') {
+                    d.innerHTML = `
+                        <video src="${i.u}#t=0.5" muted preload="metadata" playsinline></video>
+                        <div class="gallery-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <div class="gallery-item-badge"><span class="es">Video</span><span class="en">Video</span></div>
+                        <div class="gallery-item-overlay">${descHtml}</div>
+                    `;
+                } else {
+                    d.innerHTML = `
+                        <img src="${i.u}" loading="lazy" alt="${i.d.es}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23111%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2214%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';this.style.opacity='0.4'">
+                        <div class="gallery-item-overlay">${descHtml}</div>
+                    `;
+                }
+                d.onclick = () => openV(i.u, i.d, i.type);
                 gal.appendChild(d);
             });
 
@@ -2263,19 +2355,42 @@
             }
         }
 
-        // Image viewer
+        // Image / video viewer
         const viewer = document.getElementById('image-viewer');
         const fi = document.getElementById('full-image');
+        const fv = document.getElementById('full-video');
         const zi = document.getElementById('zoomed-image');
         const ln = document.getElementById('zoom-lens');
         const pr = document.querySelector('.img-protector');
         let holding = false;
 
-        function openV(u, d) {
+        function openV(u, d, type) {
             viewer.style.display = 'flex';
-            fi.src = u;
-            zi.src = u;
-            document.getElementById('viewer-desc').innerText = d;
+            const isVideo = type === 'video';
+
+            fi.style.display = isVideo ? 'none' : 'block';
+            pr.style.display = isVideo ? 'none' : 'block';
+            fv.style.display = isVideo ? 'block' : 'none';
+
+            if (isVideo) {
+                fv.src = u;
+                fv.currentTime = 0;
+                fv.play().catch(() => {});
+                fi.src = '';
+                zi.src = '';
+            } else {
+                fi.src = u;
+                zi.src = u;
+                fv.pause();
+                fv.src = '';
+            }
+
+            const desc = document.getElementById('viewer-desc');
+            if (typeof d === 'object') {
+                desc.innerHTML = `<span class="es">${d.es}</span><span class="en">${d.en}</span>`;
+            } else {
+                desc.innerText = d;
+            }
             document.body.style.overflow = 'hidden';
         }
 
@@ -2298,6 +2413,7 @@
         viewer.onclick = (e) => {
             if (e.target === viewer || e.target.className === 'close-viewer') {
                 viewer.style.display = 'none';
+                fv.pause();
                 document.body.style.overflow = 'auto';
             }
         };
