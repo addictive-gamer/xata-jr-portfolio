@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.13-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.14-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -13,7 +13,7 @@
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
 ilustrador, adaptador musical y traductor. HTML/CSS/JS vanilla puro, sin frameworks.
 
-**Versión actual:** `v10.13` · **Última actualización:** 08 de julio de 2026  
+**Versión actual:** `v10.14` · **Última actualización:** 08 de julio de 2026  
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)  
 **Contacto:** pepin.aquino.rivera@gmail.com
 
@@ -256,6 +256,10 @@ Las URLs de Instagram contienen tokens de sesión (`oh=`, `oe=`) que expiran. Cu
 ---
 
 ## 📦 Historial de Versiones
+
+### v10.14 — Logo del sitio en la galería (08 jul 2026)
+
+- Añadido el favicon en alta resolución del portafolio como nuevo ítem de la galería, con descripción bilingüe
 
 ### v10.13 — Galería con soporte de video (08 jul 2026)
 
