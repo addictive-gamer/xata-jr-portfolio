@@ -2,17 +2,18 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.12-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.13-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
 ![worker](https://img.shields.io/badge/Backend-Cloudflare_Worker_v5.2-orange?style=for-the-badge&logo=cloudflare)
 ![mobile](https://img.shields.io/badge/Mobile-Optimizado-39ff14?style=for-the-badge)
+![video](https://img.shields.io/badge/Galería-Fotos%20%2B%20Videos-ff6ac1?style=for-the-badge)
 
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
 ilustrador, adaptador musical y traductor. HTML/CSS/JS vanilla puro, sin frameworks.
 
-**Versión actual:** `v10.12` · **Última actualización:** 24 de marzo de 2026  
+**Versión actual:** `v10.13` · **Última actualización:** 08 de julio de 2026  
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)  
 **Contacto:** pepin.aquino.rivera@gmail.com
 
@@ -111,9 +112,15 @@ El nombre "Xata Jr." nació en un concurso de versiones alternas de la mascota d
 - `.char-counter` a `0.72rem` en ≤480px
 - `.field-counter-wrap { overflow: visible }` en ≤768px
 
-### 🖼️ Galería
-- Grid responsivo · overlay al hover · visor modal con zoom lens
-- Carga lazy · imágenes desde Instagram CDN + Twitter CDN
+### 🖼️ Galería (Fotos + Videos)
+- Grid responsivo · overlay al hover · visor modal con zoom lens (solo imágenes)
+- Carga lazy · imágenes desde Instagram CDN + Twitter CDN + GitHub raw
+- **🎬 Soporte de video (nuevo v10.13):** ítems `type:"video"` en el array de la galería
+  - Miniatura autogenerada con `<video preload="metadata">` (frame en `#t=0.5`) + botón ▶ overlay + badge "Video"
+  - Click abre el visor modal con `<video controls playsinline>` en reproducción automática
+  - El zoom lens y el protector anti-descarga de imagen se desactivan automáticamente para videos
+  - Formatos probados: `.mp4` vía GitHub raw (`github.com/.../raw/refs/heads/main/archivo.mp4`)
+- Descripciones bilingües por ítem (`d: { es, en }`) — se actualizan solas al cambiar de idioma
 - ⚠️ URLs de Instagram CDN expiran — renovar si dan 403
 
 ### ❓ FAQ Acordeón
@@ -154,6 +161,8 @@ index.html  — único archivo, HTML + CSS inline + JS inline
 │   ├── <footer>
 │   ├── #image-viewer (zoom lens) · #easter-egg
 │   └── <script>  ~650 líneas
+│       ├── imgs[]  — array de galería, ítems { type: "image"|"video", u, d:{es,en} }
+│       ├── openV(u, d, type) — abre visor; renderiza <img> o <video controls>
 │       ├── updateCharCounter(el, max)
 │       ├── updateXataPreview(input)
 │       ├── submit handler con validación de chars
@@ -247,6 +256,15 @@ Las URLs de Instagram contienen tokens de sesión (`oh=`, `oe=`) que expiran. Cu
 ---
 
 ## 📦 Historial de Versiones
+
+### v10.13 — Galería con soporte de video (08 jul 2026)
+
+**🎬 Visualizador de video en la galería**
+- Nuevos ítems de tipo `video` en `imgs[]` con miniatura autogenerada, botón ▶ y badge "Video"
+- Visor modal (`openV`) ahora renderiza `<video controls playsinline>` con autoplay al abrir
+- Zoom lens y protector anti-descarga de imagen desactivados automáticamente para videos
+- Descripciones de galería migradas a formato bilingüe por ítem `{ es, en }`, con spans `.es`/`.en` que cambian solos junto al resto del sitio
+- Nuevas piezas añadidas: 3 animaciones 3D en Blender (Metal Sonic, 2× Minecraft), GIF de overlay de Twitch, sprite estilo Undertale/Deltarune, logo de Xata-Link, poster de Metal Sonic y 3 banners (Twitch online/offline, GameJolt)
 
 ### v10.12 — Worker v5.2 (24 mar 2026)
 
