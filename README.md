@@ -2,7 +2,7 @@
 
 > ### 🌐 [Ver Portafolio en Vivo](https://addictive-gamer.github.io/xata-jr-portfolio/) &nbsp;·&nbsp; 📁 [Ver Repositorio](https://github.com/addictive-gamer/xata-jr-portfolio)
 
-![version](https://img.shields.io/badge/version-10.16-blueviolet?style=for-the-badge)
+![version](https://img.shields.io/badge/version-10.17-blueviolet?style=for-the-badge)
 ![host](https://img.shields.io/badge/Hosted_by-GitHub_Pages-black?style=for-the-badge&logo=github)
 ![lang](https://img.shields.io/badge/Bilingüe-ES%20%7C%20EN-9146ff?style=for-the-badge)
 ![theme](https://img.shields.io/badge/Tema-Oscuro%20%2F%20Claro-c77dff?style=for-the-badge)
@@ -13,7 +13,7 @@
 Portafolio personal bilingüe (ES/EN) de **Xata Jr.** (también conocido como **Addictive Gamer**) —
 ilustrador, adaptador musical y traductor. HTML/CSS/JS vanilla puro, sin frameworks.
 
-**Versión actual:** `v10.16` · **Última actualización:** 08 de julio de 2026  
+**Versión actual:** `v10.17` · **Última actualización:** 08 de julio de 2026  
 **Mantenido por:** José Luis Aquino Rivera (Xata Jr. / Addictive Gamer)  
 **Contacto:** pepin.aquino.rivera@gmail.com
 
@@ -115,11 +115,16 @@ El nombre "Xata Jr." nació en un concurso de versiones alternas de la mascota d
 ### 🖼️ Galería (Fotos + Videos)
 - Grid responsivo · overlay al hover · visor modal con zoom lens (solo imágenes)
 - Carga lazy · imágenes desde Instagram CDN + Twitter CDN + GitHub raw
-- **🎬 Soporte de video (nuevo v10.13):** ítems `type:"video"` en el array de la galería
+- **🎬 Soporte de video:** ítems `type:"video"` en el array de la galería
   - Miniatura autogenerada con `<video preload="metadata">` (frame en `#t=0.5`) + botón ▶ overlay + badge "Video"
-  - Click abre el visor modal con `<video controls playsinline>` en reproducción automática
-  - El zoom lens y el protector anti-descarga de imagen se desactivan automáticamente para videos
-  - Formatos probados: `.mp4` vía GitHub raw (`github.com/.../raw/refs/heads/main/archivo.mp4`)
+  - Click abre el visor modal con reproductor **propio, minimalista**, acorde a la identidad visual del sitio (nada de UI nativa del navegador)
+- **🎛️ Reproductor de video custom (nuevo v10.17):**
+  - Sin controles nativos (`controls` removido) — barra de progreso morada (`--accent`), botones play/pause, mute y fullscreen, contador de tiempo, todo con la tipografía Syne/DM Sans del sitio
+  - Auto-play al abrir + auto-hide de controles tras ~2.6s de inactividad (se muestran de nuevo al mover el mouse o tocar la pantalla)
+  - Botón grande central ▶/⟳ visible solo en pausa o al terminar el video
+  - Barra de progreso "scrubeable" con mouse y touch (drag para adelantar/retroceder)
+  - Fullscreen real vía `requestFullscreen()` en Chrome/Android; fallback a `webkitEnterFullscreen()` en iOS Safari (limitación de Apple — ahí se usa el reproductor nativo de iOS)
+  - Optimizado para mobile: botones con área de toque ≥34px, tamaños reducidos en breakpoints 768px/480px
 - Descripciones bilingües por ítem (`d: { es, en }`) — se actualizan solas al cambiar de idioma
 - ⚠️ URLs de Instagram CDN expiran — renovar si dan 403
 
@@ -256,6 +261,16 @@ Las URLs de Instagram contienen tokens de sesión (`oh=`, `oe=`) que expiran. Cu
 ---
 
 ## 📦 Historial de Versiones
+
+### v10.17 — Reproductor de video propio (08 jul 2026)
+
+**🎛️ UI de video minimalista, acorde al portafolio**
+- Reemplazados los controles nativos del navegador (`<video controls>`) por un reproductor construido a mano
+- Barra de progreso morada (`--accent`) con handle, botones play/pause · mute · fullscreen, contador `0:00 / 0:00`
+- Auto-hide de controles tras inactividad, reaparecen con mouse/touch — mismo patrón visual que el resto del sitio (blur, bordes sutiles, Syne/DM Sans)
+- Scrubbing (arrastrar la barra) funcional con mouse y con touch
+- Botón de fullscreen real en Chrome/Android; en iOS Safari cae de forma automática al fullscreen nativo (limitación de la plataforma, no hay API pública para fullscreen custom ahí)
+- Tamaños de botones y barra ajustados en los breakpoints 768px/480px para uso cómodo con el dedo
 
 ### v10.16 — Manifest completo + preview de link mejorado (08 jul 2026)
 
